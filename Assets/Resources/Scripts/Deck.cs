@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 public class Deck : Singleton<Deck> {
 
-    private List<Card> library = new List<Card>();
-    private List<Card> discard = new List<Card>();
+    public List<Card> library = new List<Card>();
+    public List<Card> discard = new List<Card>();
+
+    public void PutOnTop(Card card) {
+        library.Add(card);
+    }
 
     public void Shuffle(bool addDiscard=true) {
         if(addDiscard) {

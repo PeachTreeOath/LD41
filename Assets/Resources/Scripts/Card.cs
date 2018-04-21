@@ -1,8 +1,12 @@
-﻿public class Card {
-    public CardPrototype prototype { get; private set; }
-    public string name { get; private set; }
-    public int health { get; private set; }
-    public int damage { get; private set; }
+﻿using UnityEngine;
+using System;
+
+[Serializable]
+public class Card {
+    public CardPrototype prototype;
+    public String name;
+    public int health;
+    public int damage;
 
     public Card(CardPrototype prototype) {
         this.prototype = prototype;
