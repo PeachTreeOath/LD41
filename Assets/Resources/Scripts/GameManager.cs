@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager> {
 
 	// Use this for initialization
 	void Start () {
-        GlobalAttackCooldownTimer.instance.SetTickTime(3f);
+        GlobalAttackCooldownTimer.instance.SetTickTime(2f);
 	}
 	
 	// Update is called once per frame
