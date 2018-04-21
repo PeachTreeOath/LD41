@@ -17,11 +17,9 @@ public class InputManager : Singleton<InputManager>
     
 	// Use this for initialization
 	void Start () {
-        /*
         GameObject canvasObj = GameObject.Find("Canvas");
         Canvas canvas = canvasObj.GetComponent<Canvas>();
         textField = canvas.GetComponentInChildren<TextMeshProUGUI>();
-        */
     }
 	
 	// Update is called once per frame
