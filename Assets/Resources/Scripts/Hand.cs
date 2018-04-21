@@ -10,10 +10,10 @@ public class Hand : Singleton<Hand> {
     public bool canDrawCards {  get { return cards.Count < maxHandSize; } }
     
     public bool DrawFromDeck() {
-        var card = Deck.instance.Draw();
+        Card card = Deck.instance.Draw();
         if(card != null) {
             
-            //var cardGo = GameObject.Instantiate(cardPrefab);
+            GameObject cardGo = (GameObject)Instantiate(cardPrefab);
             //TODO tell card class to position "over" deck
             //TODO slide the card over to the hand
 

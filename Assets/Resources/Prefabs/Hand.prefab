@@ -63,6 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b4e1f8b8268d64aa6fd1bba5bedfa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 1239116156801496, guid: 501d6d523db4d484da389d8ed582247f, type: 2}
   cards: []
   maxHandSize: 5
