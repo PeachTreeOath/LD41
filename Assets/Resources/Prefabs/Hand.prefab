@@ -36,7 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4313721863979200}
   - component: {fileID: 114901323834297704}
-  - component: {fileID: 114333371381587830}
+  - component: {fileID: 114404832359068680}
+  - component: {fileID: 114968233845909852}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1824207825320356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.71, y: -0.66, z: 0}
+  m_LocalPosition: {x: 2.71, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4313721863979200}
@@ -191,7 +192,7 @@ Transform:
   m_Father: {fileID: 4313721863979200}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114333371381587830
+--- !u!114 &114404832359068680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -213,13 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  claimed: 0
-  card:
-    prototype: {fileID: 0}
-    name: 
-    sprite: {fileID: 0}
-    health: 0
-    damage: 0
 --- !u!114 &114604860195318430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,13 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  claimed: 0
-  card:
-    prototype: {fileID: 0}
-    name: 
-    sprite: {fileID: 0}
-    health: 0
-    damage: 0
 --- !u!114 &114786425318059082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,13 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  claimed: 0
-  card:
-    prototype: {fileID: 0}
-    name: 
-    sprite: {fileID: 0}
-    health: 0
-    damage: 0
 --- !u!114 &114901323834297704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,14 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1239116156801496, guid: 501d6d523db4d484da389d8ed582247f, type: 2}
-  slots:
-  - {fileID: 1824207825320356}
-  - {fileID: 1031720502046538}
-  - {fileID: 1280905418634940}
-  - {fileID: 1808455597209682}
-  - {fileID: 1230019748214534}
-  cards: []
-  maxHandSize: 5
 --- !u!114 &114904093949395652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,13 +259,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  claimed: 0
-  card:
-    prototype: {fileID: 0}
-    name: 
-    sprite: {fileID: 0}
-    health: 0
-    damage: 0
+--- !u!114 &114968233845909852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098762599639238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 114981186865723996}
+  - {fileID: 114530688574434708}
+  - {fileID: 114786425318059082}
+  - {fileID: 114904093949395652}
+  - {fileID: 114604860195318430}
 --- !u!114 &114981186865723996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,10 +287,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  claimed: 0
-  card:
-    prototype: {fileID: 0}
-    name: 
-    sprite: {fileID: 0}
-    health: 0
-    damage: 0

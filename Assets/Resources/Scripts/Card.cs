@@ -16,10 +16,16 @@ public class Card : MonoBehaviour {
     public float scaleDuration = 0.5f;
 
 	void Update () {
+        bool arrived = false;
 	    switch(state) {
             case State.MovingToHand:
-                var arrived = UpdateMoveTo(currSlot.transform.position);
+                arrived = UpdateMoveTo(currSlot.transform.position);
                 if(arrived) OnMovedToHand();
+                break;
+
+            case State.Playing:
+                arrived = UpdateMoveTo(currSlot.transform.position);
+                if (arrived) OnPlayed();
                 break;
         }	
 	}
@@ -66,11 +72,46 @@ public class Card : MonoBehaviour {
         }
     }
 
+    public void Play() {
+        if (!AssertState(State.InHand)) return;
+
+        //var nextSlot = Lanes.instance.ClaimASlot(this);
+        ObjectSlot nextSlot = null; //TODO replace with equivalent of above
+        if (nextSlot != null) {
+            //TODO any inital set or tear down from being in the hand (deregister from input manager)
+
+            currSlot = nextSlot;
+            ChangeState(State.Playing);
+        } else {
+            OnNoRoomForCard();
+        }
+    }
+
     private void OnMovedToHand() {
         if (!AssertState(State.MovingToHand)) return;
 
         currSlot.Occupy(this.gameObject); //TODO is the trigger here or on the slot callback?  Probably slot callback
         ChangeState(State.InHand);
+    }
+
+    private void OnPlayed() {
+        if (!AssertState(State.Playing)) return;
+
+        //TODO create game prefab for lane object;
+        GameObject laneObject = null;
+        laneObject.transform.position = currSlot.transform.position;
+        //laneObject.SetCardModel(cardModel);
+        //laneObject.SetSlot(currSlot);
+
+        currSlot.Occupy(laneObject);
+
+        //TODO sound effects or whatever (maybe configed on card prototype)
+
+        Destroy(gameObject);
+    }
+
+    private void OnNoRoomForCard() {
+        //TODO what happens when there's no room for the card?
     }
 
     private void ChangeState(State state) {
