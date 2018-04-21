@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 114449887665623140}
   - component: {fileID: 114190857464825140}
   - component: {fileID: 114880185119591496}
-  - component: {fileID: 114479534327457486}
-  - component: {fileID: 114242503533720330}
   - component: {fileID: 114590536573813820}
   - component: {fileID: 114431623628506068}
   - component: {fileID: 114932757600124472}
@@ -59,21 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80983b8d63e890c4cbd3d262901248e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114242503533720330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1303742133093328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e082f3b7c93394f8f5ac42cb2fe4b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardsToStart:
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
 --- !u!114 &114251295053283596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,19 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf82107dce8e134e892700d8d8c316f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114479534327457486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1303742133093328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826576d367de18d478959bd30bf80d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: []
-  discard: []
 --- !u!114 &114590536573813820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7b2114cc718b440a21fa67bac98adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSlots: {fileID: 0}
+  enemySlots: {fileID: 0}
   highlightStartPosition: {x: 2, y: -0.2, z: 0}
   highlightDeltaX: 1.5
 --- !u!114 &114880185119591496

@@ -83,6 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4025729657952370}
+  - component: {fileID: 114772936857938180}
   m_Layer: 0
   m_Name: PlayerLane
   m_TagString: Untagged
@@ -233,6 +234,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114772936857938180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790885965209518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 114740629287815316}
+  - {fileID: 114640157887634766}
+  - {fileID: 114931884897489796}
+  - {fileID: 114174035951117536}
+  - {fileID: 114165028642884676}
 --- !u!114 &114931884897489796
 MonoBehaviour:
   m_ObjectHideFlags: 1

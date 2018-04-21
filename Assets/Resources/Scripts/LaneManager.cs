@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LaneManager : Singleton<LaneManager>
 {
+    public Slots playerSlots;
+    public Slots enemySlots;
 
     public Vector3 highlightStartPosition;
     public float highlightDeltaX;
