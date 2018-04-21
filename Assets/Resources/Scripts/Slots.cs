@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class Slots : MonoBehaviour {
 
     public List<ObjectSlot> slots;
+    public SlotEvent claimEvent;
+    public SlotEvent occupyEvent;
+    public SlotEvent releaseEvent;
 
     public bool anyOpenSlots { get { return slotsUsed < maxSlots; }  }
     public int slotsUsed {  get { return slots.Count(s => !s.open); } }
@@ -51,5 +55,16 @@ public class Slots : MonoBehaviour {
 
         return false;
     }
+
+    public void OnClaim(ObjectSlot slot, GameObject objectEntering) {
+        claimEvent.Invoke(slot, objectEntering);
+    }
 	
+    public void OnOccupy(ObjectSlot slot, GameObject objectInSlot) {
+        occupyEvent.Invoke(slot, objectInSlot);
+    }
+
+    public void OnRelease(ObjectSlot slot, GameObject objectLeaving) {
+        releaseEvent.Invoke(slot, objectLeaving);
+    }
 }

@@ -6,13 +6,15 @@ using System;
 public class Hand : Singleton<Hand> {
 
     private Slots slots;
-
+    public ZoneEvent handZoneEvent;
     public GameObject cardPrefab;
 
     public bool canDrawCards {  get { return slots.anyOpenSlots;  } }
 
     public void Start() {
         slots = GetComponent<Slots>();
+        slots.occupyEvent.AddListener(OnOccupySlot);
+        slots.releaseEvent.AddListener(OnReleaseSlot);
     }
 
     public ObjectSlot ClaimASlot(Card cardObject) {
@@ -39,5 +41,13 @@ public class Hand : Singleton<Hand> {
             var card = slot.objectInSlot.GetComponent<Card>();
             card.Play();
         }
+    }
+
+    private void OnOccupySlot(ObjectSlot slot, GameObject go) {
+        handZoneEvent.Invoke(ZoneEvent.ENTERED, go.GetComponent<Card>());
+    }
+
+    private void OnReleaseSlot(ObjectSlot slot, GameObject go) {
+        handZoneEvent.Invoke(ZoneEvent.EXITED, go.GetComponent<Card>());
     }
 }
