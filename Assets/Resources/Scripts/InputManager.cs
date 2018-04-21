@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class InputManager : Singleton<InputManager>
 {
+
     //This is a test case
     public string cardText = "New Text";
 
+    private List<IInputListener> listeners = new List<IInputListener>();
     private string inputText = "";
     private TextMeshProUGUI textField;
-
+    /*
 	// Use this for initialization
 	void Start () {
         GameObject canvasObj = GameObject.Find("Canvas");
@@ -49,4 +51,10 @@ public class InputManager : Singleton<InputManager>
             print("match!");
         }
     }
+
+    public void RegisterListener(IInputListener listener)
+    {
+        listeners.Add(listener);
+    }
+    */
 }
