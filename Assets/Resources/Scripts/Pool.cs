@@ -60,11 +60,12 @@ public class Pool : Singleton<Pool> {
 			isShuffled = true;
 		}
 
-		//Pop a card from the library
+        //Pop a card from the library  
 		pool[slotNum] = library[0];
 		library.RemoveAt(0);
 
-		gameObjects[slotNum].GetComponentInChildren<SpriteRenderer>().sprite = pool[slotNum].sprite;
+		gameObjects[slotNum].GetComponentInChildren<Card>().SetCardModel(pool[slotNum]);
+        gameObjects[slotNum].GetComponentInChildren<CardView>().CreateCardImage(pool[slotNum]);
 	}
 
 	//Get value of card in slot
