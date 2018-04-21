@@ -10,7 +10,7 @@ public class CardPrototype : ScriptableObject {
     //TODO add prefab for card image(s)
     public GameObject inLanePrefab;
 
-    public Card Instantiate() {
-        return new Card(this);
+    public CardModel Instantiate() {
+        return new CardModel(this);
     }
 }
