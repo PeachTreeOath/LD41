@@ -6,6 +6,7 @@ public class ObjectSlot : MonoBehaviour {
 
     public enum State { Open, Claimed, Occupied };
 
+    private Slots slots;
     private State state = State.Open;
 
     public GameObject objectInSlot { get; private set; } 
@@ -14,23 +15,26 @@ public class ObjectSlot : MonoBehaviour {
     public bool open {  get { return state == State.Open; } }
     public bool occupied {  get { return state == State.Occupied; } }
 
+    private void Start() {
+        slots = transform.parent.GetComponent<Slots>();
+    }
+
     public void Claim(GameObject go) {
         state = State.Claimed;
         objectInSlot = go;
+        slots.OnClaim(this, go);
     }
 
     public void Occupy(GameObject go) {
         state = State.Occupied;
         objectInSlot = go;
-        
-        //TODO an on occupy trigger?
+        slots.OnOccupy(this, go);
     }
 
     public void Release() {
         state = State.Open;
+        slots.OnRelease(this, objectInSlot);
         objectInSlot = null;
-
-        //TODO a release trigger?
     }
 
     void OnDrawGizmos() {

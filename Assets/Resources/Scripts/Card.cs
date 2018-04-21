@@ -94,6 +94,9 @@ public class Card : MonoBehaviour {
     }
 
     private void OnPlaying() {
+        currSlot.Release();
+        currSlot = null;
+
         //TODO any inital set or tear down from being in the hand (deregister from input manager)
     }
 
