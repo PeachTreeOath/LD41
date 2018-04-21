@@ -73,7 +73,7 @@ public class Pool : Singleton<Pool> {
 		pool[slotNum] = library[0];
 		library.RemoveAt(0);
 
-		gameObjects[slotNum].GetComponent<SpriteRenderer>().sprite = pool[slotNum].sprite;
+		gameObjects[slotNum].GetComponentInChildren<SpriteRenderer>().sprite = pool[slotNum].sprite;
 	}
 
 	//Get value of card in slot
