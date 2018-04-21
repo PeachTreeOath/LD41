@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class InitialDeckConfig : MonoBehaviour {
@@ -12,7 +13,7 @@ public class InitialDeckConfig : MonoBehaviour {
 
         for(var i = cardsToStart.Count - 1; i >= 0; i--) {
             var card = cardsToStart[i];
-            DeckModel.instance.PutOnTop( card.Instantiate() );
+            Deck.instance.PutOnTop( card.Instantiate() );
         }
     }
 }
