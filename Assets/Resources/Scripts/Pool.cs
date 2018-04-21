@@ -4,45 +4,34 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Pool : Singleton<Pool> {
-
-	public int numInPool = 6;
-	public List<CardPrototype> cardsToStart;
+    
+	public List<CardPrototype> cardsInLibrary = new List<CardPrototype>();
 
 	private List<CardModel> library = new List<CardModel>();
-	private GameObject[] gameObjects;
+	private List<GameObject> gameObjects = new List<GameObject>();
 	private CardModel[] pool;
 	private bool shouldShuffle = true;
 	private bool isShuffled = false;
 
 	void Start() {
-		pool = new CardModel[numInPool];
-		gameObjects = new GameObject[numInPool];
+		//Get instances of the game objects from the editor
+		foreach (Transform child in transform)
+		{
+			gameObjects.Add(child.gameObject);
+		}
 
-		for(int i = 0; i < gameObjects.Length; i++) {
-			gameObjects[i] = Instantiate(Resources.Load("Prefabs/Card")) as GameObject;
-			gameObjects[i].transform.parent = transform;
+        pool = new CardModel[gameObjects.Count];
+
+		//Load all the cards into the library
+        for(int i = 0; i < cardsInLibrary.Count; i++) {
+            CardPrototype cardProt = cardsInLibrary[i];
+            CardModel card = cardProt.Instantiate();
+            AddCard(card);
+            gameObjects[i].GetComponent<CardView>().CreateCardImage(card);
         }
 
-        if (cardsToStart == null) {
-            cardsToStart = new List<CardPrototype>();
-        }
-
-        for(int i = 0; i < numInPool; i++) {
-            var card = cardsToStart[i];
-            CardModel newCard = card.Instantiate();
-            AddCard(newCard);
-            gameObjects[i].GetComponent<CardView>().CreateCardImage(newCard);
-        }
-
-		//TODO: Make this somehow dynamic based on the number of cards
-		gameObjects[0].transform.localPosition = new Vector3(0.5f, -1.0f, 0.0f);
-		gameObjects[1].transform.localPosition = new Vector3(-0.5f, -1.0f, 0.0f);
-		gameObjects[2].transform.localPosition = new Vector3(0.5f, 0.0f, 0.0f);
-		gameObjects[3].transform.localPosition = new Vector3(-0.5f, 0.0f, 0.0f);
-		gameObjects[4].transform.localPosition = new Vector3(0.5f, 1.0f, 0.0f);
-		gameObjects[5].transform.localPosition = new Vector3(-0.5f, 1.0f, 0.0f);
-
-		for(int i = 0; i < numInPool; i++) {
+        //Pull cards and place them into the pool
+		for(int i = 0; i < gameObjects.Count; i++) {
 			RefreshSlot(i);
 		}
 	}
