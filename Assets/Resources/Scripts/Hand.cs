@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 public class Hand : Singleton<Hand> {
-    public Object cardPrefab;
+    public GameObject cardPrefab;
 
     public List<Card> cards = new List<Card>();
     public int maxHandSize = 5;
@@ -13,7 +13,8 @@ public class Hand : Singleton<Hand> {
         Card card = Deck.instance.Draw();
         if(card != null) {
             
-            GameObject cardGo = (GameObject)Instantiate(cardPrefab);
+            GameObject cardGo = Instantiate(cardPrefab);
+            cardGo.GetComponent<CardView>().CreateCardImage(card);
             //TODO tell card class to position "over" deck
             //TODO slide the card over to the hand
 

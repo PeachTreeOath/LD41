@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7b2114cc718b440a21fa67bac98adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStartPosition: {x: 0, y: 0, z: 0}
-  highlightDeltaX: 0
+  highlightStartPosition: {x: 2, y: -0.2, z: 0}
+  highlightDeltaX: 1.5
 --- !u!114 &114880185119591496
 MonoBehaviour:
   m_ObjectHideFlags: 1

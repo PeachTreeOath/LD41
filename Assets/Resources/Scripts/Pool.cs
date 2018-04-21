@@ -21,15 +21,17 @@ public class Pool : Singleton<Pool> {
 		for(int i = 0; i < gameObjects.Length; i++) {
 			gameObjects[i] = Instantiate(Resources.Load("Prefabs/Card")) as GameObject;
 			gameObjects[i].transform.parent = transform;
-		}
+        }
 
-        if(cardsToStart == null) {
+        if (cardsToStart == null) {
             cardsToStart = new List<CardPrototype>();
         }
 
         for(int i = 0; i < numInPool; i++) {
             var card = cardsToStart[i];
-            AddCard( card.Instantiate() );
+            Card newCard = card.Instantiate();
+            AddCard(newCard);
+            gameObjects[i].GetComponent<CardView>().CreateCardImage(newCard);
         }
 
 		//TODO: Make this somehow dynamic based on the number of cards
