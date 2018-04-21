@@ -1,63 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(DeckModel))]
 public class Deck : Singleton<Deck> {
+    private DeckModel model;
 
-    public List<Card> library = new List<Card>();
-    public List<Card> discard = new List<Card>();
+    public Card cardPrefab;
 
-    public void PutOnTop(Card card) {
-        library.Add(card);
+    public void Start() {
+        model = GetComponent<DeckModel>();
     }
 
-    public void Shuffle(bool addDiscard=true) {
-        if(addDiscard) {
-            library.AddRange(discard);
-            discard.Clear();
+    public void ConfigureCardObjectAtDeck(Card card) {
+        card.transform.localScale = new Vector4(0.5f, 0.5f, 1f);
+        card.transform.position = transform.position;
+    }
+
+    public bool Draw() {
+        if(!Hand.instance.canDrawCards) {
+            OnHandFull();
+            return false;
         }
 
-        //TODO turn this into a static extension?
-        var count = library.Count;
-        var last = count - 1;
-        for(var i = 0; i < last; i++) {
-            var randomIndex = Random.Range(i, count);
-            var temp = library[i];
-            library[i] = library[randomIndex];
-            library[randomIndex] = temp;
+        CardModel cardModel = model.Draw();
+        if(cardModel != null) {
+            Card card = GameObject.Instantiate<Card>(cardPrefab);
+            OnCardCreated(cardModel, card);
+
+            return true;
+        } else {
+            OnNoCardsLeft();
+            return false;
         }
     }
 
-    public Card Draw() {
-        Card card = null;
-
-        if(library.Count == 0) {
-            Shuffle(); 
-            //TODO notify the system there's been a shuffle!
-        }
-
-        if(library.Count > 0) {
-            var index = library.Count - 1;
-            card = library[index];
-            library.RemoveAt(index);
-        }
-
-        return card;
+    void OnCardCreated(CardModel cardModel, Card card) {
+        // card.setModel(cardModel); //TODO make this work!
+        card.SetInDeck();
+        card.MoveToHand();
     }
 
-    public int DrawMultiple(int count, List<Card> dest) {
-        int drawn = 0;
-        for(var i = 0; i < count; i++) {
-            var card = Draw();
-            if(card != null) {
-                dest.Add(card);
-                drawn++;
-            }
-        }
+    void OnHandFull() {
 
-        return drawn;
+    }
+    
+    void OnNoCardsLeft() {
+
     }
 
-    public void Discard(Card card) {
-        discard.Add(card);        
-    }
 }
