@@ -8,14 +8,14 @@ public class Pool : Singleton<Pool> {
 	public int numInPool = 6;
 	public List<CardPrototype> cardsToStart;
 
-	private List<CardModel> library = new List<CardModel>();
+	private List<Card> library = new List<Card>();
 	private GameObject[] gameObjects;
-	private CardModel[] pool;
+	private Card[] pool;
 	private bool shouldShuffle = true;
 	private bool isShuffled = false;
 
 	void Start() {
-		pool = new CardModel[numInPool];
+		pool = new Card[numInPool];
 		gameObjects = new GameObject[numInPool];
 
 		for(int i = 0; i < gameObjects.Length; i++) {
@@ -29,7 +29,7 @@ public class Pool : Singleton<Pool> {
 
         for(int i = 0; i < numInPool; i++) {
             var card = cardsToStart[i];
-            CardModel newCard = card.Instantiate();
+            Card newCard = card.Instantiate();
             AddCard(newCard);
             gameObjects[i].GetComponent<CardView>().CreateCardImage(newCard);
         }
@@ -52,14 +52,14 @@ public class Pool : Singleton<Pool> {
 		for (int i = 0; i < library.Count; i++) {
 			int randomIndex = Random.Range(i, library.Count);
 
-			CardModel temp = library[i];
+			Card temp = library[i];
 			library[i] = library[randomIndex];
 			library[randomIndex] = temp;
 		}
 	}
 
 	//Add a card to library
-	public void AddCard(CardModel newCard){
+	public void AddCard(Card newCard){
 		library.Add(newCard);
 	}
 
@@ -79,12 +79,12 @@ public class Pool : Singleton<Pool> {
 	}
 
 	//Get value of card in slot
-	public CardModel GetSlot(int slotNum) {
+	public Card GetSlot(int slotNum) {
 		return pool[slotNum];
 	}
 
-	public CardModel PopSlot(int slotNum) {
-		CardModel retCard = pool[slotNum];
+	public Card PopSlot(int slotNum) {
+		Card retCard = pool[slotNum];
 		pool[slotNum] = null;
 
 		return retCard;

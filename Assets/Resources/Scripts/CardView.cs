@@ -43,7 +43,7 @@ public class CardView : MonoBehaviour {
         }
     }
 
-    public void CreateCardImage(CardModel card)
+    public void CreateCardImage(Card card)
     {
         nameText.text = card.name;
         attackText.text = card.damage + "";
