@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114479534327457486}
   - component: {fileID: 114242503533720330}
   - component: {fileID: 114590536573813820}
+  - component: {fileID: 114431623628506068}
+  - component: {fileID: 114932757600124472}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -84,6 +86,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneHighlight: {fileID: 0}
+--- !u!114 &114431623628506068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303742133093328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c35aec5a6c7cac46aa6c6875677bd94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardText: Goblin Pope
 --- !u!114 &114449887665623140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7b2114cc718b440a21fa67bac98adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStartPosition: {x: 0, y: -1.25, z: 0}
-  highlightDeltaX: 1.5
+  highlightStartPosition: {x: 0, y: 0, z: 0}
+  highlightDeltaX: 0
 --- !u!114 &114880185119591496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,5 +144,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7423c91401c20d4d958f949696ed396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114932757600124472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303742133093328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e2230c109c30e4f819465a615c4a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -113,22 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &636960766 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1303742133093328, guid: 2855e1ff73da67848ba90f5a2ffd112f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1888151798}
---- !u!114 &636960775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 636960766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8e2230c109c30e4f819465a615c4a51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &999663309
 Prefab:
   m_ObjectHideFlags: 0
@@ -310,6 +294,41 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_text
+      value: Goblin Pope
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099412548089824, guid: b09145613fc6757419ea92979526aa75,
+        type: 2}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b09145613fc6757419ea92979526aa75, type: 2}
   m_IsPrefabParent: 0
@@ -341,13 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numInPool: 6
-  cardsToStart:
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
+  cardsToStart: []
 --- !u!4 &1715298546
 Transform:
   m_ObjectHideFlags: 0
