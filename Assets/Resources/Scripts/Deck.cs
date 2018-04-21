@@ -30,6 +30,11 @@ public class Deck : Singleton<Deck> {
     public Card Draw() {
         Card card = null;
 
+        if(library.Count == 0) {
+            Shuffle(); 
+            //TODO notify the system there's been a shuffle!
+        }
+
         if(library.Count > 0) {
             var index = library.Count - 1;
             card = library[index];

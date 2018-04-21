@@ -5,9 +5,10 @@ public class CardPrototype : ScriptableObject {
     public string cardName;
     public int health;
     public int damage;
+    public Sprite sprite;
 
     //TODO add prefab for card image(s)
-    //TODO add prefab reference for lane
+    public GameObject inLanePrefab;
 
     public Card Instantiate() {
         return new Card(this);
