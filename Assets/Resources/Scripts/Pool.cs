@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Pool : Singleton<Pool> {
-
+    
 	public List<CardPrototype> cardsInLibrary = new List<CardPrototype>();
 
 	private List<CardModel> library = new List<CardModel>();
 	private List<GameObject> gameObjects = new List<GameObject>();
-	private List<CardModel> pool = new List<CardModel>();
+	private CardModel[] pool;
 	private bool shouldShuffle = true;
 	private bool isShuffled = false;
 
@@ -20,8 +20,10 @@ public class Pool : Singleton<Pool> {
 			gameObjects.Add(child.gameObject);
 		}
 
+        pool = new CardModel[gameObjects.Count];
+
 		//Load all the cards into the library
-        for(int i = 0; i < numInPool; i++) {
+        for(int i = 0; i < cardsInLibrary.Count; i++) {
             CardPrototype cardProt = cardsInLibrary[i];
             CardModel card = cardProt.Instantiate();
             AddCard(card);
@@ -29,7 +31,7 @@ public class Pool : Singleton<Pool> {
         }
 
         //Pull cards and place them into the pool
-		for(int i = 0; i < numInPool; i++) {
+		for(int i = 0; i < gameObjects.Count; i++) {
 			RefreshSlot(i);
 		}
 	}
