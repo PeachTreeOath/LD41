@@ -56,7 +56,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 114917607067438360, guid: 501d6d523db4d484da389d8ed582247f,
     type: 2}
-  model: {fileID: 0}
 --- !u!114 &114528187674542746
 MonoBehaviour:
   m_ObjectHideFlags: 1
