@@ -9,9 +9,7 @@ public class DrawForTurn : MonoBehaviour, IGlobalAttackCooldownObject {
     }
 
     public void Attack() {
-        if( Hand.instance.canDrawCards ) {
-            Hand.instance.DrawFromDeck();
-        }
+        Deck.instance.Draw();
     }
 
     public void OnDestroy() {

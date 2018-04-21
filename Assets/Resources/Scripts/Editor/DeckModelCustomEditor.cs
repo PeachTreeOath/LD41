@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Deck))]
+[CustomEditor(typeof(DeckModel))]
 public class DeckCustomEditor : Editor {
 
     public override void OnInspectorGUI() {
