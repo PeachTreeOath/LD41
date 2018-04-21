@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Pool : Singleton<Deck> {
+public class Pool : Singleton<Pool> {
 
 	private List<Card> library = new List<Card>();
 	private List<Card> pool = new List<Card>();
