@@ -14,5 +14,5 @@ MonoBehaviour:
   cardName: Soldier
   health: 20
   damage: 5
-  inLanePrefab: {fileID: 1844648028728492, guid: 71b62719def49b8429b1d829d99f9cad,
-    type: 2}
+  sprite: {fileID: 21300000, guid: abc1abbe1ca50ac4e86aa04f62897f00, type: 3}
+  inLanePrefab: {fileID: 0}

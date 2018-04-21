@@ -5,10 +5,45 @@ using UnityEngine.Assertions;
 
 public class Pool : Singleton<Pool> {
 
+	public int numInPool = 6;
+	public List<CardPrototype> cardsToStart;
+
 	private List<Card> library = new List<Card>();
-	private List<Card> pool = new List<Card>();
+	private GameObject[] gameObjects;
+	private Card[] pool;
 	private bool shouldShuffle = true;
 	private bool isShuffled = false;
+
+	void Start() {
+		pool = new Card[numInPool];
+		gameObjects = new GameObject[numInPool];
+
+		for(int i = 0; i < gameObjects.Length; i++) {
+			gameObjects[i] = Instantiate(Resources.Load("Prefabs/Card")) as GameObject;
+			gameObjects[i].transform.parent = transform;
+		}
+
+        if(cardsToStart == null) {
+            cardsToStart = new List<CardPrototype>();
+        }
+
+        for(int i = 0; i < numInPool; i++) {
+            var card = cardsToStart[i];
+            AddCard( card.Instantiate() );
+        }
+
+		//TODO: Make this somehow dynamic based on the number of cards
+		gameObjects[0].transform.localPosition = new Vector3(0.5f, -1.0f, 0.0f);
+		gameObjects[1].transform.localPosition = new Vector3(-0.5f, -1.0f, 0.0f);
+		gameObjects[2].transform.localPosition = new Vector3(0.5f, 0.0f, 0.0f);
+		gameObjects[3].transform.localPosition = new Vector3(-0.5f, 0.0f, 0.0f);
+		gameObjects[4].transform.localPosition = new Vector3(0.5f, 1.0f, 0.0f);
+		gameObjects[5].transform.localPosition = new Vector3(-0.5f, 1.0f, 0.0f);
+
+		for(int i = 0; i < numInPool; i++) {
+			RefreshSlot(i);
+		}
+	}
 
 	//Shuffle the library
 	public void Shuffle(){
@@ -35,9 +70,10 @@ public class Pool : Singleton<Pool> {
 		}
 
 		//Pop a card from the library
-		Assert.IsTrue(library.Count > 0);
 		pool[slotNum] = library[0];
 		library.RemoveAt(0);
+
+		gameObjects[slotNum].GetComponent<SpriteRenderer>().sprite = pool[slotNum].sprite;
 	}
 
 	//Get value of card in slot

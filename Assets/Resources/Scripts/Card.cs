@@ -5,6 +5,7 @@ using System;
 public class Card {
     public CardPrototype prototype;
     public String name;
+    public Sprite sprite;
     public int health;
     public int damage;
 
@@ -13,6 +14,7 @@ public class Card {
         this.name = prototype.cardName;
         this.health = prototype.health;
         this.damage = prototype.damage;
+        this.sprite = prototype.sprite;
     }
 }
 
