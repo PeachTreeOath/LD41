@@ -37,4 +37,18 @@ public class LaneManager : Singleton<LaneManager>
     {
         return currentLane;
     }
+
+    public ObjectSlot ClaimPlayerSlot(GameObject go) {
+        if (!playerSlots.anyOpenSlots) return null;
+
+        for(int i = 0; i < playerSlots.maxSlots; i++) {
+            var index = (currentLane + i) % playerSlots.maxSlots;
+            var slot = playerSlots.ClaimSlot(go, index);
+            if(slot) {
+                return slot;
+            }
+        }
+
+        return null;
+    }
 }

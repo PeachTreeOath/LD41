@@ -19,20 +19,25 @@ public class Hand : Singleton<Hand> {
         return slots.ClaimASlot(cardObject.gameObject); //TODO this is sooo wonky...
     }
 
-    public bool DrawFromDeck() {
-        //Card card = Deck.instance.Draw();
-        //if(card != null) {
-            
-            //GameObject cardGo = Instantiate(cardPrefab);
-            //cardGo.GetComponent<CardView>().CreateCardImage(card);
-            //TODO tell card class to position "over" deck
-            //TODO slide the card over to the hand
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            PlayFromSlot(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            PlayFromSlot(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            PlayFromSlot(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            PlayFromSlot(3);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            PlayFromSlot(4);
+        }
+    }
 
-            //cards.Add(card);
-
-            return true;
-        //}
-
-        //return false;
-    } 
+    private void PlayFromSlot(int index) {
+        var slot = slots.slots[index];
+        if(slot.occupied) {
+            var card = slot.objectInSlot.GetComponent<Card>();
+            card.Play();
+        }
+    }
 }

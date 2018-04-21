@@ -17,6 +17,19 @@ public class Slots : MonoBehaviour {
         }
 	}
 
+    public ObjectSlot ClaimSlot(GameObject go, int index) {
+        ObjectSlot freeSlot = null;
+        if(index < slots.Count && index >= 0) {
+            var slot = slots[index];
+            if(slot.open) {
+                freeSlot = slot;
+                freeSlot.Claim(go);
+            }
+        }
+
+        return freeSlot;
+    }
+
     public ObjectSlot ClaimASlot(GameObject go) {
         ObjectSlot freeSlot = null;
         foreach(var slot in slots) {
@@ -28,6 +41,15 @@ public class Slots : MonoBehaviour {
         }
 
         return freeSlot;
+    }
+
+    public bool IsOpenAt(int index) {
+        if (index < slots.Count && index >= 0) {
+            var slot = slots[index];
+            return slot.open;
+        }
+
+        return false;
     }
 	
 }

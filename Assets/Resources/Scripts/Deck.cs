@@ -35,7 +35,7 @@ public class Deck : Singleton<Deck> {
     }
 
     void OnCardCreated(CardModel cardModel, Card card) {
-        // card.setModel(cardModel); //TODO make this work!
+        card.SetCardModel(cardModel); 
         card.SetInDeck();
         card.MoveToHand();
     }

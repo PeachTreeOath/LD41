@@ -7,7 +7,8 @@ public class ObjectSlot : MonoBehaviour {
     public enum State { Open, Claimed, Occupied };
 
     private State state = State.Open;
-    private GameObject objectInSlot = null;
+
+    public GameObject objectInSlot { get; private set; } 
 
     public bool claimed {  get { return state == State.Claimed; } }
     public bool open {  get { return state == State.Open; } }
