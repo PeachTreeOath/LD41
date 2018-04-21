@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class InputBox : MonoBehaviour {
 
     public InputField mainInputField;
+    public Text testCardName;
+    public string inputText;
 
     // Use this for initialization
     void Start()
@@ -12,12 +14,13 @@ public class InputBox : MonoBehaviour {
         GameObject canvasObj = GameObject.Find("Canvas");
         Canvas canvas = canvasObj.GetComponent<Canvas>();
         mainInputField = canvas.GetComponentInChildren<InputField>();
+        testCardName = canvas.GetComponentInChildren<Text>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //forces input to only the input box
-        mainInputField.ActivateInputField();
+        inputText = ((Text)mainInputField.GetComponentInChildren<Text>()).text;
     }
 }
