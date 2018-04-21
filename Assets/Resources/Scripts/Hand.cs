@@ -19,7 +19,7 @@ public class Hand : Singleton<Hand> {
             //TODO slide the card over to the hand
 
             cards.Add(card);
-            InputManager.instance.MakeTextEligibleForTyping(card);
+
             return true;
         }
 

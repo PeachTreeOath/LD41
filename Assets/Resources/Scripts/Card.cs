@@ -2,7 +2,7 @@
 using System;
 
 [Serializable]
-public class Card : TypingTarget {
+public class Card {
     public CardPrototype prototype;
     public String name;
     public Sprite sprite;
@@ -15,26 +15,6 @@ public class Card : TypingTarget {
         this.health = prototype.health;
         this.damage = prototype.damage;
         this.sprite = prototype.sprite;
-    }
-
-    public string GetCompletedPortionOfName()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string GetName()
-    {
-        return name;
-    }
-
-    public void HandleCompletedName()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string SetCompletedPortionOfName(string completedPortionOfName)
-    {
-        return "Card (completedPortionOfName): " + completedPortionOfName;
     }
 }
 
