@@ -2,6 +2,7 @@
 using UnityEditor;
 
 public class CardPrototype : ScriptableObject {
+    public string cardName;
     public int health;
     public int damage;
 

@@ -6,7 +6,7 @@
 
     public Card(CardPrototype prototype) {
         this.prototype = prototype;
-        this.name = prototype.name;
+        this.name = prototype.cardName;
         this.health = prototype.health;
         this.damage = prototype.damage;
     }
