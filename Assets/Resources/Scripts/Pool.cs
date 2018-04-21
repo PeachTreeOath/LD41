@@ -1,82 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
+[RequireComponent(typeof(Slots))]
+[RequireComponent(typeof(DeckModel))]
 public class Pool : Singleton<Pool> {
-    
-	public List<CardPrototype> cardsInLibrary = new List<CardPrototype>();
-
-	private List<CardModel> library = new List<CardModel>();
-	private List<GameObject> gameObjects = new List<GameObject>();
-	private CardModel[] pool;
+    private Slots poolSlots;
+    private DeckModel poolDeck;
 	private bool shouldShuffle = true;
 	private bool isShuffled = false;
 
-	void Start() {
-		//Get instances of the game objects from the editor
-		foreach (Transform child in transform)
-		{
-			gameObjects.Add(child.gameObject);
-		}
+    public ZoneEvent poolZoneEvent;
+    public Card cardPrefab;
+    public GameObject origin;
 
-        pool = new CardModel[gameObjects.Count];
-
-		//Load all the cards into the library
-        for(int i = 0; i < cardsInLibrary.Count; i++) {
-            CardPrototype cardProt = cardsInLibrary[i];
-            CardModel card = cardProt.Instantiate();
-            AddCard(card);
-            gameObjects[i].GetComponent<CardView>().CreateCardImage(card);
+    void Start() {
+        if (poolZoneEvent == null) {
+            poolZoneEvent = new ZoneEvent();
         }
 
-        //Pull cards and place them into the pool
-		for(int i = 0; i < gameObjects.Count; i++) {
-			RefreshSlot(i);
-		}
-	}
+        poolSlots = GetComponent<Slots>();
+        poolDeck = GetComponent<DeckModel>();
 
-	//Shuffle the library
-	public void Shuffle(){
-		for (int i = 0; i < library.Count; i++) {
-			int randomIndex = Random.Range(i, library.Count);
+        poolSlots.claimEvent.AddListener(OnClaimSlot);
+        poolSlots.releaseEvent.AddListener(OnReleaseSlot);
+    }
 
-			CardModel temp = library[i];
-			library[i] = library[randomIndex];
-			library[randomIndex] = temp;
-		}
-	}
-
-	//Add a card to library
-	public void AddCard(CardModel newCard){
-		library.Add(newCard);
-	}
-
-	//Fill an empty slot
-	public void RefreshSlot(int slotNum) {
-		//Shuffle when the first card is pulled
-		if(shouldShuffle && !isShuffled) {
-			Shuffle();
+    //TODO set up some component to schedule these
+    public void DrawToPool(bool reshuffle=false) {
+        //Shuffle when the first card is pulled
+		if(reshuffle || (shouldShuffle && !isShuffled)) {
+            poolDeck.Shuffle();
 			isShuffled = true;
 		}
 
-        //Pop a card from the library  
-		pool[slotNum] = library[0];
-		library.RemoveAt(0);
+        var cardModel = poolDeck.Draw();
+        if(cardModel != null) {
+            var card = GameObject.Instantiate(cardPrefab);
+            card.SetCardModel(cardModel);
+            card.MoveToPool();
+        }
+    }
 
-		gameObjects[slotNum].GetComponentInChildren<Card>().SetCardModel(pool[slotNum]);
-        gameObjects[slotNum].GetComponentInChildren<CardView>().CreateCardImage(pool[slotNum]);
-	}
+    public bool DrawFromPool(Card card) {
+        var foundCard = false;
+        foreach(var slot in poolSlots.slots) {
+            var otherCard = slot.GetComponent<Card>();
+            if(otherCard == card) {
+                foundCard = true;
+                card.Discard(); 
+            }
+        }
 
-	//Get value of card in slot
-	public CardModel GetSlot(int slotNum) {
-		return pool[slotNum];
-	}
+        return foundCard;
+    }
 
-	public CardModel PopSlot(int slotNum) {
-		CardModel retCard = pool[slotNum];
-		pool[slotNum] = null;
+    private void OnClaimSlot(ObjectSlot slot, GameObject addedToPool) {
+        poolZoneEvent.Invoke(ZoneEvent.ENTERED, addedToPool.GetComponent<Card>());
+    }
 
-		return retCard;
-	}
+    private void OnReleaseSlot(ObjectSlot slot, GameObject removedFromPool) {
+        poolZoneEvent.Invoke(ZoneEvent.EXITED, removedFromPool.GetComponent<Card>());
+    }
 }

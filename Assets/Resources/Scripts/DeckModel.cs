@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckModel : Singleton<DeckModel> {
+public class DeckModel : MonoBehaviour {
 
     public List<CardModel> library = new List<CardModel>();
     public List<CardModel> discard = new List<CardModel>();

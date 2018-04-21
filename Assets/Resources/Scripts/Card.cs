@@ -1,21 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
+[RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour {
 
-    public enum State { None, InDeck, InPool, InHand, MovingToHand, MovingToDiscard, Playing }
+    public enum State { None, InDeck, InPool, InHand, InLane, MovingToHand, MovingToDiscard, Playing }
 
     public State prevState = State.None;
     public State state = State.None;
     public CardModel cardModel = null;
+    public CardView cardView = null;
 
     public ObjectSlot currSlot = null;
     public float scaleTarget;
     public float speed = 30f;
     public float scaleDuration = 0.5f;
 
-	void Update () {
+    private void Start() {
+        cardView = GetComponent<CardView>(); 
+    }
+
+    void Update () {
         bool arrived = false;
 	    switch(state) {
             case State.MovingToHand:
@@ -32,17 +40,27 @@ public class Card : MonoBehaviour {
 
     public void SetCardModel(CardModel cardModel) {
         this.cardModel = cardModel;
-        //TODO update visuals!
+        //TODO update CARD PREFAB later 
+        this.cardView = GetComponent<CardView>();
+        this.cardView.CreateCardImage(cardModel);
+    }
+
+    public void SetInLane() {
+        ChangeState(State.InLane);
     }
 
     public void SetInPool() {
-        state = State.InPool;
+        ChangeState(State.InPool);
         //TODO any clean-up if this happens suddenly
     }
 
     public void SetInDeck() {
         ChangeState(State.InDeck);
         Deck.instance.ConfigureCardObjectAtDeck(this);
+    }
+
+    public void MoveToPool() {
+
     }
 
     public void MoveToHand() {
@@ -84,6 +102,18 @@ public class Card : MonoBehaviour {
         } else {
             OnNoRoomForCard();
         }
+    }
+
+    public void Discard() {
+        if (!AssertState(State.InPool, State.InLane)) return;
+
+        switch(state) {
+            case State.InPool:
+
+                break;
+        }
+
+        ChangeState(State.MovingToDiscard);
     }
 
     private void OnMovedToHand() {
@@ -131,10 +161,11 @@ public class Card : MonoBehaviour {
         this.state = state;
     }
 
-    private bool AssertState(State expected) {
-        var assert = state == expected;
+    private bool AssertState(params State[] expecteds) {
+        var assert = expecteds.Any(expected => state == expected);
         if(!assert) {
-            Debug.Log(string.Format("Expected to be in state '{0}', but state was '{1}'", expected, state));
+            var expectedList = string.Join(",", Array.ConvertAll(expecteds, e => e.ToString())); 
+            Debug.Log(string.Format("Expected to be in state '{0}', but state was '{1}'", expectedList, state));
             state = State.None;
         }
 
