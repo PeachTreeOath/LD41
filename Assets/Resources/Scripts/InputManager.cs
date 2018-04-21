@@ -13,7 +13,8 @@ public class InputManager : Singleton<InputManager>
     private List<IInputListener> listeners = new List<IInputListener>();
     private string inputText = "";
     private TextMeshProUGUI textField;
-    /*
+    private List<TypingTarget> eligibleCards = new List<TypingTarget>();
+    
 	// Use this for initialization
 	void Start () {
         /*
@@ -44,19 +45,28 @@ public class InputManager : Singleton<InputManager>
                 inputText += c;
             }
         }
-        if (inputText.Length > 0 && cardText.StartsWith(inputText))
-        {
-            string highlightedLetters = inputText;
-            string restOfWord = cardText.Substring(inputText.Length);
 
-            textField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
-            print("match!");
+        foreach (TypingTarget target in eligibleCards)
+        {
+            if (inputText.Length > 0 && target.GetName().StartsWith(inputText))
+            {
+                string highlightedLetters = inputText;
+                //string restOfWord = target.GetName().Substring(inputText.Length);
+
+                target.SetCompletedPortionOfName(highlightedLetters);
+                print("match!");
+            }
         }
+    }
+
+    public void MakeTextEligibleForTyping(TypingTarget typingTarget)
+    {
+        eligibleCards.Add(typingTarget);
     }
 
     public void RegisterListener(IInputListener listener)
     {
         listeners.Add(listener);
     }
-    */
+    
 }
