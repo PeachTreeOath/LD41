@@ -75,10 +75,9 @@ public class Card : MonoBehaviour {
     public void Play() {
         if (!AssertState(State.InHand)) return;
 
-        //var nextSlot = Lanes.instance.ClaimASlot(this);
-        ObjectSlot nextSlot = null; //TODO replace with equivalent of above
+        var nextSlot = LaneManager.instance.ClaimPlayerSlot(gameObject);
         if (nextSlot != null) {
-            //TODO any inital set or tear down from being in the hand (deregister from input manager)
+            OnPlaying();
 
             currSlot = nextSlot;
             ChangeState(State.Playing);
@@ -94,18 +93,28 @@ public class Card : MonoBehaviour {
         ChangeState(State.InHand);
     }
 
+    private void OnPlaying() {
+        //TODO any inital set or tear down from being in the hand (deregister from input manager)
+    }
+
     private void OnPlayed() {
         if (!AssertState(State.Playing)) return;
 
         //TODO create game prefab for lane object;
-        GameObject laneObject = null;
-        laneObject.transform.position = currSlot.transform.position;
-        //laneObject.SetCardModel(cardModel);
-        //laneObject.SetSlot(currSlot);
+        if(cardModel.prototype.inLanePrefab != null) {
+            GameObject laneObject = GameObject.Instantiate(cardModel.prototype.inLanePrefab);
+            
+            laneObject.transform.position = currSlot.transform.position;
+            //laneObject.SetCardModel(cardModel);
+            //laneObject.SetSlot(currSlot);
 
-        currSlot.Occupy(laneObject);
+            currSlot.Occupy(laneObject);
 
-        //TODO sound effects or whatever (maybe configed on card prototype)
+            //TODO sound effects or whatever (maybe configed on card prototype)
+        } else {
+            currSlot.Release();
+            currSlot = null;
+        }
 
         Destroy(gameObject);
     }

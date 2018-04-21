@@ -203,6 +203,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8798a8f04753d7c4bb4363660f38ee25, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &382859680 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114772936857938180, guid: 8798a8f04753d7c4bb4363660f38ee25,
+    type: 2}
+  m_PrefabInternal: {fileID: 339804737}
+  m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
 --- !u!114 &517773571 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114981186865723996, guid: d19b6224ecdf01c4586a1119bef3dc47,
@@ -379,6 +385,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d19b6224ecdf01c4586a1119bef3dc47, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1148849938 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114452262342045664, guid: c4907b2be0658e84abaadcd3d3e53e13,
+    type: 2}
+  m_PrefabInternal: {fileID: 733382410}
+  m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
 --- !u!1001 &1761128152
 Prefab:
   m_ObjectHideFlags: 0
@@ -502,8 +514,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114479534327457486, guid: 2855e1ff73da67848ba90f5a2ffd112f, type: 2}
-    - {fileID: 114242503533720330, guid: 2855e1ff73da67848ba90f5a2ffd112f, type: 2}
+    - target: {fileID: 114590536573813820, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: playerSlots
+      value: 
+      objectReference: {fileID: 382859680}
+    - target: {fileID: 114590536573813820, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: enemySlots
+      value: 
+      objectReference: {fileID: 1148849938}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2855e1ff73da67848ba90f5a2ffd112f, type: 2}
   m_IsPrefabParent: 0

@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4213514080821036}
+  - component: {fileID: 114452262342045664}
   m_Layer: 0
   m_Name: EnemyLane
   m_TagString: Untagged
@@ -233,6 +234,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114452262342045664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088961641566504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 114013255732835060}
+  - {fileID: 114153164098086092}
+  - {fileID: 114405022072417454}
+  - {fileID: 114536589502890784}
+  - {fileID: 114364609764713668}
 --- !u!114 &114536589502890784
 MonoBehaviour:
   m_ObjectHideFlags: 1
