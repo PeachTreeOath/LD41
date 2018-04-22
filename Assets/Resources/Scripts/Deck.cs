@@ -41,6 +41,7 @@ public class Deck : Singleton<Deck> {
 
     void OnCardCreated(CardModel cardModel, Card card) {
         card.SetCardModel(cardModel); 
+        card.SetOwner(Owner.Player);
         card.SetInDeck();
         card.MoveToHand();
     }

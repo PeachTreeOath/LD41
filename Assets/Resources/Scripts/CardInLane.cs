@@ -5,9 +5,17 @@ using UnityEngine;
 
 public class CardInLane : MonoBehaviour
 {
-
+    private Owner owner;
     private CardModel card;
     private ObjectSlot slot;
+
+    public void SetOwner(Owner owner) {
+        if(owner == Owner.None) {
+            Debug.LogError("Attempting to set a CardInLane owner to 'NONE'");
+        }
+
+        this.owner = owner;
+    }
 
     public void SetCardModel(CardModel newCard)
     {
