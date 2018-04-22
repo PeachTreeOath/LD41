@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max: 20
-  start: 15
+  start: 20
   healthText: {fileID: 114245613842008786}
 --- !u!114 &114245613842008786
 MonoBehaviour:

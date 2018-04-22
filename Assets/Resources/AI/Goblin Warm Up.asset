@@ -25,3 +25,7 @@ MonoBehaviour:
     timestamp: 28
     value: 3
     eventName: 
+  - type: 2
+    timestamp: 40
+    value: 3
+    eventName: 'Spawn pool: +WeakGoblin'

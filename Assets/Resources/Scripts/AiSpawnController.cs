@@ -25,7 +25,7 @@ public class AiSpawnController : MonoBehaviour  {
     //TODO does this make sense?
     public bool InterpretDirective(string directive, string argument) {
         if (directive.ToLower() == "spawn pool") {
-            var matches = Regex.Matches(argument, @"([-+=])(a-z0-9_)\b");
+            var matches = Regex.Matches(argument, @"([-+=])([a-z0-9_]*)\b", RegexOptions.IgnoreCase);
             foreach(Match match in matches) {
                 var op = match.Groups[1].Value;
                 var spawn = match.Groups[2].Value;

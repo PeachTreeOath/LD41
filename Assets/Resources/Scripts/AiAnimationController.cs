@@ -38,7 +38,7 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
 
             // HACK evaluate events first
             foreach(var keyframe in keyframes) {
-                if(keyframe.timestamp > animTimer && keyframe.timestamp <= nextTime && keyframe.type == KeyFrame.Type.Event) {
+                if((animTimer == 0 || keyframe.timestamp > animTimer) && keyframe.timestamp <= nextTime && keyframe.type == KeyFrame.Type.Event) {
                     OnAnimEvent(keyframe.eventName);
                 }
             }

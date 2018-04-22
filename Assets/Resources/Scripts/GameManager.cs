@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager> {
 
     private bool awaitingReset;
+    public float tickInterval = 3f;
 
-	// Use this for initialization
 	void Start () {
         awaitingReset = false;
-        GlobalAttackCooldownTimer.instance.SetTickTime(2f);
+        GlobalAttackCooldownTimer.instance.SetTickTime(tickInterval);
 	}
 	
     public void Win()
