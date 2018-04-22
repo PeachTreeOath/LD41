@@ -5,16 +5,15 @@ using UnityEngine;
 
 public abstract class SpellInLane : CardInLane
 {
+    protected abstract void CastSpell(int slotIndex, bool isAttackingEnemy);
 
-    public void CountdownSpell()
+    public void CountdownSpell(int slotIndex, bool isAttackingEnemy)
     {
         timeToCast--;
         //TODO: Reflect in UI
-        if(timeToCast <= 0)
+        if (timeToCast <= 0)
         {
-            CastSpell();
+            CastSpell(slotIndex, isAttackingEnemy);
         }
     }
-
-    protected abstract void CastSpell();
 }

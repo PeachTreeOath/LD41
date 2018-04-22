@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayedFireballSpell : SpellInLane
 {
-    protected override void CastSpell()
+    protected override void CastSpell(int slotIndex, bool isAttackingEnemy)
     {
-        throw new NotImplementedException();
+        if (isAttackingEnemy)
+            LaneManager.instance.enemyDamageArray[slotIndex] += card.damage;
+        else
+            LaneManager.instance.playerDamageArray[slotIndex] += card.damage;
     }
 }

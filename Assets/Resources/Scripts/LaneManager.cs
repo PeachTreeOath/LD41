@@ -10,6 +10,9 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     public Slots playerSlots;
     public Slots enemySlots;
 
+    public int[] playerDamageArray = new int[5]; // All the dmg the player row is about to take
+    public int[] enemyDamageArray = new int[5]; // All the dmg the enemy row is about to take
+
     public List<GameObject> playerSlotGameObjects;
 
     public Vector3 highlightStartPosition;
@@ -48,22 +51,22 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
     public void SetLane(int lane)
     {
-        if(currentLane >= playerSlots.maxSlots)
+        if (currentLane >= playerSlots.maxSlots)
         {
             lane = 0;
         }
         currentLane = lane;
 
         int startLane = currentLane;
-        while(playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
+        while (playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
         {
             currentLane++;
-            if(currentLane >= playerSlots.slots.Count)
+            if (currentLane >= playerSlots.slots.Count)
             {
                 currentLane = 0;
             }
             //We looped the lanes, not going to find one
-            if(currentLane == startLane)
+            if (currentLane == startLane)
             {
                 //TODO: Make the highlight go invisible when this happens
                 break;
@@ -132,6 +135,13 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
     public void Attack()
     {
+        // Reset dmg queues
+        for (int i = 0; i < 5; i++)
+        {
+            playerDamageArray[i] = 0;
+            enemyDamageArray[i] = 0;
+        }
+
         for (int i = 0; i < 5; i++)
         {
             GameObject playerCard = playerSlots.slots[i].objectInSlot;
@@ -141,40 +151,59 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             {
                 continue;
             }
-            else if (playerCard != null && enemyCard == null)
+            else if (playerCard != null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
                 if (card.cardType == Card.CardType.Spell)
                 {
                     SpellInLane spell = playerCard.GetComponent<SpellInLane>();
-                    spell.CountdownSpell();
+                    spell.CountdownSpell(i, true);
                     if (spell.timeToCast == 0)
                         OnRemove(spell);
                 }
                 else
                 {
-                    enemyHp.DealDamage(card.GetAttackDamage());
+                    enemyDamageArray[i] += card.GetAttackDamage();
                 }
             }
-            else if (playerCard == null && enemyCard != null)
+            else if (enemyCard != null)
             {
                 CardInLane card = enemyCard.GetComponent<CardInLane>();
-                playerHp.DealDamage(card.GetAttackDamage());
+                if (card.cardType == Card.CardType.Spell)
+                {
+                    SpellInLane spell = enemyCard.GetComponent<SpellInLane>();
+                    spell.CountdownSpell(i, false);
+                    if (spell.timeToCast == 0)
+                        OnRemove(spell);
+                }
+                else
+                {
+                    playerDamageArray[i] += card.GetAttackDamage();
+                }
             }
-            else if (playerCard != null && enemyCard != null)
+        }
+        // Resolve damage queues
+        for (int i = 0; i < 5; i++)
+        {
+            AttackSlot(i, enemySlots, enemyDamageArray[i], enemyHp);
+            AttackSlot(i, playerSlots, playerDamageArray[i], playerHp);
+        }
+    }
+
+    public void AttackSlot(int index, Slots attackedSlots, int damage, Health targetHealth)
+    {
+        GameObject card = attackedSlots.slots[index].objectInSlot;
+        if (card == null) // No defender, hit face
+        {
+            targetHealth.DealDamage(damage);
+        }
+        else // Make defender take damage
+        {
+            CardInLane defender = card.GetComponent<CardInLane>();
+            int defenderHp = defender.TakeDamage(damage);
+            if (defenderHp <= 0)
             {
-                CardInLane pCard = playerCard.GetComponent<CardInLane>();
-                CardInLane eCard = enemyCard.GetComponent<CardInLane>();
-                int playerHp = pCard.TakeDamage(eCard.GetAttackDamage());
-                int enemyHp = eCard.TakeDamage(pCard.GetAttackDamage());
-                if (playerHp <= 0)
-                {
-                    OnRemove(pCard);
-                }
-                if (enemyHp <= 0)
-                {
-                    OnRemove(eCard);
-                }
+                OnRemove(defender);
             }
         }
     }
