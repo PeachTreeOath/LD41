@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: b0ef1997841e4bf4394d17ca1ba6342a
+timeCreated: 1524423615
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Knockout
+  fontNames:
+  - Knockout
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1b3e9bb6eabf879408475ca8d4fb4fcd, type: 3}
+  - {fileID: 12800000, guid: 6fe7dc3873a1c7346930de3d4f04f6f3, type: 3}
+  - {fileID: 12800000, guid: bac3955913f9e4d48ac0d5ce7cab1a75, type: 3}
+  - {fileID: 12800000, guid: 49604679f0b6d374d96da86a07f9875d, type: 3}
+  - {fileID: 12800000, guid: 8c4b431a66d53714f9b12f8613e34cad, type: 3}
+  - {fileID: 12800000, guid: 0d3a254eb950640489c19a7ae9ebf38a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
