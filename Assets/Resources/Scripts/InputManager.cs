@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class InputManager : Singleton<InputManager>
 {
 
     //This is a test case
-    public string cardText = "New Text";
+    //public string cardText = "New Text";
 
-    private List<IInputListener> listeners = new List<IInputListener>();
+    //private List<IInputListener> listeners = new List<IInputListener>();
+
+    //private List<ZoneEvent> zoneEvents = new List<ZoneEvent>();
     private string inputText = "";
-    private TextMeshProUGUI textField;
-    /*
+    //private TextMeshProUGUI textField;
+
+    private List<Card> eligibleCards = new List<Card>();
+    
 	// Use this for initialization
 	void Start () {
-        GameObject canvasObj = GameObject.Find("Canvas");
-        Canvas canvas = canvasObj.GetComponent<Canvas>();
-        textField = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
+
     }
 	
 	// Update is called once per frame
@@ -42,19 +46,35 @@ public class InputManager : Singleton<InputManager>
                 inputText += c;
             }
         }
-        if (inputText.Length > 0 && cardText.StartsWith(inputText))
+        
+        foreach(Card card in eligibleCards)
         {
-            string highlightedLetters = inputText;
-            string restOfWord = cardText.Substring(inputText.Length);
-
-            textField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
-            print("match!");
+            print("#cards: " + eligibleCards.Count);
+            string cardName = card.cardModel.name;
+            TextMeshProUGUI cardTextField = card.cardView.nameText;
+            if (inputText.Length > 0 && cardTextField.text.StartsWith(inputText))
+            {
+                string highlightedLetters = inputText;
+                string restOfWord = cardTextField.text.Substring(inputText.Length);
+                cardTextField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+                print("match! inputString: " + inputText);
+            }
+            
         }
     }
 
-    public void RegisterListener(IInputListener listener)
+
+    public void CardHasEnterredOrExittedHand(string enterredOrExitted, Card card)
     {
-        listeners.Add(listener);
+        if (enterredOrExitted.Equals(ZoneEvent.ENTERED))
+        {
+            eligibleCards.Add(card);
+        }
+        else
+        {
+            eligibleCards.Remove(card);
+        }
     }
-    */
+
+
 }
