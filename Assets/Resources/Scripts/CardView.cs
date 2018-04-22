@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CardView : MonoBehaviour {
+public class CardView : MonoBehaviour
+{
 
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI attackText;
-    public TextMeshProUGUI healthText;
-
-
+    public TextMeshProUGUI attackDefenseText;
+    public Image portrait;
 
     public void CreateCardImage(CardModel card)
     {
         nameText.text = card.name;
-        attackText.text = card.damage + "";
-        healthText.text = card.health + "";
-        transform.Find("Backing").GetComponent<SpriteRenderer>().sprite = card.sprite;
+        attackDefenseText.text = card.damage + "/" + card.health;
+        portrait.sprite = card.sprite;
     }
 }

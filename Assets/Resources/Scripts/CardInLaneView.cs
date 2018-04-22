@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardInLaneView : MonoBehaviour {
 
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI attackText;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI attackDefenseText;
+    public Image portrait;
 
-    private string inputText = "";
-
-    public void CreateCardImage(CardInLane card)
+    public void CreateCardImage(CardModel card)
     {
-        nameText.text = card.card.name;
-        attackText.text = card.card.damage + "";
-        healthText.text = card.currHp + "";
+        attackDefenseText.text = card.damage + "/" + card.health;
+        portrait.sprite = card.sprite;
     }
 }

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7b2114cc718b440a21fa67bac98adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 114917607067438360, guid: 501d6d523db4d484da389d8ed582247f,
+  cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
     type: 2}
   playerSlots: {fileID: 0}
   enemySlots: {fileID: 0}
