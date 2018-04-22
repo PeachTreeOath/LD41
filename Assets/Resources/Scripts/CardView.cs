@@ -16,5 +16,6 @@ public class CardView : MonoBehaviour {
         nameText.text = card.name;
         attackText.text = card.damage + "";
         healthText.text = card.health + "";
+        transform.Find("Backing").GetComponent<SpriteRenderer>().sprite = card.sprite;
     }
 }
