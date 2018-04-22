@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
 
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour
@@ -20,6 +21,8 @@ public class Card : MonoBehaviour
     public float scaleTarget;
     public float speed = 30f;
     public float scaleDuration = 0.5f;
+
+    public string inputText;
 
     private void Start()
     {
@@ -345,4 +348,47 @@ public class Card : MonoBehaviour
             Discard();
         }
     }
+
+    public void InputText(string inputString)
+    {
+        foreach (char c in inputString)
+        {
+            if (c == '\b') // has backspace/delete been pressed?
+            {
+                if (inputText.Length != 0)
+                {
+                    inputText = inputText.Substring(0, inputText.Length - 1);
+                }
+            }
+            else if ((c == '\n') || (c == '\r')) // enter/return
+            {
+                //enter clears what they typed
+                inputText = "";
+            }
+            else
+            {
+                inputText += c;
+            }
+        }
+
+        string cardName = cardModel.name;
+        TextMeshProUGUI cardTextField = cardView.nameText;
+        if (cardName.Equals(inputText))
+        {
+            MatchedWord();
+        }
+        else if (inputText.Length > 0 && cardName.StartsWith(inputText))
+        {
+            string highlightedLetters = inputText;
+            string restOfWord = cardName.Substring(inputText.Length);
+            cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+        }
+        else if (inputText.Length > 0)
+        {
+            //User has typed something but it doesn't match anything, we need to force a backspace
+            inputText = inputText.Substring(0, inputText.Length - 1);
+        }
+
+    }
 }
+

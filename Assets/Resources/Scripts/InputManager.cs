@@ -9,13 +9,7 @@ public class InputManager : Singleton<InputManager>
 {
 
     //This is a test case
-    //public string cardText = "New Text";
-
-    //private List<IInputListener> listeners = new List<IInputListener>();
-
-    //private List<ZoneEvent> zoneEvents = new List<ZoneEvent>();
     private string inputText = "";
-    //private TextMeshProUGUI textField;
 
     private List<Card> eligibleCards = new List<Card>();
     
@@ -28,7 +22,11 @@ public class InputManager : Singleton<InputManager>
 
     // Update is called once per frame
     void Update() {
-
+        for (int i = eligibleCards.Count - 1; i >= 0; i--)
+        {
+            eligibleCards[i].InputText(Input.inputString);
+        }
+        /*
         foreach (char c in Input.inputString)
         {
             if (c == '\b') // has backspace/delete been pressed?
@@ -48,8 +46,8 @@ public class InputManager : Singleton<InputManager>
                 inputText += c;
             }
         }
-
-
+        */
+        /*
         List<Card> matchedCards = new List<Card>();
         bool needToClearBuffer = false;
         foreach (Card card in eligibleCards)
@@ -107,7 +105,7 @@ public class InputManager : Singleton<InputManager>
             //Now reset all highlighting
             card.cardView.nameText.text = card.cardModel.name;
         }
-
+        */
     }
 
 
