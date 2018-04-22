@@ -80,7 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c35aec5a6c7cac46aa6c6875677bd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardText: Goblin Pope
 --- !u!114 &114449887665623140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf82107dce8e134e892700d8d8c316f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  enemyHealth: {fileID: 0}
 --- !u!114 &114590536573813820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +108,8 @@ MonoBehaviour:
   enemySlots: {fileID: 0}
   highlightStartPosition: {x: 2, y: -0.2, z: 0}
   highlightDeltaX: 1.5
+  playerHp: {fileID: 0}
+  enemyHp: {fileID: 0}
 --- !u!114 &114880185119591496
 MonoBehaviour:
   m_ObjectHideFlags: 1

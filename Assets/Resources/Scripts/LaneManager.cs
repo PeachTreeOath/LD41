@@ -12,6 +12,9 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     public Vector3 highlightStartPosition;
     public float highlightDeltaX;
 
+    public Health playerHp;
+    public Health enemyHp;
+
     private GameObject laneHighlight;
     private int currentLane = 2;
 
@@ -73,14 +76,12 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             else if (playerCard != null && enemyCard == null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
-                Debug.Log("ENEMY TOOK " + card.GetAttackDamage());
-                //TODO: Attack enemy face
+                enemyHp.DealDamage(card.GetAttackDamage());
             }
             else if (playerCard == null && enemyCard != null)
             {
                 CardInLane card = enemyCard.GetComponent<CardInLane>();
-                Debug.Log("PLAYER TOOK " + card.GetAttackDamage());
-                //TODO: Attack player face
+                playerHp.DealDamage(card.GetAttackDamage());
             }
             else if (playerCard != null && enemyCard != null)
             {
