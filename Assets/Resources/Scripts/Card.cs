@@ -6,7 +6,7 @@ using TMPro;
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour
 {
-    public enum State { None, InDeck, InPool, InHand, InLane, MovingToPool, MovingToHand, MovingToDiscard, Playing }
+    public enum State { None, InDeck, InPool, InHand, InLane, InDiscard, MovingToPool, MovingToHand, MovingToDiscard, Playing }
     public enum CardType { Monster, Spell }
 
     public State prevState = State.None;
@@ -23,8 +23,6 @@ public class Card : MonoBehaviour
     public float scaleDuration = 0.5f;
 
     public string inputText;
-
-    private bool discarded = false;
 
     private void Start()
     {
@@ -50,7 +48,7 @@ public class Card : MonoBehaviour
                 }
 
                 arrived = UpdateMoveTo(target);
-                if (arrived && !discarded) OnMovedToDiscard();
+                if (arrived) OnMovedToDiscard();
                 UpdateSizeTo(new Vector2(0.5f, 0.5f));
                 break;
 
@@ -220,7 +218,7 @@ public class Card : MonoBehaviour
         if (owner == Owner.Player)
         {
             Deck.instance.Discard(this);
-            this.discarded = true;
+            ChangeState(State.InDiscard);
         }
         else
         {
