@@ -7,6 +7,7 @@ using System;
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour {
     public enum State { None, InDeck, InPool, InHand, InLane, MovingToPool, MovingToHand, MovingToDiscard, Playing }
+    public enum CardType { Monster, Spell }
 
     public State prevState = State.None;
     public State state = State.None;
@@ -190,7 +191,6 @@ public class Card : MonoBehaviour {
     private void OnPlayed() {
         if (!AssertState(State.Playing)) return;
 
-        //TODO create game prefab for lane object;
         if(cardModel.prototype.inLanePrefab != null) {
             GameObject laneObject = GameObject.Instantiate(cardModel.prototype.inLanePrefab);
             
