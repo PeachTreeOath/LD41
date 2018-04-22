@@ -6,6 +6,7 @@ public class Deck : Singleton<Deck> {
     private DeckModel model;
 
     public Card cardPrefab;
+    public GameObject discard;
 
     public void Start() {
         model = GetComponent<DeckModel>();
@@ -32,6 +33,10 @@ public class Deck : Singleton<Deck> {
             OnNoCardsLeft();
             return false;
         }
+    }
+
+    public void Discard(Card card) {
+        model.Discard(card.cardModel);
     }
 
     void OnCardCreated(CardModel cardModel, Card card) {

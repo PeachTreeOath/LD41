@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardInLane {
+public class CardInLane : MonoBehaviour
+{
 
     private CardModel card;
     private ObjectSlot slot;
@@ -24,12 +25,17 @@ public class CardInLane {
     // Returns damage card can deal
     public int GetAttackDamage()
     {
-        card.health -= damage;
-
-        return card.health;
+        return card.damage;
     }
+
     public void SetSlot(ObjectSlot currSlot)
     {
         slot = currSlot;
+    }
+
+    public void RemoveFromPlay()
+    {
+        Destroy(gameObject);
+        // TODO: Put back in discard pile
     }
 }

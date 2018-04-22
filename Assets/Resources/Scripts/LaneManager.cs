@@ -19,6 +19,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         laneHighlight = Instantiate(ResourceLoader.instance.laneHighlight);
         laneHighlight.transform.position = highlightStartPosition;
+
+        GlobalAttackCooldownTimer.instance.RegisterCard(this);
     }
 
     // Update is called once per frame
@@ -61,8 +63,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         for (int i = 0; i < 5; i++)
         {
-            GameObject playerCard = playerSlots.slots[0].gameObject;
-            GameObject enemyCard = playerSlots.slots[0].gameObject;
+            GameObject playerCard = playerSlots.slots[i].gameObject;
+            GameObject enemyCard = playerSlots.slots[i].gameObject;
 
             if (playerCard == null && enemyCard == null)
             {
@@ -71,19 +73,24 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             else if (playerCard != null && enemyCard == null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
-                //TODO: Attack face
+                Debug.Log("ENEMY TOOK " + card.GetAttackDamage());
+                //TODO: Attack enemy face
             }
             else if (playerCard == null && enemyCard != null)
             {
                 CardInLane card = enemyCard.GetComponent<CardInLane>();
+                Debug.Log("PLAYER TOOK " + card.GetAttackDamage());
                 //TODO: Attack player face
             }
             else if (playerCard != null && enemyCard != null)
             {
                 CardInLane pCard = playerCard.GetComponent<CardInLane>();
                 CardInLane eCard = enemyCard.GetComponent<CardInLane>();
-                int playerDmg = pCard.TakeDamage(eCard.GetAttackDamage());
-                int enemyDmg = eCard.TakeDamage(pCard.GetAttackDamage());
+                int playerHp = pCard.TakeDamage(eCard.GetAttackDamage());
+                int enemyHp = eCard.TakeDamage(pCard.GetAttackDamage());
+                if (playerHp <= 0) pCard.RemoveFromPlay();
+                if (enemyHp <= 0) eCard.RemoveFromPlay();
+
             }
         }
     }
