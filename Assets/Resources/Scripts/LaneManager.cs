@@ -40,8 +40,45 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         if (Input.GetButtonDown("LaneSwitch") || !playerSlots.IsOpenAt(currentLane))
         {
-            NextLane();
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                PrevLane();
+            else
+                NextLane();
         }
+    }
+
+    public void PrevLane()
+    {
+        //Check if there are any available slots
+        if (!playerSlots.anyOpenSlots)
+        {
+            laneHighlight.GetComponent<SpriteRenderer>().enabled = false;
+            return;
+        }
+        laneHighlight.GetComponent<SpriteRenderer>().enabled = true;
+
+        //Increment the lane
+        currentLane--;
+
+        //Wrap back to the first lane if needed
+        if (currentLane < 0)
+        {
+            currentLane = playerSlots.maxSlots-1;
+        }
+
+        //If the current lane isn't available, go to the next one till you find one
+        //We already checked that at least one is available
+        while (!playerSlots.IsOpenAt(currentLane))
+        {
+            currentLane--;
+
+            if (currentLane < 0)
+            {
+                currentLane = playerSlots.maxSlots - 1;
+            }
+        }
+
+        SetLane(currentLane);
     }
 
     public void NextLane()
