@@ -47,22 +47,43 @@ public class InputManager : Singleton<InputManager>
                 inputText += c;
             }
         }
-        
+
+
+        List<Card> matchedCards = new List<Card>();
+        bool noMoreLetterMatches = false;
         foreach(Card card in eligibleCards)
         {
             string cardName = card.cardModel.name;
             TextMeshProUGUI cardTextField = card.cardView.nameText;
             if (cardName.Equals(inputText))
             {
-                card.MatchedWord();
+                matchedCards.Add(card);
             }else if (inputText.Length > 0 && cardName.StartsWith(inputText))
             {
                 string highlightedLetters = inputText;
                 string restOfWord = cardName.Substring(inputText.Length);
                 cardTextField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
             }
+            else if (inputText.Length > 0)
+            {
+                //User has typed something but it doesn't match anything, we need to force a backspace
+                inputText = inputText.Substring(0, inputText.Length - 1);
+            }
             
         }
+
+        //Doing this because we couldn't remove cards while going through a foreach loop.
+        Card[] cardArr = matchedCards.ToArray();
+        for (int i = 0; i < cardArr.Length; i++)
+        {
+            cardArr[i].MatchedWord();
+        }
+        if (cardArr.Length > 0)
+        {
+            inputText = "";
+        }
+
+
     }
 
 

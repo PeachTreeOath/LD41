@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardInLane : MonoBehaviour
-{
-    private Owner owner;
-    private CardModel card;
-    private ObjectSlot slot;
+public class CardInLane : MonoBehaviour {
+    public Owner owner { get; private set; } 
+    public CardModel card { get; private set; }
+    public ObjectSlot slot { get; private set; }
+    public int timeToCast;
     public Card.CardType cardType;
-    public int timeToCast; // Only used by SpellInLane
 
     public void SetOwner(Owner owner) {
         if(owner == Owner.None) {

@@ -39,7 +39,14 @@ public class Card : MonoBehaviour
                 break;
 
             case State.MovingToDiscard:
-                arrived = UpdateMoveTo(Deck.instance.discard.transform.position);
+                Vector2 target;
+                if(owner == Owner.Player) {
+                    target = Deck.instance.discard.transform.position;
+                } else {
+                    target = Enemy.instance.discard.transform.position;
+                }
+
+                arrived = UpdateMoveTo(target);
                 if (arrived) OnMovedToDiscard();
                 break;
 

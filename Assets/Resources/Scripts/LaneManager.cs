@@ -6,6 +6,7 @@ using UnityEngine;
 // Handles battling in lane and some lane utilities like placement.
 public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 {
+    public Card cardPrefab;
     public Slots playerSlots;
     public Slots enemySlots;
 
@@ -117,10 +118,29 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                 CardInLane eCard = enemyCard.GetComponent<CardInLane>();
                 int playerHp = pCard.TakeDamage(eCard.GetAttackDamage());
                 int enemyHp = eCard.TakeDamage(pCard.GetAttackDamage());
-                if (playerHp <= 0) pCard.RemoveFromPlay();
-                if (enemyHp <= 0) eCard.RemoveFromPlay();
-
+                if (playerHp <= 0) {
+                    OnRemove(pCard);
+                }
+                if (enemyHp <= 0) {
+                    OnRemove(eCard);
+                }
             }
         }
+    }
+
+    private void OnRemove(CardInLane cardInLane) {
+        var card = GameObject.Instantiate<Card>(cardPrefab);
+        card.SetOwner(cardInLane.owner);
+        card.SetCardModel(cardInLane.card);
+
+        cardInLane.slot.Release();
+
+        card.transform.position = cardInLane.transform.position;
+        card.SetInLane(); //TODO add the slot here?
+        card.Discard();
+
+        //TODO show death effect or something?
+
+        Destroy(cardInLane.gameObject);
     }
 }

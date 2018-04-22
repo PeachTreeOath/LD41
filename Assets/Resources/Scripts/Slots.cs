@@ -67,4 +67,15 @@ public class Slots : MonoBehaviour {
     public void OnRelease(ObjectSlot slot, GameObject objectLeaving) {
         releaseEvent.Invoke(slot, objectLeaving);
     }
+
+    public bool AreAllSlotsBlocked()
+    {
+        for(int i = 0; i < slots.Count; i++)
+        {
+            if (IsOpenAt(i))
+                return false;
+        }
+
+        return true;
+    }
 }
