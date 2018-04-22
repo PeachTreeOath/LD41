@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour {
 
-    public enum State { None, InDeck, InPool, InHand, InLane, MovingToHand, MovingToDiscard, Playing }
+    public enum State { None, InDeck, InPool, InHand, InLane, MovingToPool, MovingToHand, MovingToDiscard, Playing }
 
     public State prevState = State.None;
     public State state = State.None;
@@ -26,6 +26,16 @@ public class Card : MonoBehaviour {
     void Update () {
         bool arrived = false;
 	    switch(state) {
+            case State.MovingToPool:
+                arrived = UpdateMoveTo(currSlot.transform.position);
+                if (arrived) OnMovedToPool();
+                break;
+
+            case State.MovingToDiscard:
+                arrived = UpdateMoveTo(Deck.instance.discard.transform.position);
+                if (arrived) OnMovedToDiscard();
+                break;
+
             case State.MovingToHand:
                 arrived = UpdateMoveTo(currSlot.transform.position);
                 if(arrived) OnMovedToHand();
@@ -60,7 +70,18 @@ public class Card : MonoBehaviour {
     }
 
     public void MoveToPool() {
+        if (!AssertState(State.None)) return;
 
+        var nextSlot = Pool.instance.ClaimASlot(this);
+        if(nextSlot != null) {
+            OnMovingToPool();
+
+            currSlot = nextSlot;
+            ChangeState(State.MovingToPool);
+        } else {
+            Debug.Log("Tried to move to pool but it was full!");
+            Bail();
+        }
     }
 
     public void MoveToHand() {
@@ -86,7 +107,7 @@ public class Card : MonoBehaviour {
             ChangeState(State.MovingToHand);
         } else {
             Debug.LogError("Tried to move to hand but the hand was full!");
-            ChangeState(State.None);
+            Bail();
         }
     }
 
@@ -105,21 +126,36 @@ public class Card : MonoBehaviour {
     }
 
     public void Discard() {
-        if (!AssertState(State.InPool, State.InLane)) return;
+        if (!AssertState(State.MovingToPool, State.InPool, State.InLane)) return;
 
-        switch(state) {
-            case State.InPool:
-
-                break;
+        if(currSlot) {
+            currSlot.Release();
+            currSlot = null;
         }
 
+        //TODO start scaling down to discard size?
+
         ChangeState(State.MovingToDiscard);
+    }
+
+    private void OnMovingToPool() {
+        transform.position = Pool.instance.origin.transform.position;
+    }
+
+    private void OnMovedToPool() {
+        currSlot.Occupy(this.gameObject);
+        ChangeState(State.InPool);
+    }
+
+    private void OnMovedToDiscard() {
+        Deck.instance.Discard(this);
+        Destroy(this.gameObject);
     }
 
     private void OnMovedToHand() {
         if (!AssertState(State.MovingToHand)) return;
 
-        currSlot.Occupy(this.gameObject); //TODO is the trigger here or on the slot callback?  Probably slot callback
+        currSlot.Occupy(this.gameObject); 
         ChangeState(State.InHand);
     }
 
@@ -138,8 +174,9 @@ public class Card : MonoBehaviour {
             GameObject laneObject = GameObject.Instantiate(cardModel.prototype.inLanePrefab);
             
             laneObject.transform.position = currSlot.transform.position;
-            //laneObject.SetCardModel(cardModel);
-            //laneObject.SetSlot(currSlot);
+            CardInLane card = laneObject.GetComponent<CardInLane>();
+            card.SetCardModel(cardModel);
+            card.SetSlot(currSlot);
 
             currSlot.Occupy(laneObject);
 
@@ -188,5 +225,10 @@ public class Card : MonoBehaviour {
 
             return false;
         }
+    }
+
+    private void Bail() {
+        ChangeState(State.None);
+        //TODO in release version, just destroy?
     }
 }

@@ -26,6 +26,37 @@ public class Pool : Singleton<Pool> {
         poolSlots.releaseEvent.AddListener(OnReleaseSlot);
     }
 
+    void Update() {
+        if (!Input.GetKey(KeyCode.LeftShift)) return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            BuyFromSlot(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            BuyFromSlot(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            BuyFromSlot(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            BuyFromSlot(3);
+        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            BuyFromSlot(4);
+        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            BuyFromSlot(5);
+        }
+    }
+
+    //TODO remove when typing works
+    void BuyFromSlot(int index) {
+        var slot = poolSlots.slots[index];
+        if(!slot.open) {
+            var card = slot.objectInSlot.GetComponent<Card>();
+            card.Discard();
+        }
+    }
+
+    public ObjectSlot ClaimASlot(Card card) {
+        return poolSlots.ClaimASlot(card.gameObject);
+    }
+
     //TODO set up some component to schedule these
     public void DrawToPool(bool reshuffle=false) {
         //Shuffle when the first card is pulled
@@ -34,11 +65,15 @@ public class Pool : Singleton<Pool> {
 			isShuffled = true;
 		}
 
-        var cardModel = poolDeck.Draw();
-        if(cardModel != null) {
-            var card = GameObject.Instantiate(cardPrefab);
-            card.SetCardModel(cardModel);
-            card.MoveToPool();
+        if(poolSlots.anyOpenSlots) {
+            var cardModel = poolDeck.Draw();
+            if(cardModel != null) {
+                var card = GameObject.Instantiate(cardPrefab);
+                card.SetCardModel(cardModel);
+                card.MoveToPool();
+            }
+        } else {
+            Debug.Log("No Open Pool slots!");
         }
     }
 
