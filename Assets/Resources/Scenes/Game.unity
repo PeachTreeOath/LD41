@@ -244,6 +244,18 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 339804737}
   m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
+--- !u!114 &389189715 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114842950052197536, guid: 0a3f7828e0b510945adf4508aa2b71d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1503705572}
+  m_Script: {fileID: 11500000, guid: 6730241f8e09ad1449ab3bb27c979ff0, type: 3}
+--- !u!114 &646772702 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114097611591647888, guid: f07de0daf0508c249aef7db28ef850b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 777646625}
+  m_Script: {fileID: 11500000, guid: 6730241f8e09ad1449ab3bb27c979ff0, type: 3}
 --- !u!1001 &733382410
 Prefab:
   m_ObjectHideFlags: 0
@@ -635,6 +647,16 @@ Prefab:
       propertyPath: enemySlots
       value: 
       objectReference: {fileID: 1148849938}
+    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 646772702}
+    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: enemyHealth
+      value: 
+      objectReference: {fileID: 389189715}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2855e1ff73da67848ba90f5a2ffd112f, type: 2}
   m_IsPrefabParent: 0

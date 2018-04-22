@@ -22,9 +22,7 @@ public class Health : MonoBehaviour {
 
         if(current <= 0)
         {
-            Debug.Log("THE GAME IS OVER!!!!!");
-            //TODO: Game Over?
-
+            //The GameManager will check in with us later to do a Game Over
             current = 0;
         }
     }
