@@ -6,11 +6,12 @@ using System;
 
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour {
-
     public enum State { None, InDeck, InPool, InHand, InLane, MovingToPool, MovingToHand, MovingToDiscard, Playing }
 
     public State prevState = State.None;
     public State state = State.None;
+    public Owner owner = Owner.None;
+
     public CardModel cardModel = null;
     public CardView cardView = null;
 
@@ -55,6 +56,14 @@ public class Card : MonoBehaviour {
         this.cardView.CreateCardImage(cardModel);
     }
 
+    public void SetOwner(Owner newOwner) {
+        if(owner != Owner.None) {
+            Debug.Log(String.Format("Changing the owner of card from '{0}' to '{1}'", this.owner, newOwner));
+        }
+
+        this.owner = newOwner;
+    }
+
     public void SetInLane() {
         ChangeState(State.InLane);
     }
@@ -70,7 +79,7 @@ public class Card : MonoBehaviour {
     }
 
     public void MoveToPool() {
-        if (!AssertState(State.None)) return;
+        if (!AssertState(State.None) || !AssertOwner(Owner.None)) return;
 
         var nextSlot = Pool.instance.ClaimASlot(this);
         if(nextSlot != null) {
@@ -111,10 +120,17 @@ public class Card : MonoBehaviour {
         }
     }
 
-    public void Play() {
-        if (!AssertState(State.InHand)) return;
+    public void Play(int desiredIndex=-1, bool failIfNotOpen=false) {
+        if ( !AssertOwner(Owner.Player, Owner.Enemy)) return;
 
-        var nextSlot = LaneManager.instance.ClaimPlayerSlot(gameObject);
+        ObjectSlot nextSlot = null;
+        if(owner == Owner.Player) {
+            if (!AssertState(State.InHand)) return;
+            nextSlot = LaneManager.instance.ClaimPlayerSlot(gameObject);
+        } else {
+            nextSlot = LaneManager.instance.ClaimEnemySlot(gameObject, desiredIndex, failIfNotOpen);
+        }
+
         if (nextSlot != null) {
             OnPlaying();
 
@@ -148,7 +164,10 @@ public class Card : MonoBehaviour {
     }
 
     private void OnMovedToDiscard() {
-        Deck.instance.Discard(this);
+        if(owner == Owner.Player) {
+            Deck.instance.Discard(this);
+        }
+
         Destroy(this.gameObject);
     }
 
@@ -160,8 +179,10 @@ public class Card : MonoBehaviour {
     }
 
     private void OnPlaying() {
-        currSlot.Release();
-        currSlot = null;
+        if(currSlot != null) {
+            currSlot.Release();
+            currSlot = null;
+        }
 
         //TODO any inital set or tear down from being in the hand (deregister from input manager)
     }
@@ -175,6 +196,7 @@ public class Card : MonoBehaviour {
             
             laneObject.transform.position = currSlot.transform.position;
             CardInLane card = laneObject.GetComponent<CardInLane>();
+            card.SetOwner(owner);
             card.SetCardModel(cardModel);
             card.SetSlot(currSlot);
 
@@ -209,6 +231,17 @@ public class Card : MonoBehaviour {
         return assert;
     }
 
+    private bool AssertOwner(params Owner[] expecteds) {
+        var assert = expecteds.Any(expected => owner == expected);
+        if(!assert) {
+            var expectedList = string.Join(",", Array.ConvertAll(expecteds, e => e.ToString())); 
+            Debug.Log(string.Format("Expected owner to be '{0}', but was '{1}'", expectedList, owner));
+            state = State.None;
+        }
+
+        return assert;
+    }
+
     private bool UpdateMoveTo(Vector2 destination) {
         var step = Time.deltaTime * speed;
 
@@ -232,14 +265,15 @@ public class Card : MonoBehaviour {
         //TODO in release version, just destroy?
     }
 
-    public void MatchedWord()
+    public void MatchedWord(Owner actor=Owner.Player) 
     {
         //Can be in either Hand or Pool when a match happens
-        if (state == State.InHand)
-        {
-            Play();
-        } else if (state == State.InPool)
-        {
+        if (state == State.InHand) {
+            if(owner == Owner.Player) {
+                Play();
+            }
+        } else if (state == State.InPool) {
+            SetOwner(actor); 
             Discard();
         }
     }

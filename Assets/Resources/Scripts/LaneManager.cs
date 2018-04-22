@@ -45,6 +45,29 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         return currentLane;
     }
 
+    public ObjectSlot ClaimEnemySlot(GameObject go, int desiredIndex=-1, bool failIfNotOpen=false) {
+        if (!enemySlots.anyOpenSlots) return null;
+
+        if(desiredIndex < 0) {
+            desiredIndex = UnityEngine.Random.Range(0, enemySlots.maxSlots);
+        }
+
+        ObjectSlot slot = null;
+        if(failIfNotOpen) {
+            slot = enemySlots.ClaimSlot(go, desiredIndex); 
+        } else {
+            for(int i = 0; i < enemySlots.maxSlots; i++) {
+                var index = (desiredIndex + i) % enemySlots.maxSlots;
+                slot = enemySlots.ClaimSlot(go, index);
+                if(slot) {
+                    break;
+                }
+            }
+        }
+
+        return slot;
+    }
+
     public ObjectSlot ClaimPlayerSlot(GameObject go)
     {
         if (!playerSlots.anyOpenSlots) return null;

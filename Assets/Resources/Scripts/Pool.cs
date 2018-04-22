@@ -49,6 +49,7 @@ public class Pool : Singleton<Pool> {
         var slot = poolSlots.slots[index];
         if(!slot.open) {
             var card = slot.objectInSlot.GetComponent<Card>();
+            card.SetOwner(Owner.Player);
             card.Discard();
         }
     }
