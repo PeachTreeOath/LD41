@@ -22,6 +22,7 @@ public class InputManager : Singleton<InputManager>
 	// Use this for initialization
 	void Start () {
         Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
+        Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
 
     }
 	
