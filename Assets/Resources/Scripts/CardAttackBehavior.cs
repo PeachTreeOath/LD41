@@ -41,4 +41,9 @@ public class CardAttackBehavior : MonoBehaviour, IGlobalAttackCooldownObject
         isAttacking = false;
         attackTime = 0;
     }
+
+    void OnDestroy()
+    {
+        GlobalAttackCooldownTimer.instance.DeregisterCard(this);
+    }
 }
