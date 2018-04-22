@@ -99,7 +99,11 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             else if (playerCard != null && enemyCard == null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
-                //SpellInLane card = playerCard.GetComponent<SpellInLane>();
+                if(card.cardType == Card.CardType.Spell)
+                {
+                SpellInLane spell = (SpellInLane)card;
+
+                }
                 enemyHp.DealDamage(card.GetAttackDamage());
             }
             else if (playerCard == null && enemyCard != null)

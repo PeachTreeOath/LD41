@@ -8,6 +8,7 @@ public class CardModel {
     public Sprite sprite;
     public int health;
     public int damage;
+    public int timeToCast;
 
     public CardModel(CardPrototype prototype) {
         this.prototype = prototype;
@@ -15,6 +16,7 @@ public class CardModel {
         this.health = prototype.health;
         this.damage = prototype.damage;
         this.sprite = prototype.sprite;
+        this.timeToCast = prototype.timeToCast;
     }
 
 

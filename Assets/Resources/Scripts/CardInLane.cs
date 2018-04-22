@@ -8,6 +8,8 @@ public class CardInLane : MonoBehaviour
     private Owner owner;
     private CardModel card;
     private ObjectSlot slot;
+    public Card.CardType cardType;
+    public int timeToCast; // Only used by SpellInLane
 
     public void SetOwner(Owner owner) {
         if(owner == Owner.None) {
