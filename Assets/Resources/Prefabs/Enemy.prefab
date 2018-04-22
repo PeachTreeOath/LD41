@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114261977156511694}
   - component: {fileID: 114831274599810944}
   - component: {fileID: 114826320812410766}
+  - component: {fileID: 114637829266785222}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -317,6 +318,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 114842950052197536}
   damagePerTick: 5
+--- !u!114 &114637829266785222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400221751229758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations:
+  - {fileID: 11400000, guid: 43fdec00b11aaaf4b8e5d24976fb72c8, type: 2}
 --- !u!114 &114787254509852484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +362,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f092f3e0f20dd8e419f68b7d34c2eec0, type: 3}
   m_Name: 
@@ -468,7 +482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -372.61, y: -372}
+  m_AnchoredPosition: {x: -371.81, y: -375.97}
   m_SizeDelta: {x: 93.28, y: 38.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224061538559141558
