@@ -120,6 +120,7 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
             }
         }
 
+        Debug.LogErrorFormat("Could not find animation with id: '{0}'", id);
         return null;
     }
 }

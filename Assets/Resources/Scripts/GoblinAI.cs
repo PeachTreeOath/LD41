@@ -5,10 +5,16 @@ using System.Collections;
 using System.Text.RegularExpressions;
 
 [Serializable]
-class Threshold {
+public class Threshold {
     public bool tripped = false;
     public int healthTrigger = 100;
     public string animToPlay = "WakeUp";
+
+    public bool couldTrip {
+        get {
+            return !tripped && Enemy.instance.health.current < healthTrigger;
+        }
+    }
 }
 
 [RequireComponent(typeof(AiSpawnController))]
@@ -18,11 +24,13 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
     //TODO make this not a behavior?
     private AiAnimationController spawnRateController;
     private AiSpawnController spawnController;
+    private Timer spawnTimer;
 
-    public Timer spawnTimer;
+    public List<Threshold> thresholdTriggers;
 
     public void ManualUpdate(float deltaTime) {
         if (spawnTimer.Update(deltaTime)) spawnController.Spawn();
+        CheckThresholds();
     }
 
     void Start() {
@@ -31,7 +39,6 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
         spawnRateController = GetComponent<AiAnimationController>();
         spawnRateController.animValueEvent.AddListener(UpdateSpawnRate);
         spawnRateController.animEventEvent.AddListener(OnAnimEvent);
-        spawnRateController.PlayAnimation("WarmUp");
 
         GlobalTimer.instance.RegisterObject(this);
 
@@ -60,6 +67,22 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
         }
 
         return false;
+    }
+
+    private void CheckThresholds() {
+        Threshold toTrigger = null;
+        foreach(var threshold in thresholdTriggers) {
+            if(threshold.couldTrip) {
+                threshold.tripped = true;
+                if(toTrigger == null || toTrigger.healthTrigger > threshold.healthTrigger) {
+                    toTrigger = threshold;
+                }
+            }
+        }
+
+        if(toTrigger != null) {
+            spawnRateController.PlayAnimation(toTrigger.animToPlay);
+        }
     }
 }
 

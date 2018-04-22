@@ -338,6 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thresholdTriggers:
+  - tripped: 0
+    healthTrigger: 100
+    animToPlay: WarmUp
 --- !u!114 &114826320812410766
 MonoBehaviour:
   m_ObjectHideFlags: 1
