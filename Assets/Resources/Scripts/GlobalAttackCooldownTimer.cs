@@ -6,8 +6,10 @@ using UnityEngine;
 public class GlobalAttackCooldownTimer : Singleton<GlobalAttackCooldownTimer>, IGlobalTimedObject
 {
     private List<IGlobalAttackCooldownObject> cardList = new List<IGlobalAttackCooldownObject>();
-    private float tickTime;
-    private float currentTime;
+    [SerializeField]
+    public float tickTime;
+    [SerializeField]
+    public float currentTime;
 
     void Start()
     {

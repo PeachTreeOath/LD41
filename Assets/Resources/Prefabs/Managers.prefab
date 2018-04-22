@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf82107dce8e134e892700d8d8c316f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickInterval: 2.5
+  tickInterval: 4
 --- !u!114 &114590536573813820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7423c91401c20d4d958f949696ed396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: 0
 --- !u!114 &114932757600124472
 MonoBehaviour:
   m_ObjectHideFlags: 1

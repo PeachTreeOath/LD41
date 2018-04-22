@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager> {
 
     private bool awaitingReset;
-    public float tickInterval = 3f;
+    public float tickInterval = 4f;
 
 	void Start () {
         awaitingReset = false;
