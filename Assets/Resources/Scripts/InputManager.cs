@@ -50,15 +50,13 @@ public class InputManager : Singleton<InputManager>
         
         foreach(Card card in eligibleCards)
         {
-            print("#cards: " + eligibleCards.Count);
             string cardName = card.cardModel.name;
             TextMeshProUGUI cardTextField = card.cardView.nameText;
-            if (inputText.Length > 0 && cardTextField.text.StartsWith(inputText))
+            if (inputText.Length > 0 && cardName.StartsWith(inputText))
             {
                 string highlightedLetters = inputText;
-                string restOfWord = cardTextField.text.Substring(inputText.Length);
+                string restOfWord = cardName.Substring(inputText.Length);
                 cardTextField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
-                print("match! inputString: " + inputText);
             }
             
         }
