@@ -341,7 +341,7 @@ MonoBehaviour:
   thresholdTriggers:
   - tripped: 0
     healthTrigger: 100
-    animToPlay: WarmUp
+    animToPlay: GoblinPhase1
 --- !u!114 &114826320812410766
 MonoBehaviour:
   m_ObjectHideFlags: 1
