@@ -273,7 +273,10 @@ public class Card : MonoBehaviour
 
     private void OnNoRoomForCard()
     {
-        //TODO what happens when there's no room for the card?
+        //Need to clear input
+        inputText = "";
+        //Now reset all highlighting
+        cardView.nameText.text = cardModel.name;
     }
 
     private void ChangeState(State state)
