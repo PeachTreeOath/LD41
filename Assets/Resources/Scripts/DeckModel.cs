@@ -11,8 +11,13 @@ public class DeckModel : MonoBehaviour {
     }
 
     public void Shuffle(bool addDiscard=true) {
+
         if(addDiscard) {
             library.AddRange(discard);
+            if(discard.Count > 0)
+            {
+                transform.GetComponent<Deck>().Clear();
+            }
             discard.Clear();
         }
 
@@ -31,7 +36,7 @@ public class DeckModel : MonoBehaviour {
         CardModel card = null;
 
         if(library.Count == 0) {
-            Shuffle(); 
+            Shuffle();
             //TODO notify the system there's been a shuffle!
         }
 
@@ -58,6 +63,6 @@ public class DeckModel : MonoBehaviour {
     }
 
     public void Discard(CardModel card) {
-        discard.Add(card);        
+        discard.Add(card);
     }
 }

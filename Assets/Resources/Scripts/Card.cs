@@ -24,6 +24,8 @@ public class Card : MonoBehaviour
 
     public string inputText;
 
+    private bool discarded = false;
+
     private void Start()
     {
         cardView = GetComponent<CardView>();
@@ -48,7 +50,7 @@ public class Card : MonoBehaviour
                 }
 
                 arrived = UpdateMoveTo(target);
-                if (arrived) OnMovedToDiscard();
+                if (arrived && !discarded) OnMovedToDiscard();
                 UpdateSizeTo(new Vector2(0.5f, 0.5f));
                 break;
 
@@ -218,9 +220,13 @@ public class Card : MonoBehaviour
         if (owner == Owner.Player)
         {
             Deck.instance.Discard(this);
+            this.discarded = true;
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
-        Destroy(this.gameObject);
     }
 
     private void OnMovedToHand()

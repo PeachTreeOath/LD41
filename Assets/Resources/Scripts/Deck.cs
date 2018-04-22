@@ -4,12 +4,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(DeckModel))]
 public class Deck : Singleton<Deck> {
     private DeckModel model;
+    private Slots discardSlots;
 
     public Card cardPrefab;
     public GameObject discard;
 
     public void Start() {
         model = GetComponent<DeckModel>();
+
+        discardSlots = GetComponent<Slots>();
+        discardSlots.occupyEvent.AddListener(OnOccupyDiscardSlot);
+        discardSlots.releaseEvent.AddListener(OnReleaseDiscardSlot);
     }
 
     public void ConfigureCardObjectAtDeck(Card card) {
@@ -37,10 +42,18 @@ public class Deck : Singleton<Deck> {
 
     public void Discard(Card card) {
         model.Discard(card.cardModel);
+        Clear();
+        discardSlots.ClaimASlot(card.gameObject);
+    }
+
+    public void Clear() {
+        if(!discardSlots.IsOpenAt(0)){
+            discardSlots.slots[0].Release();
+        }
     }
 
     void OnCardCreated(CardModel cardModel, Card card) {
-        card.SetCardModel(cardModel); 
+        card.SetCardModel(cardModel);
         card.SetOwner(Owner.Player);
         card.SetInDeck();
         card.MoveToHand();
@@ -49,9 +62,17 @@ public class Deck : Singleton<Deck> {
     void OnHandFull() {
 
     }
-    
+
     void OnNoCardsLeft() {
 
+    }
+
+    private void OnOccupyDiscardSlot(ObjectSlot slot, GameObject go) {
+        //Show the gameobject
+    }
+
+    private void OnReleaseDiscardSlot(ObjectSlot slot, GameObject go) {
+        Destroy(go);
     }
 
 }
