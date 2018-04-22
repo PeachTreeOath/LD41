@@ -40,7 +40,8 @@ public class InputManager : Singleton<InputManager>
             }
             else if ((c == '\n') || (c == '\r')) // enter/return
             {
-                //print("User entered their name: " + inputText);
+                //enter clears what they typed
+                inputText = "";
             }
             else
             {
@@ -85,11 +86,7 @@ public class InputManager : Singleton<InputManager>
         if (needToClearBuffer)
         {
             inputText = "";
-            foreach(Card card in eligibleCards)
-            {
-                //Now reset all highlighting
-                card.cardView.nameText.text = card.cardModel.name;
-            }
+
         }
 
         //Doing this because we couldn't remove cards while going through a foreach loop.
@@ -103,6 +100,13 @@ public class InputManager : Singleton<InputManager>
             inputText = "";
         }
 
+        //Case to catch all cases that didn't clear the highlighting after the input cleared
+        if (inputText.Equals(""))
+        foreach (Card card in eligibleCards)
+        {
+            //Now reset all highlighting
+            card.cardView.nameText.text = card.cardModel.name;
+        }
 
     }
 
