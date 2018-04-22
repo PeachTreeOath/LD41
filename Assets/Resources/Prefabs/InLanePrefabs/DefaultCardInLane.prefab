@@ -472,9 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5325d6d0ccb135b4e842ada0bd9d38b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  attackText: {fileID: 0}
-  healthText: {fileID: 0}
+  attackDefenseText: {fileID: 114566588251624852}
+  portrait: {fileID: 114727153889999736}
 --- !u!114 &114984777248595728
 MonoBehaviour:
   m_ObjectHideFlags: 1

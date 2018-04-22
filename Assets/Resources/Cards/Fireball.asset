@@ -16,5 +16,5 @@ MonoBehaviour:
   damage: 8
   timeToCast: 1
   sprite: {fileID: 21300000, guid: 152f1699b85855a4c90b5faf2c452134, type: 3}
-  inLanePrefab: {fileID: 1936450687831758, guid: 1c9d5b107ea67634fb2d54f29d8a60b1,
+  inLanePrefab: {fileID: 1381961358213194, guid: 1c9d5b107ea67634fb2d54f29d8a60b1,
     type: 2}

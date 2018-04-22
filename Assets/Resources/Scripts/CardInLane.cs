@@ -43,14 +43,14 @@ public class CardInLane : MonoBehaviour
         cardView = GetComponent<CardInLaneView>(); //TODO must be a better option than this...
         card = newCard;
         currHp = newCard.health;
-        cardView.CreateCardImage(this);
+        cardView.CreateCardImage(card);
     }
 
     // Returns health after damage taken
     public int TakeDamage(int damage)
     {
         currHp -= damage;
-        cardView.CreateCardImage(this);
+        cardView.CreateCardImage(card);
         return currHp;
     }
 
