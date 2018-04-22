@@ -49,16 +49,20 @@ public class Card : MonoBehaviour
 
                 arrived = UpdateMoveTo(target);
                 if (arrived) OnMovedToDiscard();
+                UpdateSizeTo(new Vector2(0.5f, 0.5f));
                 break;
 
             case State.MovingToHand:
                 arrived = UpdateMoveTo(currSlot.transform.position);
+
                 if (arrived) OnMovedToHand();
+                UpdateSizeTo(new Vector2(1.34f, 1.34f));
                 break;
 
             case State.Playing:
                 arrived = UpdateMoveTo(currSlot.transform.position);
                 if (arrived) OnPlayed();
+                UpdateSizeTo(new Vector2(1.0f, 1.0f));
                 break;
         }
     }
@@ -71,7 +75,7 @@ public class Card : MonoBehaviour
             cardType = CardType.Spell;
         }
 
-        //TODO update CARD PREFAB later 
+        //TODO update CARD PREFAB later
         this.cardView = GetComponent<CardView>();
         this.cardView.CreateCardImage(cardModel);
     }
@@ -321,6 +325,28 @@ public class Card : MonoBehaviour
         {
             vec = vec.normalized * step;
             transform.position = transform.position + new Vector3(vec.x, vec.y, 0);
+
+            return false;
+        }
+    }
+
+    private bool UpdateSizeTo(Vector2 destinationSize)
+    {
+        var step = Time.deltaTime * speed;
+
+        var curr = new Vector2(transform.localScale.x, transform.localScale.y);
+        var vec = destinationSize - curr;
+        var dist = vec.magnitude;
+
+        if (step > dist)
+        {
+            transform.localScale = destinationSize;
+            return true;
+        }
+        else
+        {
+            vec = vec.normalized * step;
+            transform.localScale = transform.localScale + new Vector3(vec.x, vec.y, 0);
 
             return false;
         }
