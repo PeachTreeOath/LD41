@@ -138,8 +138,9 @@ public class Card : MonoBehaviour {
             GameObject laneObject = GameObject.Instantiate(cardModel.prototype.inLanePrefab);
             
             laneObject.transform.position = currSlot.transform.position;
-            //laneObject.SetCardModel(cardModel);
-            //laneObject.SetSlot(currSlot);
+            CardInLane card = laneObject.GetComponent<CardInLane>();
+            card.SetCardModel(cardModel);
+            card.SetSlot(currSlot);
 
             currSlot.Occupy(laneObject);
 
