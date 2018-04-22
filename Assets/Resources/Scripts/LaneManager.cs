@@ -46,21 +46,28 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         return currentLane;
     }
 
-    public ObjectSlot ClaimEnemySlot(GameObject go, int desiredIndex=-1, bool failIfNotOpen=false) {
+    public ObjectSlot ClaimEnemySlot(GameObject go, int desiredIndex = -1, bool failIfNotOpen = false)
+    {
         if (!enemySlots.anyOpenSlots) return null;
 
-        if(desiredIndex < 0) {
+        if (desiredIndex < 0)
+        {
             desiredIndex = UnityEngine.Random.Range(0, enemySlots.maxSlots);
         }
 
         ObjectSlot slot = null;
-        if(failIfNotOpen) {
-            slot = enemySlots.ClaimSlot(go, desiredIndex); 
-        } else {
-            for(int i = 0; i < enemySlots.maxSlots; i++) {
+        if (failIfNotOpen)
+        {
+            slot = enemySlots.ClaimSlot(go, desiredIndex);
+        }
+        else
+        {
+            for (int i = 0; i < enemySlots.maxSlots; i++)
+            {
                 var index = (desiredIndex + i) % enemySlots.maxSlots;
                 slot = enemySlots.ClaimSlot(go, index);
-                if(slot) {
+                if (slot)
+                {
                     break;
                 }
             }
@@ -100,12 +107,17 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             else if (playerCard != null && enemyCard == null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
-                if(card.cardType == Card.CardType.Spell)
+                if (card.cardType == Card.CardType.Spell)
                 {
-                SpellInLane spell = (SpellInLane)card;
-
+                    SpellInLane spell = playerCard.GetComponent<SpellInLane>();
+                    spell.CountdownSpell();
+                    if (spell.timeToCast == 0)
+                        OnRemove(spell);
                 }
-                enemyHp.DealDamage(card.GetAttackDamage());
+                else
+                {
+                    enemyHp.DealDamage(card.GetAttackDamage());
+                }
             }
             else if (playerCard == null && enemyCard != null)
             {
@@ -118,17 +130,20 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                 CardInLane eCard = enemyCard.GetComponent<CardInLane>();
                 int playerHp = pCard.TakeDamage(eCard.GetAttackDamage());
                 int enemyHp = eCard.TakeDamage(pCard.GetAttackDamage());
-                if (playerHp <= 0) {
+                if (playerHp <= 0)
+                {
                     OnRemove(pCard);
                 }
-                if (enemyHp <= 0) {
+                if (enemyHp <= 0)
+                {
                     OnRemove(eCard);
                 }
             }
         }
     }
 
-    private void OnRemove(CardInLane cardInLane) {
+    private void OnRemove(CardInLane cardInLane)
+    {
         var card = GameObject.Instantiate<Card>(cardPrefab);
         card.SetOwner(cardInLane.owner);
         card.SetCardModel(cardInLane.card);

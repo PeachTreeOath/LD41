@@ -41,10 +41,4 @@ public class CardInLane : MonoBehaviour {
     {
         slot = currSlot;
     }
-
-    public void RemoveFromPlay()
-    {
-        Destroy(gameObject);
-        // TODO: Put back in discard pile
-    }
 }

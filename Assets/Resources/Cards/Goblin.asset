@@ -14,6 +14,7 @@ MonoBehaviour:
   cardName: Goblin
   health: 10
   damage: 1
+  timeToCast: -1
   sprite: {fileID: 21300000, guid: 18300775af5654749982ccfd293b7b52, type: 3}
   inLanePrefab: {fileID: 1263546562987628, guid: e6637e9da9de5ab4ba7145bbf1d83b95,
     type: 2}
