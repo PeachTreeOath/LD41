@@ -50,7 +50,7 @@ public class InputManager : Singleton<InputManager>
 
 
         List<Card> matchedCards = new List<Card>();
-
+        bool noMoreLetterMatches = false;
         foreach(Card card in eligibleCards)
         {
             string cardName = card.cardModel.name;
@@ -63,6 +63,11 @@ public class InputManager : Singleton<InputManager>
                 string highlightedLetters = inputText;
                 string restOfWord = cardName.Substring(inputText.Length);
                 cardTextField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+            }
+            else if (inputText.Length > 0)
+            {
+                //User has typed something but it doesn't match anything, we need to force a backspace
+                inputText = inputText.Substring(0, inputText.Length - 1);
             }
             
         }
