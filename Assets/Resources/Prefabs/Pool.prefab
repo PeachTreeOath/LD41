@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 114301244624733580}
   - component: {fileID: 114871702881896510}
   - component: {fileID: 114978408250479830}
+  - component: {fileID: 114381779443816838}
   m_Layer: 0
   m_Name: Pool
   m_TagString: Untagged
@@ -285,7 +286,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd95d4128e82d314a93555a7e19c6bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: []
+  slots:
+  - {fileID: 114888359688765150}
+  - {fileID: 114497464815964586}
+  - {fileID: 114966557663872372}
+  - {fileID: 114035855485947552}
+  - {fileID: 114288003390095468}
+  - {fileID: 114971921847987812}
   claimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -298,6 +305,34 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: SlotEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114381779443816838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783364321495182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f092f3e0f20dd8e419f68b7d34c2eec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 5
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114861283000390352}
+        m_MethodName: DrawToPool
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114497464815964586
 MonoBehaviour:
   m_ObjectHideFlags: 1

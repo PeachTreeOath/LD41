@@ -26,6 +26,10 @@ public class Pool : Singleton<Pool> {
         poolSlots.releaseEvent.AddListener(OnReleaseSlot);
     }
 
+    public ObjectSlot ClaimASlot(Card card) {
+        return poolSlots.ClaimASlot(card.gameObject);
+    }
+
     //TODO set up some component to schedule these
     public void DrawToPool(bool reshuffle=false) {
         //Shuffle when the first card is pulled
@@ -34,11 +38,15 @@ public class Pool : Singleton<Pool> {
 			isShuffled = true;
 		}
 
-        var cardModel = poolDeck.Draw();
-        if(cardModel != null) {
-            var card = GameObject.Instantiate(cardPrefab);
-            card.SetCardModel(cardModel);
-            card.MoveToPool();
+        if(poolSlots.anyOpenSlots) {
+            var cardModel = poolDeck.Draw();
+            if(cardModel != null) {
+                var card = GameObject.Instantiate(cardPrefab);
+                card.SetCardModel(cardModel);
+                card.MoveToPool();
+            }
+        } else {
+            Debug.Log("No Open Pool slots!");
         }
     }
 
