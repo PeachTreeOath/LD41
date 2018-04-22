@@ -10,19 +10,24 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     public Slots playerSlots;
     public Slots enemySlots;
 
+    public List<GameObject> playerSlotGameObjects;
+
     public Vector3 highlightStartPosition;
     public float highlightDeltaX;
 
     public Health playerHp;
     public Health enemyHp;
 
+    public int startingLane = 2;
+
     private GameObject laneHighlight;
-    private int currentLane = 2;
+    private int currentLane;
 
     private void Start()
     {
+        currentLane = startingLane;
         laneHighlight = Instantiate(ResourceLoader.instance.laneHighlight);
-        laneHighlight.transform.position = highlightStartPosition;
+        SetLane(currentLane);
 
         GlobalAttackCooldownTimer.instance.RegisterCard(this);
     }
@@ -32,13 +37,45 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         if (Input.GetButtonDown("LaneSwitch"))
         {
-            currentLane++;
-            if (currentLane > 4)
-                currentLane = 0;
-
-            float xPos = highlightStartPosition.x + ((currentLane - 2) * highlightDeltaX);
-            laneHighlight.transform.position = new Vector3(xPos, laneHighlight.transform.position.y, laneHighlight.transform.position.z);
+            NextLane();
         }
+
+        while (playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
+        {
+            NextLane();
+        }
+    }
+
+    public void SetLane(int lane)
+    {
+        if(currentLane >= playerSlots.maxSlots)
+        {
+            lane = 0;
+        }
+        currentLane = lane;
+
+        int startLane = currentLane;
+        while(playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
+        {
+            currentLane++;
+            if(currentLane >= playerSlots.slots.Count)
+            {
+                currentLane = 0;
+            }
+            //We looped the lanes, not going to find one
+            if(currentLane == startLane)
+            {
+                //TODO: Make the highlight go invisible when this happens
+                break;
+            }
+        }
+
+        laneHighlight.transform.position = playerSlotGameObjects[currentLane].transform.position;
+    }
+
+    public void NextLane()
+    {
+        SetLane(++currentLane);
     }
 
     public int GetLane()
