@@ -231,4 +231,16 @@ public class Card : MonoBehaviour {
         ChangeState(State.None);
         //TODO in release version, just destroy?
     }
+
+    public void MatchedWord()
+    {
+        //Can be in either Hand or Pool when a match happens
+        if (state == State.InHand)
+        {
+            Play();
+        } else if (state == State.InPool)
+        {
+            Discard();
+        }
+    }
 }

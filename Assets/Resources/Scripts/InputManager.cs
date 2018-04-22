@@ -52,7 +52,10 @@ public class InputManager : Singleton<InputManager>
         {
             string cardName = card.cardModel.name;
             TextMeshProUGUI cardTextField = card.cardView.nameText;
-            if (inputText.Length > 0 && cardName.StartsWith(inputText))
+            if (cardName.Equals(inputText))
+            {
+                card.MatchedWord();
+            }else if (inputText.Length > 0 && cardName.StartsWith(inputText))
             {
                 string highlightedLetters = inputText;
                 string restOfWord = cardName.Substring(inputText.Length);
