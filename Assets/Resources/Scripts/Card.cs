@@ -31,6 +31,11 @@ public class Card : MonoBehaviour {
                 if (arrived) OnMovedToPool();
                 break;
 
+            case State.MovingToDiscard:
+                arrived = UpdateMoveTo(Deck.instance.discard.transform.position);
+                if (arrived) OnMovedToDiscard();
+                break;
+
             case State.MovingToHand:
                 arrived = UpdateMoveTo(currSlot.transform.position);
                 if(arrived) OnMovedToHand();
@@ -121,13 +126,14 @@ public class Card : MonoBehaviour {
     }
 
     public void Discard() {
-        if (!AssertState(State.InPool, State.InLane)) return;
+        if (!AssertState(State.MovingToPool, State.InPool, State.InLane)) return;
 
-        switch(state) {
-            case State.InPool:
-
-                break;
+        if(currSlot) {
+            currSlot.Release();
+            currSlot = null;
         }
+
+        //TODO start scaling down to discard size?
 
         ChangeState(State.MovingToDiscard);
     }
@@ -137,13 +143,19 @@ public class Card : MonoBehaviour {
     }
 
     private void OnMovedToPool() {
+        currSlot.Occupy(this.gameObject);
         ChangeState(State.InPool);
+    }
+
+    private void OnMovedToDiscard() {
+        Deck.instance.Discard(this);
+        Destroy(this.gameObject);
     }
 
     private void OnMovedToHand() {
         if (!AssertState(State.MovingToHand)) return;
 
-        currSlot.Occupy(this.gameObject); //TODO is the trigger here or on the slot callback?  Probably slot callback
+        currSlot.Occupy(this.gameObject); 
         ChangeState(State.InHand);
     }
 

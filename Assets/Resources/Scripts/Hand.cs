@@ -19,6 +19,9 @@ public class Hand : Singleton<Hand> {
     }
 
     public void Update() {
+        if (Input.GetKey(KeyCode.LeftShift)) return;
+
+        //TODO remove with prejudice after typing works
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             PlayFromSlot(0);
         } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
@@ -27,11 +30,12 @@ public class Hand : Singleton<Hand> {
             PlayFromSlot(2);
         } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
             PlayFromSlot(3);
-        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
             PlayFromSlot(4);
         }
     }
 
+    //TODO remove when typing works
     private void PlayFromSlot(int index) {
         var slot = slots.slots[index];
         if(slot.occupied) {

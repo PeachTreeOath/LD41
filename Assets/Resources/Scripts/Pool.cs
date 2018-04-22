@@ -26,6 +26,33 @@ public class Pool : Singleton<Pool> {
         poolSlots.releaseEvent.AddListener(OnReleaseSlot);
     }
 
+    void Update() {
+        if (!Input.GetKey(KeyCode.LeftShift)) return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            BuyFromSlot(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            BuyFromSlot(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            BuyFromSlot(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            BuyFromSlot(3);
+        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            BuyFromSlot(4);
+        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            BuyFromSlot(5);
+        }
+    }
+
+    //TODO remove when typing works
+    void BuyFromSlot(int index) {
+        var slot = poolSlots.slots[index];
+        if(!slot.open) {
+            var card = slot.objectInSlot.GetComponent<Card>();
+            card.Discard();
+        }
+    }
+
     public ObjectSlot ClaimASlot(Card card) {
         return poolSlots.ClaimASlot(card.gameObject);
     }
