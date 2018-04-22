@@ -11,10 +11,10 @@ public class CardInLaneView : MonoBehaviour {
 
     private string inputText = "";
 
-    public void CreateCardImage(CardModel card)
+    public void CreateCardImage(CardInLane card)
     {
-        nameText.text = card.name;
-        attackText.text = card.damage + "";
-        healthText.text = card.health + "";
+        nameText.text = card.card.name;
+        attackText.text = card.card.damage + "";
+        healthText.text = card.currHp + "";
     }
 }

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 114917607067438360, guid: 501d6d523db4d484da389d8ed582247f,
     type: 2}
-  cardPrototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+  cardPrototype: {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
   playOrigin: {fileID: 1116023632155652}
 --- !u!114 &114409418464388012
 MonoBehaviour:
