@@ -2,28 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardAttackBehavior : MonoBehaviour, IGlobalAttackCooldownObject {
+public class CardAttackBehavior : MonoBehaviour, IGlobalAttackCooldownObject
+{
 
     public Vector3 positionDelta;
 
+    private float attackTime;
+    private bool isAttacking;
+    private float attackDuration = .2f;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         GlobalAttackCooldownTimer.instance.RegisterCard(this);
-	}
+    }
+
+    private void Update()
+    {
+        if (isAttacking)
+        {
+            attackTime += Time.deltaTime;
+            if(attackTime > attackDuration)
+            {
+                StopAnimation();
+            }
+        }
+    }
 
     public void Attack()
     {
-        Invoke("AttackAnimation", 0f);
-    }
-
-    private void AttackAnimation()
-    {
+        isAttacking = true;
         transform.position += positionDelta;
-        Invoke("StopAnimation", .1f);
     }
 
     private void StopAnimation()
     {
         transform.position -= positionDelta;
+        isAttacking = false;
+        attackTime = 0;
+    }
+
+    void OnDestroy()
+    {
+        GlobalAttackCooldownTimer.instance.DeregisterCard(this);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
 
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour
@@ -20,6 +21,8 @@ public class Card : MonoBehaviour
     public float scaleTarget;
     public float speed = 30f;
     public float scaleDuration = 0.5f;
+
+    public string inputText;
 
     private void Start()
     {
@@ -46,16 +49,20 @@ public class Card : MonoBehaviour
 
                 arrived = UpdateMoveTo(target);
                 if (arrived) OnMovedToDiscard();
+                UpdateSizeTo(new Vector2(0.5f, 0.5f));
                 break;
 
             case State.MovingToHand:
                 arrived = UpdateMoveTo(currSlot.transform.position);
+
                 if (arrived) OnMovedToHand();
+                UpdateSizeTo(new Vector2(1.34f, 1.34f));
                 break;
 
             case State.Playing:
                 arrived = UpdateMoveTo(currSlot.transform.position);
                 if (arrived) OnPlayed();
+                UpdateSizeTo(new Vector2(1.0f, 1.0f));
                 break;
         }
     }
@@ -68,7 +75,7 @@ public class Card : MonoBehaviour
             cardType = CardType.Spell;
         }
 
-        //TODO update CARD PREFAB later 
+        //TODO update CARD PREFAB later
         this.cardView = GetComponent<CardView>();
         this.cardView.CreateCardImage(cardModel);
     }
@@ -266,7 +273,10 @@ public class Card : MonoBehaviour
 
     private void OnNoRoomForCard()
     {
-        //TODO what happens when there's no room for the card?
+        //Need to clear input
+        inputText = "";
+        //Now reset all highlighting
+        cardView.nameText.text = cardModel.name;
     }
 
     private void ChangeState(State state)
@@ -323,6 +333,28 @@ public class Card : MonoBehaviour
         }
     }
 
+    private bool UpdateSizeTo(Vector2 destinationSize)
+    {
+        var step = Time.deltaTime * speed;
+
+        var curr = new Vector2(transform.localScale.x, transform.localScale.y);
+        var vec = destinationSize - curr;
+        var dist = vec.magnitude;
+
+        if (step > dist)
+        {
+            transform.localScale = destinationSize;
+            return true;
+        }
+        else
+        {
+            vec = vec.normalized * step;
+            transform.localScale = transform.localScale + new Vector3(vec.x, vec.y, 0);
+
+            return false;
+        }
+    }
+
     private void Bail()
     {
         ChangeState(State.None);
@@ -345,4 +377,47 @@ public class Card : MonoBehaviour
             Discard();
         }
     }
+
+    public void InputText(string inputString)
+    {
+        foreach (char c in inputString)
+        {
+            if (c == '\b') // has backspace/delete been pressed?
+            {
+                if (inputText.Length != 0)
+                {
+                    inputText = inputText.Substring(0, inputText.Length - 1);
+                }
+            }
+            else if ((c == '\n') || (c == '\r')) // enter/return
+            {
+                //enter clears what they typed
+                inputText = "";
+            }
+            else
+            {
+                inputText += c;
+            }
+        }
+
+        string cardName = cardModel.name;
+        TextMeshProUGUI cardTextField = cardView.nameText;
+        if (cardName.Equals(inputText, StringComparison.CurrentCultureIgnoreCase))
+        {
+            MatchedWord();
+        }
+        else if (inputText.Length > 0 && cardName.StartsWith(inputText, StringComparison.CurrentCultureIgnoreCase))
+        {
+            string highlightedLetters = cardName.Substring(0, inputText.Length);
+            string restOfWord = cardName.Substring(inputText.Length);
+            cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+        }
+        else if (inputText.Length > 0)
+        {
+            //User has typed something but it doesn't match anything, we need to force a backspace
+            inputText = inputText.Substring(0, inputText.Length - 1);
+        }
+
+    }
 }
+

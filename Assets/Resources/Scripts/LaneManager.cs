@@ -38,47 +38,51 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("LaneSwitch"))
+        if (Input.GetButtonDown("LaneSwitch") || !playerSlots.IsOpenAt(currentLane))
         {
             NextLane();
         }
-
-        while (playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
-        {
-            NextLane();
-        }
-    }
-
-    public void SetLane(int lane)
-    {
-        if (currentLane >= playerSlots.maxSlots)
-        {
-            lane = 0;
-        }
-        currentLane = lane;
-
-        int startLane = currentLane;
-        while (playerSlots.anyOpenSlots && !playerSlots.IsOpenAt(currentLane))
-        {
-            currentLane++;
-            if (currentLane >= playerSlots.slots.Count)
-            {
-                currentLane = 0;
-            }
-            //We looped the lanes, not going to find one
-            if (currentLane == startLane)
-            {
-                //TODO: Make the highlight go invisible when this happens
-                break;
-            }
-        }
-
-        laneHighlight.transform.position = playerSlotGameObjects[currentLane].transform.position;
     }
 
     public void NextLane()
     {
-        SetLane(++currentLane);
+        //Check if there are any available slots
+        if(!playerSlots.anyOpenSlots)
+        {
+            laneHighlight.GetComponent<SpriteRenderer>().enabled = false;
+            return;
+        }
+        laneHighlight.GetComponent<SpriteRenderer>().enabled = true;
+
+        //Increment the lane
+        currentLane++;
+
+        //Wrap back to the first lane if needed
+        if (currentLane >= playerSlots.maxSlots)
+        {
+            currentLane = 0;
+        }
+
+        //If the current lane isn't available, go to the next one till you find one
+        //We already checked that at least one is available
+        while(!playerSlots.IsOpenAt(currentLane))
+        {
+            currentLane++;
+
+            //Again, wrap back to the first lane if needed
+            if (currentLane >= playerSlots.maxSlots)
+            {
+                currentLane = 0;
+            }
+        }
+
+        SetLane(currentLane);
+    }
+
+    public void SetLane(int lane)
+    {
+        currentLane = lane;
+        laneHighlight.transform.position = playerSlotGameObjects[currentLane].transform.position;
     }
 
     public int GetLane()
@@ -151,7 +155,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             {
                 continue;
             }
-            else if (playerCard != null)
+            if (playerCard != null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
                 if (card.cardType == Card.CardType.Spell)
@@ -166,7 +170,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                     enemyDamageArray[i] += card.GetAttackDamage();
                 }
             }
-            else if (enemyCard != null)
+            if (enemyCard != null)
             {
                 CardInLane card = enemyCard.GetComponent<CardInLane>();
                 if (card.cardType == Card.CardType.Spell)
@@ -192,6 +196,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
     public void AttackSlot(int index, Slots attackedSlots, int damage, Health targetHealth)
     {
+        if (damage == 0) return;
+
         GameObject card = attackedSlots.slots[index].objectInSlot;
         if (card == null) // No defender, hit face
         {

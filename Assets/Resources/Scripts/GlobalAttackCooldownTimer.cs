@@ -19,6 +19,11 @@ public class GlobalAttackCooldownTimer : Singleton<GlobalAttackCooldownTimer>, I
         cardList.Add(card);
     }
 
+    public void DeregisterCard(IGlobalAttackCooldownObject card)
+    {
+        cardList.Remove(card);
+    }
+
     public void ManualUpdate(float deltaTime)
     {
         currentTime += deltaTime;
