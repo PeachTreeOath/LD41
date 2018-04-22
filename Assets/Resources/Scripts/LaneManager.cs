@@ -192,6 +192,17 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             AttackSlot(i, enemySlots, enemyDamageArray[i], enemyHp);
             AttackSlot(i, playerSlots, playerDamageArray[i], playerHp);
         }
+
+        // track a victory!
+        if (enemyHp.current <= 0 && playerHp.current <= 0) {
+            GameManager.instance.Draw();
+        } else if (playerHp.current <= 0) {
+            GameManager.instance.Lose();
+        }
+        //TODO this should do... something else for the boss capture scene
+        else if (enemyHp.current <= 0) {
+            GameManager.instance.Win();
+        }
     }
 
     public void AttackSlot(int index, Slots attackedSlots, int damage, Health targetHealth)

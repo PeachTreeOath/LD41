@@ -6,6 +6,9 @@ public class CardPrototype : ScriptableObject {
     public int health;
     public int damage;
     public int timeToCast;
+    public int cardsToDraw;
+    public int casterHpToHeal;
+
     public Sprite sprite;
     public GameObject inLanePrefab;
 

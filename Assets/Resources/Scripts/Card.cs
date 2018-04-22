@@ -259,8 +259,7 @@ public class Card : MonoBehaviour
             card.SetOwner(owner);
             card.SetCardModel(cardModel);
             card.SetSlot(currSlot);
-            card.cardType = cardType;
-            card.timeToCast = cardModel.timeToCast;
+            card.cardType = cardType; //TODO should probably be in CardPrototype
 
             currSlot.Occupy(laneObject);
 

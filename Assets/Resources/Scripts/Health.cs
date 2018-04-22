@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,13 +8,18 @@ public class Health : MonoBehaviour {
 
     public int max = 20;
     public int start = 20;
+    public TextMeshProUGUI healthText;
 
     public int current { get; private set; }
 
-    void Start()
+    void Awake()
     {
         Assert.IsTrue(start <= max);
         current = start;
+    }
+
+    void Update() {
+        healthText.text = current + "/" + max;
     }
 
     public void DealDamage(int amount)

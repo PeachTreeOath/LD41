@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
+  m_Name: Pot of Love
+  m_EditorClassIdentifier: 
+  cardName: Pot of Love
+  health: 0
+  damage: 0
+  timeToCast: 2
+  cardsToDraw: 0
+  casterHpToHeal: 5
+  sprite: {fileID: 21300000, guid: 3334ec1df68ace74da609d72de878832, type: 3}
+  inLanePrefab: {fileID: 1246586263889496, guid: a6dfe433d07c07d448c3ae35aba841c7,
+    type: 2}
