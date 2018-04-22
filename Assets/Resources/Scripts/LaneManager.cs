@@ -63,8 +63,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         for (int i = 0; i < 5; i++)
         {
-            GameObject playerCard = playerSlots.slots[i].gameObject;
-            GameObject enemyCard = playerSlots.slots[i].gameObject;
+            GameObject playerCard = playerSlots.slots[i].objectInSlot;
+            GameObject enemyCard = enemySlots.slots[i].objectInSlot;
 
             if (playerCard == null && enemyCard == null)
             {
