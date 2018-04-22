@@ -10,10 +10,10 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
     private AiAnimationController spawnRateController;
 
     public Timer spawnTimer;
-    public CardPrototype minionSpawn;
+    public Spawn minionSpawn;
 
     public void ManualUpdate(float deltaTime) {
-        if (spawnTimer.Update(deltaTime)) Spawn(minionSpawn);
+        if (spawnTimer.Update(deltaTime)) minionSpawn.Execute();
     }
 
     void Start() {
@@ -28,23 +28,5 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
 
     private void UpdateSpawnRate(float value) {
         this.spawnTimer.target = value;
-    }
-
-    private void Spawn(CardPrototype prototype) {
-        if (!LaneManager.instance.enemySlots.anyOpenSlots) return;
-
-        var cardModel = prototype.Instantiate();
-        var card = GameObject.Instantiate<Card>(Enemy.instance.cardPrefab);
-
-        card.transform.position = Enemy.instance.playOrigin.transform.position;
-        card.SetOwner(Owner.Enemy);
-        card.SetCardModel(cardModel);
-
-        var desiredSlot = DefaultFindSlot();
-        card.Play();
-    }
-
-    private int DefaultFindSlot() {
-        return -1;
     }
 }

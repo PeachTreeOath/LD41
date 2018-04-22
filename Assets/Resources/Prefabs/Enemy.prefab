@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionSpawn: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+  minionSpawn: {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
 --- !u!114 &114787254509852484
 MonoBehaviour:
   m_ObjectHideFlags: 1
