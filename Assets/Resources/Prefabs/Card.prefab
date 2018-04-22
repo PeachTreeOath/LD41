@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 114663553777397038}
-  attackText: {fileID: 114937854966207258}
-  healthText: {fileID: 114380196935642956}
+  attackDefenseText: {fileID: 0}
+  portrait: {fileID: 0}
 --- !u!114 &114335262482996718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -608,11 +608,16 @@ MonoBehaviour:
     sprite: {fileID: 0}
     health: 0
     damage: 0
+    timeToCast: 0
+    cardsToDraw: 0
+    casterHpToHeal: 0
   cardView: {fileID: 0}
+  cardType: 0
   currSlot: {fileID: 0}
   scaleTarget: 0
-  speed: 25
+  speed: 5
   scaleDuration: 0.5
+  inputText: 
 --- !u!114 &114937854966207258
 MonoBehaviour:
   m_ObjectHideFlags: 1

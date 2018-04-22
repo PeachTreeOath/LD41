@@ -35,8 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4820577975606422}
   - component: {fileID: 114842950052197536}
-  - component: {fileID: 114787254509852484}
-  - component: {fileID: 114634677185722364}
   - component: {fileID: 114826320812410766}
   - component: {fileID: 114637829266785222}
   - component: {fileID: 114289813954450866}
@@ -328,19 +326,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114634677185722364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d07f4db9afafa284589b35e97495fb97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 114842950052197536}
-  damagePerTick: 5
 --- !u!114 &114637829266785222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,19 +338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minionSpawn: {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
---- !u!114 &114787254509852484
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f8d18351343ed4490cae78873db5d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 114842950052197536}
-  healthText: {fileID: 114409418464388012}
 --- !u!114 &114826320812410766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,6 +353,7 @@ MonoBehaviour:
   playOrigin: {fileID: 1116023632155652}
   cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
     type: 2}
+  health: {fileID: 114842950052197536}
 --- !u!114 &114842950052197536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 20
   start: 20
+  healthText: {fileID: 114409418464388012}
 --- !u!212 &212936054066390270
 SpriteRenderer:
   m_ObjectHideFlags: 1

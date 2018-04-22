@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
-    public Health playerHealth;
-    public Health enemyHealth;
-
     private bool awaitingReset;
 
 	// Use this for initialization
@@ -16,27 +13,13 @@ public class GameManager : Singleton<GameManager> {
         GlobalAttackCooldownTimer.instance.SetTickTime(2f);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (!awaitingReset)
-        {
-            if (playerHealth.current <= 0 && enemyHealth.current <= 0)
-            {
-                Draw();
-            }
-            else if (playerHealth.current <= 0)
-            {
-                Lose();
-            }
-            else if (enemyHealth.current <= 0)
-            {
-                Win();
-            }
-        }
-	}
-
     public void Win()
     {
+        if (awaitingReset) {
+            Debug.LogError("Game is already transitioning, cannot win right now");
+            return;
+        }
+
         //TODO: Show an awesome animation or graphic because you won
         Debug.Log("You win the game");
         ResetGame();
@@ -44,6 +27,11 @@ public class GameManager : Singleton<GameManager> {
 
     public void Draw()
     {
+        if(awaitingReset) {
+            Debug.LogError("Game is already transitioning, cannot draw right now");
+            return;
+        }
+
         //TODO: Show a depressing lame graphic because draws are dumb
         Debug.Log("Ah, it was a draw");
         ResetGame();
@@ -51,6 +39,11 @@ public class GameManager : Singleton<GameManager> {
 
     public void Lose()
     {
+        if(awaitingReset) {
+            Debug.LogError("Game is already transitioning, cannot draw right now");
+            return;
+        }
+
         //TODO: Show the worst graphic ever cause you suck
         Debug.Log("Bummer, you lose");
         SceneTransitionManager.instance.PlayDeathSequence();

@@ -12,8 +12,8 @@ public class CardInLane : MonoBehaviour
     public Owner owner { get; private set; }
     public CardModel card { get; private set; }
     public ObjectSlot slot { get; private set; }
-    public int timeToCast;
-    public Card.CardType cardType;
+    public int timeToCast { get; protected set; }
+    public Card.CardType cardType; //TODO should probably have been in card prototype...
 
     public int currHp { get; private set; }
 
@@ -43,7 +43,8 @@ public class CardInLane : MonoBehaviour
         cardView = GetComponent<CardInLaneView>(); //TODO must be a better option than this...
         card = newCard;
         currHp = newCard.health;
-        cardView.CreateCardImage(card);
+        timeToCast = newCard.timeToCast;
+        cardView.CreateCardImage(card); //TODO update the view with data from the card image?
     }
 
     // Returns health after damage taken
