@@ -52,9 +52,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4030573360185972}
-  - component: {fileID: 114577522613170780}
   - component: {fileID: 114005587393784976}
   - component: {fileID: 114514755519931334}
+  - component: {fileID: 114393479861290266}
   m_Layer: 0
   m_Name: DefaultCardInLane
   m_TagString: Untagged
@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a63deff8a3313a45a113231f7c8c89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToCast: 0
+  cardType: 0
 --- !u!114 &114023431130132242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,6 +413,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114393479861290266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263546562987628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a5e27a1d38c754d805f85ec7af57b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionDelta: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114514755519931334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,20 +434,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5325d6d0ccb135b4e842ada0bd9d38b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 114089645474308556}
-  attackText: {fileID: 114967846777410244}
-  healthText: {fileID: 114924351776575376}
---- !u!114 &114577522613170780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1263546562987628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 283c10732d9798047b028a3e24b90ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 114089645474308556}

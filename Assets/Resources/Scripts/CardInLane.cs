@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CardInLaneView))]
-public class CardInLane : MonoBehaviour {
+public class CardInLane : MonoBehaviour
+{
 
     private CardInLaneView cardView;
 
-    public Owner owner { get; private set; } 
+    public Owner owner { get; private set; }
     public CardModel card { get; private set; }
     public ObjectSlot slot { get; private set; }
     public int timeToCast;
@@ -16,15 +17,24 @@ public class CardInLane : MonoBehaviour {
 
     public int currHp { get; private set; }
 
-    public void SetOwner(Owner owner) {
-        if(owner == Owner.None) {
+    public void SetOwner(Owner owner)
+    {
+        if (owner == Owner.None)
+        {
             Debug.LogError("Attempting to set a CardInLane owner to 'NONE'");
         }
 
         this.owner = owner;
+        CardAttackBehavior attackBehavior = GetComponent<CardAttackBehavior>();
+        if (owner == Owner.Enemy && attackBehavior != null)
+        {
+            // Reverse direction
+            attackBehavior.positionDelta = new Vector3(attackBehavior.positionDelta.x, -attackBehavior.positionDelta.y, attackBehavior.positionDelta.z);
+        }
     }
 
-    public void Start() {
+    public void Start()
+    {
         cardView = GetComponent<CardInLaneView>();
     }
 
@@ -37,7 +47,8 @@ public class CardInLane : MonoBehaviour {
     }
 
     // Returns health after damage taken
-    public int TakeDamage(int damage) {
+    public int TakeDamage(int damage)
+    {
         currHp -= damage;
         cardView.CreateCardImage(this);
         return currHp;
