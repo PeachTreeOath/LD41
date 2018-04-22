@@ -50,3 +50,9 @@ TagManager:
   - name: Card
     uniqueID: 1665327999
     locked: 0
+  - name: GameMask
+    uniqueID: 2529289725
+    locked: 0
+  - name: SpriteUI
+    uniqueID: 427432871
+    locked: 0

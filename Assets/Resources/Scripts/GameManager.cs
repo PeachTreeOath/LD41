@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
@@ -52,6 +53,7 @@ public class GameManager : Singleton<GameManager> {
     {
         //TODO: Show the worst graphic ever cause you suck
         Debug.Log("Bummer, you lose");
+        SceneTransitionManager.instance.PlayDeathSequence();
         ResetGame();
     }
 
@@ -60,5 +62,6 @@ public class GameManager : Singleton<GameManager> {
         //TODO: Do something here to reset the Scene?
         Debug.Log("The game needs to be reset");
         awaitingReset = true;
+        //SceneManager.LoadScene("Game");
     }
 }
