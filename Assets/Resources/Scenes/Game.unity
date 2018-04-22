@@ -605,6 +605,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 646772702}
+    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+        type: 2}
+      propertyPath: enemyHealth
+      value: 
+      objectReference: {fileID: 389189715}
     - target: {fileID: 114590536573813820, guid: 2855e1ff73da67848ba90f5a2ffd112f,
         type: 2}
       propertyPath: playerSlots
@@ -615,14 +625,14 @@ Prefab:
       propertyPath: enemySlots
       value: 
       objectReference: {fileID: 1148849938}
-    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+    - target: {fileID: 114590536573813820, guid: 2855e1ff73da67848ba90f5a2ffd112f,
         type: 2}
-      propertyPath: playerHealth
+      propertyPath: playerHp
       value: 
       objectReference: {fileID: 646772702}
-    - target: {fileID: 114449887665623140, guid: 2855e1ff73da67848ba90f5a2ffd112f,
+    - target: {fileID: 114590536573813820, guid: 2855e1ff73da67848ba90f5a2ffd112f,
         type: 2}
-      propertyPath: enemyHealth
+      propertyPath: enemyHp
       value: 
       objectReference: {fileID: 389189715}
     m_RemovedComponents: []
