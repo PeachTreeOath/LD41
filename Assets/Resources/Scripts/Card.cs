@@ -402,13 +402,13 @@ public class Card : MonoBehaviour
 
         string cardName = cardModel.name;
         TextMeshProUGUI cardTextField = cardView.nameText;
-        if (cardName.Equals(inputText))
+        if (cardName.Equals(inputText, StringComparison.CurrentCultureIgnoreCase))
         {
             MatchedWord();
         }
-        else if (inputText.Length > 0 && cardName.StartsWith(inputText))
+        else if (inputText.Length > 0 && cardName.StartsWith(inputText, StringComparison.CurrentCultureIgnoreCase))
         {
-            string highlightedLetters = inputText;
+            string highlightedLetters = cardName.Substring(0, inputText.Length);
             string restOfWord = cardName.Substring(inputText.Length);
             cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
         }
