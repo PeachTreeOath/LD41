@@ -16,6 +16,8 @@ public class CardModel {
         this.damage = prototype.damage;
         this.sprite = prototype.sprite;
     }
+
+
 }
 
 
