@@ -55,19 +55,13 @@ public class GoblinAI : MonoBehaviour, IGlobalTimedObject {
             var command = match.Groups[1].Value;
             var argument = match.Groups[2].Value;
 
-            spawnController.InterpretDirective(command, argument);
+            spawnController.InterpretCommand(command, argument);
+            spawnRateController.InterpretCommand(command, argument);
         } else {
             Debug.LogWarningFormat("Ignoring unknown event '{0}'", eventText);
         }
     }
 
-    private bool InterpretCommand(string command, string argument) {
-        if(command.ToLower() == "") {
-
-        }
-
-        return false;
-    }
 
     private void CheckThresholds() {
         Threshold toTrigger = null;

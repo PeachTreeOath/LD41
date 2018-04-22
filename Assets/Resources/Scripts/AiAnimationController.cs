@@ -14,16 +14,20 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
     private AiAnimation currAnim = null;
     private float animTimer = 0f;
     private bool playingAnim = false;
+    private bool changingAnimationFromEvent = false;
 
     void Start() {
         GlobalTimer.instance.RegisterObject(this);
         if (animEventEvent == null) animEventEvent = new AnimEventEvent();
         if (animValueEvent == null) animValueEvent = new AnimValueEvent();
+
+        foreach(var anim in animations) {
+            anim.keyframes.Sort();
+        }
     }
 
     public void PlayAnimation(string id) {
         currAnim = GetAnimationById(id);
-        currAnim.keyframes.Sort();
         animTimer = 0;
         playingAnim = true;
     }
@@ -32,6 +36,15 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
         playingAnim = false;
     }
 
+    public bool InterpretCommand(string command, string argument) {
+        if(command.ToLower() == "play") {
+            PlayAnimation(argument.Trim());
+            changingAnimationFromEvent = true;
+            return true;
+        }
+
+        return false;
+    }
 
     public void ManualUpdate(float deltaTime) {
         if(playingAnim && currAnim != null) {
@@ -53,7 +66,7 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
             for(; i >= 0; i--) {
                 if(keyframes[i].type != KeyFrame.Type.Event) {
                     if(lastNonEventKeyframe == null) {
-                        lastNonEventKeyframe = currAnim.keyframes[i];
+                        lastNonEventKeyframe = keyframes[i];
                     }
 
                     if(keyframes[i].timestamp < nextTime) {
@@ -101,7 +114,11 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
                 // TODO figure out steps 
             }
 
-            animTimer = nextTime;
+            if(changingAnimationFromEvent) {
+                changingAnimationFromEvent = false;
+            } else {
+                animTimer = nextTime;
+            }
         }
     }
 

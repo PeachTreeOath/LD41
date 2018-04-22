@@ -23,7 +23,7 @@ public class AiSpawnController : MonoBehaviour  {
     }
 
     //TODO does this make sense?
-    public bool InterpretDirective(string directive, string argument) {
+    public bool InterpretCommand(string directive, string argument) {
         if (directive.ToLower() == "spawn pool") {
             var matches = Regex.Matches(argument, @"([-+=])([a-z0-9_]*)\b", RegexOptions.IgnoreCase);
             foreach(Match match in matches) {
