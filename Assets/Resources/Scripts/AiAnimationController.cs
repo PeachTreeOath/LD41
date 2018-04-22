@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Collections;
+using System.Linq;
 
 public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
 
@@ -22,6 +23,7 @@ public class AiAnimationController : MonoBehaviour, IGlobalTimedObject {
 
     public void PlayAnimation(string id) {
         currAnim = GetAnimationById(id);
+        currAnim.keyframes.Sort();
         animTimer = 0;
         playingAnim = true;
     }

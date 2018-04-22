@@ -38,7 +38,7 @@ public class ObjectSlot : MonoBehaviour {
     }
 
     void OnDrawGizmos() {
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.green;
         var dims = new Vector3(1f, 1.5f);
         Gizmos.DrawWireCube(transform.position, dims);
 
