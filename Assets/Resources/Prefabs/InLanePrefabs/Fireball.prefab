@@ -90,9 +90,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4710837575605360}
-  - component: {fileID: 114342862777957940}
   - component: {fileID: 114672056766484336}
-  - component: {fileID: 114664257855241316}
+  - component: {fileID: 114863917446198926}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -248,19 +247,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114342862777957940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1381961358213194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a63deff8a3313a45a113231f7c8c89e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToCast: 0
-  cardType: 0
 --- !u!114 &114629562375989596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,18 +282,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114664257855241316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1381961358213194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a5e27a1d38c754d805f85ec7af57b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionDelta: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114672056766484336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,6 +363,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114863917446198926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381961358213194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ade1182f09b95343b8bb7e410cf61b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToCast: 0
+  cardType: 1
 --- !u!114 &114875810148351306
 MonoBehaviour:
   m_ObjectHideFlags: 1
