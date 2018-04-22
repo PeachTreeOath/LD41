@@ -155,7 +155,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             {
                 continue;
             }
-            else if (playerCard != null)
+            if (playerCard != null)
             {
                 CardInLane card = playerCard.GetComponent<CardInLane>();
                 if (card.cardType == Card.CardType.Spell)
@@ -170,7 +170,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                     enemyDamageArray[i] += card.GetAttackDamage();
                 }
             }
-            else if (enemyCard != null)
+            if (enemyCard != null)
             {
                 CardInLane card = enemyCard.GetComponent<CardInLane>();
                 if (card.cardType == Card.CardType.Spell)
@@ -196,6 +196,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
     public void AttackSlot(int index, Slots attackedSlots, int damage, Health targetHealth)
     {
+        if (damage == 0) return;
+
         GameObject card = attackedSlots.slots[index].objectInSlot;
         if (card == null) // No defender, hit face
         {

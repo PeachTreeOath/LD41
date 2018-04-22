@@ -108,10 +108,19 @@ MonoBehaviour:
     type: 2}
   playerSlots: {fileID: 0}
   enemySlots: {fileID: 0}
+  playerDamageArray: 0000000000000000000000000000000000000000
+  enemyDamageArray: 0000000000000000000000000000000000000000
+  playerSlotGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   highlightStartPosition: {x: 2, y: -0.2, z: 0}
   highlightDeltaX: 1.5
   playerHp: {fileID: 0}
   enemyHp: {fileID: 0}
+  startingLane: 2
 --- !u!114 &114880185119591496
 MonoBehaviour:
   m_ObjectHideFlags: 1
