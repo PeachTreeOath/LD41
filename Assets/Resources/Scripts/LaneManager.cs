@@ -200,10 +200,18 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         else // Make defender take damage
         {
             CardInLane defender = card.GetComponent<CardInLane>();
-            int defenderHp = defender.TakeDamage(damage);
-            if (defenderHp <= 0)
+            if (defender.cardType == Card.CardType.Monster)
             {
-                OnRemove(defender);
+                int defenderHp = defender.TakeDamage(damage);
+                if (defenderHp <= 0)
+                {
+                    OnRemove(defender);
+                }
+            }
+            else
+            {
+                // Attack bypasses spells, take face dmg
+                targetHealth.DealDamage(damage);
             }
         }
     }
