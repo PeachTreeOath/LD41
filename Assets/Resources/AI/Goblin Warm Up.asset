@@ -18,11 +18,11 @@ MonoBehaviour:
     value: 14
     eventName: 
   - type: 0
-    timestamp: 14
+    timestamp: 15
     value: 14
     eventName: 
   - type: 0
-    timestamp: 28
+    timestamp: 30
     value: 3
     eventName: 
   - type: 2
