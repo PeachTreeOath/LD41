@@ -121,10 +121,11 @@ public class Card : MonoBehaviour {
     }
 
     public void Play(int desiredIndex=-1, bool failIfNotOpen=false) {
-        if (!AssertState(State.InHand) || !AssertOwner(Owner.Player, Owner.Enemy)) return;
+        if ( !AssertOwner(Owner.Player, Owner.Enemy)) return;
 
         ObjectSlot nextSlot = null;
         if(owner == Owner.Player) {
+            if (!AssertState(State.InHand)) return;
             nextSlot = LaneManager.instance.ClaimPlayerSlot(gameObject);
         } else {
             nextSlot = LaneManager.instance.ClaimEnemySlot(gameObject, desiredIndex, failIfNotOpen);
@@ -178,8 +179,10 @@ public class Card : MonoBehaviour {
     }
 
     private void OnPlaying() {
-        currSlot.Release();
-        currSlot = null;
+        if(currSlot != null) {
+            currSlot.Release();
+            currSlot = null;
+        }
 
         //TODO any inital set or tear down from being in the hand (deregister from input manager)
     }
