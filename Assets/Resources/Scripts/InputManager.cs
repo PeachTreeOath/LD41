@@ -25,9 +25,9 @@ public class InputManager : Singleton<InputManager>
         Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         foreach (char c in Input.inputString)
         {
@@ -50,26 +50,46 @@ public class InputManager : Singleton<InputManager>
 
 
         List<Card> matchedCards = new List<Card>();
-        bool noMoreLetterMatches = false;
-        foreach(Card card in eligibleCards)
+        bool needToClearBuffer = false;
+        foreach (Card card in eligibleCards)
         {
             string cardName = card.cardModel.name;
             TextMeshProUGUI cardTextField = card.cardView.nameText;
             if (cardName.Equals(inputText))
             {
-                matchedCards.Add(card);
-            }else if (inputText.Length > 0 && cardName.StartsWith(inputText))
+                if (card.state == Card.State.InHand && LaneManager.instance.playerSlots.AreAllSlotsBlocked())
+                {
+                    //Case where the lane is blocked and we are trying to complete a card.
+                    //We will just clear the buffer here and not attempt to remove the card.
+                    needToClearBuffer = true;
+                }
+                else
+                {
+                    matchedCards.Add(card);
+                }
+
+            } else if (inputText.Length > 0 && cardName.StartsWith(inputText))
             {
                 string highlightedLetters = inputText;
                 string restOfWord = cardName.Substring(inputText.Length);
-                cardTextField.text = "<color=red>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+                cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
             }
             else if (inputText.Length > 0)
             {
                 //User has typed something but it doesn't match anything, we need to force a backspace
                 inputText = inputText.Substring(0, inputText.Length - 1);
             }
-            
+
+        }
+
+        if (needToClearBuffer)
+        {
+            inputText = "";
+            foreach(Card card in eligibleCards)
+            {
+                //Now reset all highlighting
+                card.cardView.nameText.text = card.cardModel.name;
+            }
         }
 
         //Doing this because we couldn't remove cards while going through a foreach loop.
