@@ -37,11 +37,10 @@ GameObject:
   - component: {fileID: 114842950052197536}
   - component: {fileID: 114787254509852484}
   - component: {fileID: 114634677185722364}
-  - component: {fileID: 114261977156511694}
-  - component: {fileID: 114831274599810944}
   - component: {fileID: 114826320812410766}
   - component: {fileID: 114637829266785222}
   - component: {fileID: 114289813954450866}
+  - component: {fileID: 114421209187769382}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -142,21 +141,6 @@ Transform:
   m_Father: {fileID: 4820577975606422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114261977156511694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77adfef1a41b064ab198be4fb6e8876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
-    type: 2}
-  cardPrototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
-  playOrigin: {fileID: 1116023632155652}
 --- !u!114 &114289813954450866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +276,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114421209187769382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400221751229758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fe4e368ee2bef4ea3489f51b5c0da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawns:
+  - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
+  spawningPool:
+  - WeakGoblin
 --- !u!114 &114458176784121900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,34 +381,6 @@ MonoBehaviour:
   playOrigin: {fileID: 1116023632155652}
   cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
     type: 2}
---- !u!114 &114831274599810944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f092f3e0f20dd8e419f68b7d34c2eec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interval: 7.5
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114261977156511694}
-        m_MethodName: PlayCard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114842950052197536
 MonoBehaviour:
   m_ObjectHideFlags: 1
