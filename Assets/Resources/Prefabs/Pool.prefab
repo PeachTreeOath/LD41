@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196664075435750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.58, y: 1.16, z: 0}
+  m_LocalPosition: {x: -2.4, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -162,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107936596385312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.76, y: 1.16, z: 0}
+  m_LocalPosition: {x: -4, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -175,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218486502801416}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.76, y: -2.05, z: 0}
+  m_LocalPosition: {x: -4, y: -2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697651897773312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56, y: -0.41, z: 0}
+  m_LocalPosition: {x: -2.4, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708915038917348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.58, y: -2.04, z: 0}
+  m_LocalPosition: {x: -2.4, y: -2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -247,7 +247,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998825652492218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.76, y: -0.43, z: 0}
+  m_LocalPosition: {x: -4, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4833119259401966}
@@ -420,6 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsToStart:
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
-  - {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
+  - {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
+  - {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
+  - {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
+  - {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
+  - {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
+  - {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}

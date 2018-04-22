@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
+  m_Name: Fresh Meat
+  m_EditorClassIdentifier: 
+  cardName: Fresh Meat
+  health: 3
+  damage: 2
+  timeToCast: -1
+  sprite: {fileID: 21300000, guid: d728cddd525499c47a64b23a258409fa, type: 3}
+  inLanePrefab: {fileID: 1403602691660892, guid: f508ed3ffd3477b46a3e213c260cba36,
+    type: 2}
