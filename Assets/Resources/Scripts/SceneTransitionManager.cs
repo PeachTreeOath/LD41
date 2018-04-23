@@ -67,7 +67,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
   
     public void PlayDeathSequence()
     {
-        print("in PlayDeathSequence");
+        //print("in PlayDeathSequence");
         //AudioManager.instance.PlayMusicOnce("LoseTheme", AudioManager.instance.GetMusicVolume());
         endingTime = 0f;
         deathStarted = true;
@@ -115,7 +115,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     */
     IEnumerator DoDropCutsceneCard(CutsceneCard cutsceneCard)
     {
-        print("In DoDropCutsceneCard");
+        //print("In DoDropCutsceneCard");
         float dropCutsceneCardTime = 0f;
         float dropCutsceneCardDistance = 10f; //needs to be adjusted to length of the line
         
@@ -199,7 +199,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         */
         if (deathStarted)
         {
-            print("death sequence started");
+            //print("death sequence started");
             endingTime += Time.deltaTime;
 
             if (endingTime >= secondsToFade && !dropCutsceneCardDone && !coroutineInProgress)
