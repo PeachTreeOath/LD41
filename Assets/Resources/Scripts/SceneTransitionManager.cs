@@ -203,6 +203,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                     break;
                 default:
                     levelCompleteCard.nextScene = "Game";
+                    gameOverCard.nextScene = "Game";
                     break;
             }
         }
