@@ -47,6 +47,7 @@ public class CutsceneCard : MonoBehaviour {
         
         if (typableText.Equals(inputText, StringComparison.CurrentCultureIgnoreCase))
         {
+            cardTextField.text = "<color=blue>" + typableText + "</color>";
             //We matched the word, move progress to the next scene.
             SceneTransitionManager.instance.loadScene(nextScene);
         }
