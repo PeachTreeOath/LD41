@@ -15,5 +15,5 @@ MonoBehaviour:
   components:
   - prototype: {fileID: 11400000, guid: 92c426839ec7a254bbaafa7b2499ca28, type: 2}
     slotSelectionStrategy: 0
-    multiplicity: 2
+    multiplicity: 1
     successRate: 1
