@@ -153,12 +153,31 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
      //   blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
      //   blackLineVertical = GameObject.Find("BlackLineVertical").GetComponent<SpriteRenderer>();
      //   horizontalLineMask = GameObject.Find("HorizontalLineMask").GetComponent<SpriteRenderer>();
-        gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
-        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
-        levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
-        whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
+        //gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
+        //titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        //levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
+        //whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
      //   portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
      //   gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Scene scene = SceneManager.GetActiveScene();
+        string sceneName = scene.name;
+
+        if (scene.name.Equals("TitleScreen"))
+        {
+            titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        }
+        else if (scene.name.Equals("Game"))
+        {
+            gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
+            levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
+            whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
+        }
+            
     }
 
 

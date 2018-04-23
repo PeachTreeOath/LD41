@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class InputManager : Singleton<InputManager>
 {
@@ -16,22 +17,34 @@ public class InputManager : Singleton<InputManager>
     private CutsceneCard gameOverCard;
     private CutsceneCard levelCompleteCard;
     private CutsceneCard titleScreenCard;
-    
-	// Use this for initialization
-	void Start () {
-        
-        Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
-        Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
 
-        gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
-        levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
+    private string sceneName;
+    // Use this for initialization
+    void Start () {
+        Scene scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+
+        if (scene.name.Equals("Game"))
+        {
+            Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
+            Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
+
+            gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
+            levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
+        }
         
 
     }
 
-    private void Awake()
+    protected override void Awake()
     {
-        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        Scene scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+
+        if (scene.name.Equals("TitleScreen"))
+        {
+            titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        }
     }
 
     // Update is called once per frame
