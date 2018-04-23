@@ -15,9 +15,9 @@ MonoBehaviour:
   keyframes:
   - type: 0
     timestamp: 0
-    value: 10
+    value: 15
     eventName: 
   - type: 2
-    timestamp: 10
+    timestamp: 15
     value: 15
     eventName: 'Spawn Pool: +PikeSpawn'
