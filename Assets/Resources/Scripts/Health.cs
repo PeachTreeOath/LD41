@@ -9,6 +9,7 @@ public class Health : MonoBehaviour {
     public int max = 20;
     public int start = 20;
     public TextMeshProUGUI healthText;
+    public Owner owner;
 
     public int current { get; private set; }
 

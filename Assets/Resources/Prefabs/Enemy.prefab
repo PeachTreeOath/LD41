@@ -416,6 +416,7 @@ MonoBehaviour:
   max: 20
   start: 20
   healthText: {fileID: 114409418464388012}
+  owner: 1
 --- !u!114 &114901929305337362
 MonoBehaviour:
   m_ObjectHideFlags: 1
