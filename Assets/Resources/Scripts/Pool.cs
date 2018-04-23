@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Slots))]
-[RequireComponent(typeof(LootTable))]
 public class Pool : Singleton<Pool> {
-    private LootTable lootTable;
     private Slots poolSlots;
 
     public ZoneEvent poolZoneEvent;
     public Card cardPrefab;
     public GameObject origin;
+    public LootTable lootTable;
 
     void Start() {
         if (poolZoneEvent == null) {
@@ -18,7 +17,6 @@ public class Pool : Singleton<Pool> {
         }
 
         poolSlots = GetComponent<Slots>();
-        lootTable = GetComponent<LootTable>();
 
         poolSlots.claimEvent.AddListener(OnClaimSlot);
         poolSlots.releaseEvent.AddListener(OnReleaseSlot);

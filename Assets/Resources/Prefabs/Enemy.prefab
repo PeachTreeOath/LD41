@@ -70,9 +70,6 @@ GameObject:
   - component: {fileID: 4820577975606422}
   - component: {fileID: 114842950052197536}
   - component: {fileID: 114826320812410766}
-  - component: {fileID: 114637829266785222}
-  - component: {fileID: 114289813954450866}
-  - component: {fileID: 114421209187769382}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -173,31 +170,6 @@ Transform:
   m_Father: {fileID: 4820577975606422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114289813954450866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ebf840c21f18b4eb01bb098a54bba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animations:
-  - {fileID: 11400000, guid: f3c88d407ad3f8643be0b0d400fde3f8, type: 2}
-  - {fileID: 11400000, guid: e0814205ef42bb04b80cfc21fd0da813, type: 2}
-  - {fileID: 11400000, guid: 9b9dbdd368abab244a240e6fa4a5d137, type: 2}
-  animEventEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: AnimEventEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  animValueEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: AnimValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114409418464388012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,23 +283,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114421209187769382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7fe4e368ee2bef4ea3489f51b5c0da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawns:
-  - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
-  - {fileID: 11400000, guid: eb03900c80c6c7e42a0e6ca62421c5c9, type: 2}
-  - {fileID: 11400000, guid: 3f2587252ebf8c64799c1a0a09f9b7f1, type: 2}
-  spawningPool:
-  - WeakGoblin
 --- !u!114 &114458176784121900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,27 +320,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114637829266785222
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400221751229758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdTriggers:
-  - tripped: 0
-    healthTrigger: 21
-    animToPlay: GoblinPhase1
-  - tripped: 0
-    healthTrigger: 13
-    animToPlay: GoblinPhase2
-  - tripped: 0
-    healthTrigger: 6
-    animToPlay: GoblinPhase3
 --- !u!114 &114826320812410766
 MonoBehaviour:
   m_ObjectHideFlags: 1
