@@ -428,9 +428,12 @@ public class Card : MonoBehaviour
         {
             if (c == '\b') // has backspace/delete been pressed?
             {
-                if (inputText.Length != 0)
+                if (inputText.Length > 1)
                 {
                     inputText = inputText.Substring(0, inputText.Length - 1);
+                } else if(inputText.Length == 1)
+                {
+                    inputText = "";
                 }
             }
             else if ((c == '\n') || (c == '\r')) // enter/return
@@ -508,9 +511,6 @@ public class Card : MonoBehaviour
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
                 bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             }
-
-
-
         }
         else if (inputText.Length > 0)
         {
@@ -519,19 +519,7 @@ public class Card : MonoBehaviour
         }
         else
         {
-            float textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
-            float bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
-            while(textWidth > bannerWidth){
-                shortCardName = shortCardName.Substring(0, shortCardName.Length - 1);
-                cardTextField.text = shortCardName + "...";
-                textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
-                bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
-            }
-
-            RectTransform banner = cardView.nameText.transform.parent as RectTransform;
-            Image img = banner.GetComponent<Image>();
-            if(img != null)
-                banner.GetComponent<Image>().color = bannerStartColor;
+            ClearText();
         }
 
     }
