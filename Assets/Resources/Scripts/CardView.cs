@@ -8,13 +8,15 @@ public class CardView : MonoBehaviour
 {
 
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI attackDefenseText;
+    public TextMeshProUGUI attackText;
+    public TextMeshProUGUI hpText;
     public Image portrait;
 
     public void CreateCardImage(CardModel card)
     {
         nameText.text = card.name;
-        attackDefenseText.text = card.damage + "/" + card.health;
+        attackText.text = card.damage + "";
+        hpText.text = card.health + "";
         portrait.sprite = card.sprite;
     }
 }
