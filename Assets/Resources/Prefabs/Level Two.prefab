@@ -55,9 +55,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawns:
-  - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
+  - {fileID: 11400000, guid: fbbe9182a3be583408fd6af0170a4e9c, type: 2}
   - {fileID: 11400000, guid: eb03900c80c6c7e42a0e6ca62421c5c9, type: 2}
-  - {fileID: 11400000, guid: 3f2587252ebf8c64799c1a0a09f9b7f1, type: 2}
+  - {fileID: 11400000, guid: 49be3145820d97f4ea4473d59cd1bcce, type: 2}
   spawningPool:
   - WeakGoblin
 --- !u!114 &114224385532903918
@@ -72,13 +72,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawTable:
-  - cardPrototype: {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 5beb335487bb1274ca3686d7dde8b0eb, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 30f90cd797a35b24491a3de71eadaebe, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
     cardsAvailable: -1
     weight: 1
 --- !u!114 &114355001161152342
@@ -120,10 +129,10 @@ MonoBehaviour:
   thresholdTriggers:
   - tripped: 0
     healthTrigger: 21
-    animToPlay: GoblinPhase1
+    animToPlay: RedhoodPhase1
   - tripped: 0
     healthTrigger: 13
-    animToPlay: GoblinPhase2
+    animToPlay: RedhoodPhase2
   - tripped: 0
     healthTrigger: 6
-    animToPlay: GoblinPhase3
+    animToPlay: RedhoodPhase3
