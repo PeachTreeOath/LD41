@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80983b8d63e890c4cbd3d262901248e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 0.9
 --- !u!114 &114251295053283596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,6 +70,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneHighlight: {fileID: 0}
+  healIcon: {fileID: 0}
+  drawIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  timeIcon: {fileID: 0}
 --- !u!114 &114431623628506068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c35aec5a6c7cac46aa6c6875677bd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameOverSequence: 0
+  inVictorySequence: 0
+  inTitleScreenSequence: 0
 --- !u!114 &114449887665623140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf82107dce8e134e892700d8d8c316f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickInterval: 4
+  tickInterval: 3
+  oldTickInterval: 3
 --- !u!114 &114590536573813820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +118,7 @@ MonoBehaviour:
     type: 2}
   playerSlots: {fileID: 0}
   enemySlots: {fileID: 0}
+  laneHightlightYOffset: 0.66
   playerDamageArray: 0000000000000000000000000000000000000000
   enemyDamageArray: 0000000000000000000000000000000000000000
   playerSlotGameObjects:

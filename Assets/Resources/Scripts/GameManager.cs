@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager> {
 
 
-    public float tickInterval = 4f;
+    public float tickInterval = 6f;
+    public float oldTickInterval = 4f;
 
 	void Start () {
 

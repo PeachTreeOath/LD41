@@ -5,7 +5,7 @@ using UnityEngine;
 // Controls time for anything that needs to be paused outside the core update loop.
 public class GlobalTimer : Singleton<GlobalTimer>
 {
-
+    public float timeScale = 1f;
     private List<IGlobalTimedObject> timedObjectList = new List<IGlobalTimedObject>();
     private bool isPaused;
 
@@ -14,9 +14,10 @@ public class GlobalTimer : Singleton<GlobalTimer>
     {
         if (!isPaused)
         {
+            var dt = Time.deltaTime * timeScale;
             foreach (IGlobalTimedObject obj in timedObjectList)
             {
-                obj.ManualUpdate(Time.deltaTime);
+                obj.ManualUpdate(dt);
             }
         }
     }
