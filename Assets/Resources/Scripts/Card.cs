@@ -314,6 +314,8 @@ public class Card : MonoBehaviour
             if(spell != null)
             {
                 spell.SetCardModel(cardModel);
+                spell.SetCardModel(cardModel);
+                spell.SetSlot(currSlot);
             }
 
             currSlot.Occupy(laneObject);
