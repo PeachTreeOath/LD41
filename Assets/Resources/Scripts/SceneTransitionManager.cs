@@ -54,6 +54,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
         //FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
+        GlobalTimer.instance.PauseTimer(true);
 
     }
 
@@ -89,7 +90,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
         //FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
-
+        GlobalTimer.instance.PauseTimer(true);
         //PlayerController.instance.inputEnabled = false;
         //PlayerController.instance.onDeathScreen = true;
         //portraitSwapper.transitionToSkeleton();
