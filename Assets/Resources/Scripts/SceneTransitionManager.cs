@@ -161,6 +161,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
      //   gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
     }
 
+
     void Update()
     {
         /*

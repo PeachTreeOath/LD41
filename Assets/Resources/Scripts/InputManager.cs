@@ -11,8 +11,6 @@ public class InputManager : Singleton<InputManager>
     public bool inVictorySequence = false;
     public bool inTitleScreenSequence = false;
 
-    //This is a test case
-    private string inputText = "";
 
     private List<Card> eligibleCards = new List<Card>();
     private CutsceneCard gameOverCard;
@@ -21,13 +19,19 @@ public class InputManager : Singleton<InputManager>
     
 	// Use this for initialization
 	void Start () {
+        
         Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
         Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
 
         gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
         levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
-        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        
 
+    }
+
+    private void Awake()
+    {
+        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
     }
 
     // Update is called once per frame
