@@ -7,25 +7,52 @@ using UnityEngine.Events;
 
 public class InputManager : Singleton<InputManager>
 {
+    public bool inGameOverSequence = false;
+    public bool inVictorySequence = false;
+    public bool inTitleScreenSequence = false;
 
     //This is a test case
     private string inputText = "";
 
     private List<Card> eligibleCards = new List<Card>();
+    private CutsceneCard gameOverCard;
+    private CutsceneCard levelCompleteCard;
+    private CutsceneCard titleScreenCard;
     
 	// Use this for initialization
 	void Start () {
         Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
         Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
 
+        gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
+        levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
+        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+
     }
 
     // Update is called once per frame
     void Update() {
-        for (int i = eligibleCards.Count - 1; i >= 0; i--)
+
+        if (inGameOverSequence)
         {
-            eligibleCards[i].InputText(Input.inputString);
+            gameOverCard.InputText(Input.inputString);
         }
+        else if (inVictorySequence)
+        {
+            levelCompleteCard.InputText(Input.inputString);
+        }
+        else if (inTitleScreenSequence)
+        {
+            titleScreenCard.InputText(Input.inputString);
+        }
+        else
+        {
+            for (int i = eligibleCards.Count - 1; i >= 0; i--)
+            {
+                eligibleCards[i].InputText(Input.inputString);
+            }
+        }
+        
         /*
         foreach (char c in Input.inputString)
         {
