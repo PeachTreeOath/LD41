@@ -18,5 +18,5 @@ MonoBehaviour:
   cardsToDraw: 0
   casterHpToHeal: 0
   sprite: {fileID: 21300000, guid: 9c1194ddd10b1a1429de3b60089d96a6, type: 3}
-  inLanePrefab: {fileID: 1991829033480546, guid: c229c835a94e61a48aaa77855f81db44,
+  inLanePrefab: {fileID: 1979962079793078, guid: c29bd649d86b5f8409186a753187e64a,
     type: 2}
