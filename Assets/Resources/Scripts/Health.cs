@@ -20,7 +20,7 @@ public class Health : MonoBehaviour {
     }
 
     void Update() {
-        healthText.text = current + "/" + max;
+        healthText.text = current + " hp";
     }
 
     public void DealDamage(int amount)
