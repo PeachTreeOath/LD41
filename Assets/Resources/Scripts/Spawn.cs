@@ -8,19 +8,26 @@ public enum SlotSelectionStrategy { Random, PreferUnopposed, BlockHighestDamage,
 public class SpawnComponent {
     public CardPrototype prototype;
     public SlotSelectionStrategy slotSelectionStrategy = SlotSelectionStrategy.Random;
+    public int multiplicity = 1;
+    public float successRate = 1f;
 
     public void Execute() {
-        if (!LaneManager.instance.enemySlots.anyOpenSlots) return;
+        var times = Math.Max(1, multiplicity);
+        for(var i = 0; i < times; i++) {
+            if (UnityEngine.Random.value > successRate) continue;
 
-        var cardModel = prototype.Instantiate();
-        var card = GameObject.Instantiate<Card>(Enemy.instance.cardPrefab);
+            if (!LaneManager.instance.enemySlots.anyOpenSlots) return;
 
-        card.transform.position = Enemy.instance.playOrigin.transform.position;
-        card.SetOwner(Owner.Enemy);
-        card.SetCardModel(cardModel);
+            var cardModel = prototype.Instantiate();
+            var card = GameObject.Instantiate<Card>(Enemy.instance.cardPrefab);
 
-        var desiredSlot = GetDesiredSlot(); 
-        card.Play(desiredSlot);
+            card.transform.position = Enemy.instance.playOrigin.transform.position;
+            card.SetOwner(Owner.Enemy);
+            card.SetCardModel(cardModel);
+
+            var desiredSlot = GetDesiredSlot(); 
+            card.Play(desiredSlot);
+        }
     }
 
     public int GetDesiredSlot() {
