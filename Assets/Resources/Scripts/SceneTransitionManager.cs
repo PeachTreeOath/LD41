@@ -41,11 +41,20 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     //playEndingEffects();
     //}
 
-    public void TransitionToNextLevel()
+    public void PlayLevelTransitionSequence()
     {
-        //PermanentStatManager.instance.generation++;
-        //PermanentStatManager.instance.currentLevel++;
-        playEndingEffects();
+        endingTime = 0f;
+        endingStarted = true;
+        //gameOverText.enabled = true;
+
+        //kicks off these coroutines
+        Color color = Color.black;
+        color.a = 0;
+        whiteMask.color = color;
+
+        //FadeUI.instance.FadeMe();
+        FadeSprite.instance.FadeMe();
+
     }
 
 
@@ -171,11 +180,27 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         {
             titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
         }
-        else if (scene.name.Equals("Game"))
+        else
         {
             gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
             levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
             whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
+
+            switch (sceneName)
+            {
+                case "Game":
+                    levelCompleteCard.nextScene = "Level 2";
+                    break;
+                case "Level 2":
+                    levelCompleteCard.nextScene = "Level 3";
+                    break;
+                case "Level 3":
+                    levelCompleteCard.nextScene = "Victory";
+                    break;
+                default:
+                    levelCompleteCard.nextScene = "Game";
+                    break;
+            }
         }
             
     }
@@ -217,7 +242,30 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             }
         }
         */
-        if (deathStarted)
+        if (endingStarted)
+        {
+            endingTime += Time.deltaTime;
+
+            if (endingTime >= secondsToFade && !dropCutsceneCardDone && !coroutineInProgress)
+            {
+                endingTime = 0f;
+                coroutineInProgress = true;
+                //kickoff horizontalWipe
+                StartCoroutine(DoDropCutsceneCard(levelCompleteCard));
+                InputManager.instance.inVictorySequence = true;
+            }
+            else if (endingTime >= secondsToDropCutsceneCardIn && !finalPauseDone && !coroutineInProgress)
+            {
+                //kickoff finalPause
+                endingTime = 0f;
+                finalPauseDone = true;
+            }
+            else if (endingTime >= secondsToPauseOnDeath && !coroutineInProgress)
+            {
+                //SceneManager.LoadScene("Game");
+            }
+        }
+        else if (deathStarted)
         {
             //print("death sequence started");
             endingTime += Time.deltaTime;
