@@ -15,5 +15,5 @@ MonoBehaviour:
   keyframes:
   - type: 2
     timestamp: 0
-    value: 0
-    eventName: 'Spawn: The Wolf Who Cried RAWR'
+    value: 1
+    eventName: 'Spawn: RedHoodEvent'

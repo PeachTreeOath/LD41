@@ -55,13 +55,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawTable:
-  - cardPrototype: {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: b2e76a561a74eb041b7111e03a2479f9, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 2f18b7550a06cd244ad6be82f49695d8, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 30f90cd797a35b24491a3de71eadaebe, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 5beb335487bb1274ca3686d7dde8b0eb, type: 2}
     cardsAvailable: -1
     weight: 1
 --- !u!114 &114357438636468566
@@ -77,14 +89,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggers:
   - tripped: 0
-    healthTrigger: 21
-    animToPlay: GoblinPhase1
+    healthTrigger: 51
+    animToPlay: KingPhase1
   - tripped: 0
-    healthTrigger: 13
-    animToPlay: GoblinPhase2
+    healthTrigger: 31
+    animToPlay: KingPhase2
   - tripped: 0
-    healthTrigger: 6
-    animToPlay: GoblinPhase3
+    healthTrigger: 16
+    animToPlay: KingPhase3
 --- !u!114 &114718927975467022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,9 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - {fileID: 11400000, guid: f3c88d407ad3f8643be0b0d400fde3f8, type: 2}
-  - {fileID: 11400000, guid: e0814205ef42bb04b80cfc21fd0da813, type: 2}
-  - {fileID: 11400000, guid: 9b9dbdd368abab244a240e6fa4a5d137, type: 2}
+  - {fileID: 11400000, guid: 2c1a676a6319baf41a4d388d1c378a40, type: 2}
+  - {fileID: 11400000, guid: 31f8cfbeb837f5643864c4ea2ccf4e25, type: 2}
+  - {fileID: 11400000, guid: 100411627f87cf74caae96617298dc78, type: 2}
   animEventEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -122,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawns:
-  - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
-  - {fileID: 11400000, guid: eb03900c80c6c7e42a0e6ca62421c5c9, type: 2}
-  - {fileID: 11400000, guid: 3f2587252ebf8c64799c1a0a09f9b7f1, type: 2}
+  - {fileID: 11400000, guid: 8709a58640e221043bf9996a548656a2, type: 2}
+  - {fileID: 11400000, guid: 9406bc6fd85cbb644a356fcd28ec2860, type: 2}
+  - {fileID: 11400000, guid: 4c10ac2bd7cfa2345a15964c2596e6b7, type: 2}
   spawningPool:
-  - WeakGoblin
+  - MageSpawn
