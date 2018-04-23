@@ -35,7 +35,7 @@ public class CardInLaneView : MonoBehaviour
     public Image border;
     public Image portrait;
 
-    public void CreateCardImage(CardModel card, Owner owner)
+    public void CreateCardImage(CardModel card, Owner owner, int currHp)
     {
         if (card.timeToCast >= 0) // spell
         {
@@ -81,7 +81,7 @@ public class CardInLaneView : MonoBehaviour
             if (owner == Owner.Player)
             {
                 botAttackText.text = card.damage + "";
-                botHpText.text = card.health + "";
+                botHpText.text = currHp + "";
             }
             else
             {
@@ -90,7 +90,7 @@ public class CardInLaneView : MonoBehaviour
                 topAttackObj.SetActive(true);
                 topHpObj.SetActive(true);
                 topAttackText.text = card.damage + "";
-                topHpText.text = card.health + "";
+                topHpText.text = currHp + "";
             }
         }
         portrait.sprite = card.sprite;
