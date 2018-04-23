@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
-  m_Name: Soldier
+  m_Name: Mage
   m_EditorClassIdentifier: 
-  cardName: Soldier
-  health: 3
-  damage: 2
+  cardName: Mage
+  health: 2
+  damage: 4
   timeToCast: -1
   cardsToDraw: 0
   casterHpToHeal: 0
-  sprite: {fileID: 21300000, guid: 0c71c91906ff62c45816384c06808ca2, type: 3}
+  sprite: {fileID: 21300000, guid: 4d89bcb71740ead499aed5347e82b00f, type: 3}
   inLanePrefab: {fileID: 0}

@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
-  m_Name: Soldier
+  m_Name: Lightning Bolt
   m_EditorClassIdentifier: 
-  cardName: Soldier
-  health: 3
-  damage: 2
-  timeToCast: -1
+  cardName: LightningBolt
+  health: 0
+  damage: 5
+  timeToCast: 1
   cardsToDraw: 0
   casterHpToHeal: 0
-  sprite: {fileID: 21300000, guid: 0c71c91906ff62c45816384c06808ca2, type: 3}
+  sprite: {fileID: 21300000, guid: 1b21f178cd6e2394ea1de0351b36f3dd, type: 3}
   inLanePrefab: {fileID: 0}
