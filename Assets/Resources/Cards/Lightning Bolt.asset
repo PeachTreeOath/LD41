@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: Lightning Bolt
   m_EditorClassIdentifier: 
-  cardName: LightningBolt
+  cardName: Instant Lightning Bolt of Light
   health: 0
-  damage: 5
+  damage: 6
   timeToCast: 1
   cardsToDraw: 0
   casterHpToHeal: 0
