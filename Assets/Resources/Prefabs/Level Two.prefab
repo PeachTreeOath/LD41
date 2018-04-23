@@ -9,33 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1570372977645718}
+  m_RootGameObject: {fileID: 1411397701749470}
   m_IsPrefabParent: 1
---- !u!1 &1570372977645718
+--- !u!1 &1411397701749470
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4763635301205476}
-  - component: {fileID: 114718969500584616}
-  - component: {fileID: 114336563058657520}
-  - component: {fileID: 114211423212118932}
-  - component: {fileID: 114967746736148172}
+  - component: {fileID: 4591534995514718}
+  - component: {fileID: 114224385532903918}
+  - component: {fileID: 114091990299955108}
+  - component: {fileID: 114399295802754928}
+  - component: {fileID: 114355001161152342}
   m_Layer: 0
-  m_Name: Level One
+  m_Name: Level Two
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4763635301205476
+--- !u!4 &4591534995514718
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570372977645718}
+  m_GameObject: {fileID: 1411397701749470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.43, y: 0.6, z: -44}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -43,83 +43,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114211423212118932
+--- !u!114 &114091990299955108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570372977645718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdTriggers:
-  - tripped: 0
-    healthTrigger: 21
-    animToPlay: GoblinPhase1
-  - tripped: 0
-    healthTrigger: 13
-    animToPlay: GoblinPhase2
-  - tripped: 0
-    healthTrigger: 6
-    animToPlay: GoblinPhase3
---- !u!114 &114336563058657520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570372977645718}
+  m_GameObject: {fileID: 1411397701749470}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fe4e368ee2bef4ea3489f51b5c0da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawns:
-  - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
-  - {fileID: 11400000, guid: eb03900c80c6c7e42a0e6ca62421c5c9, type: 2}
-  - {fileID: 11400000, guid: 3f2587252ebf8c64799c1a0a09f9b7f1, type: 2}
+  - {fileID: 11400000, guid: fbbe9182a3be583408fd6af0170a4e9c, type: 2}
+  - {fileID: 11400000, guid: 49be3145820d97f4ea4473d59cd1bcce, type: 2}
   spawningPool:
-  - WeakGoblin
---- !u!114 &114718969500584616
+  - WolfSpawn
+--- !u!114 &114224385532903918
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570372977645718}
+  m_GameObject: {fileID: 1411397701749470}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f28991a5e1a78745a9b623fc8260529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawTable:
-  - cardPrototype: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: a7461f08a15e6a645a2cb9845a4080aa, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 5beb335487bb1274ca3686d7dde8b0eb, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063, type: 2}
     cardsAvailable: -1
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: c63a7cd0f457e854e8952d7499ff03f0, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 30f90cd797a35b24491a3de71eadaebe, type: 2}
     cardsAvailable: -1
     weight: 1
---- !u!114 &114967746736148172
+  - cardPrototype: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
+    cardsAvailable: -1
+    weight: 1
+--- !u!114 &114355001161152342
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570372977645718}
+  m_GameObject: {fileID: 1411397701749470}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6ebf840c21f18b4eb01bb098a54bba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - {fileID: 11400000, guid: f3c88d407ad3f8643be0b0d400fde3f8, type: 2}
-  - {fileID: 11400000, guid: e0814205ef42bb04b80cfc21fd0da813, type: 2}
-  - {fileID: 11400000, guid: 9b9dbdd368abab244a240e6fa4a5d137, type: 2}
+  - {fileID: 11400000, guid: 9a14fa81b707707469e28de7b851f1c0, type: 2}
+  - {fileID: 11400000, guid: 0294c572a0e2b3e4da54635e122bbf14, type: 2}
+  - {fileID: 11400000, guid: e30a13660e1260c4498455d203c944f1, type: 2}
   animEventEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -130,3 +114,24 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: AnimValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114399295802754928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411397701749470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2132cda3f700d4bbc9632950628b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdTriggers:
+  - tripped: 0
+    healthTrigger: 21
+    animToPlay: RedhoodPhase1
+  - tripped: 0
+    healthTrigger: 13
+    animToPlay: RedhoodPhase2
+  - tripped: 0
+    healthTrigger: 6
+    animToPlay: RedhoodPhase3
