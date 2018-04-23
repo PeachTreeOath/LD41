@@ -6,12 +6,31 @@ using UnityEngine.UI;
 
 public class CardInLaneView : MonoBehaviour {
 
-    public TextMeshProUGUI attackDefenseText;
+    // Monster stuff
+    public GameObject botAttackObj;
+    public GameObject botHpObj;
+    public TextMeshProUGUI botAttackText;
+    public TextMeshProUGUI botHpText;
+    public GameObject topAttackObj;
+    public GameObject topHpObj;
+    public TextMeshProUGUI topAttackText;
+    public TextMeshProUGUI topHText;
+
+    // Spell stuff
+    public GameObject topTriangle;
+    public GameObject bottomTriangle;
+    public TextMeshProUGUI topTriangleText;
+    public TextMeshProUGUI bottomTriangleText;
+    public Image topTriangleIcon;
+    public Image bottomTriangleIcon;
+
+    public GameObject castTimeObj;
+    public TextMeshProUGUI castTimeText;
+
     public Image portrait;
 
     public void CreateCardImage(CardModel card)
     {
-        attackDefenseText.text = card.damage + "/" + card.health;
         portrait.sprite = card.sprite;
     }
 }
