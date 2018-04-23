@@ -38,6 +38,8 @@ public class InputManager : Singleton<InputManager>
 
     protected override void Awake()
     {
+        base.Awake();
+
         Scene scene = SceneManager.GetActiveScene();
         sceneName = scene.name;
 
