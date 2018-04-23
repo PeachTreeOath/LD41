@@ -7,7 +7,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
     public float secondsToFade;
     public float secondsToRevealHorizontalLine;
-    public float secondsToRevealVerticalLine;
+    public float secondsToDropCutsceneCardIn;
     public float secondsToPauseBeforeSceneTransition;
     public float secondsToPauseOnDeath;
 
@@ -15,14 +15,15 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     private bool deathStarted = false;
     private float endingTime;
     private bool horizontalWipeDone = false;
-    private bool verticalWipeDone = false;
+    private bool fadeoutDone = false;
+    private bool dropCutsceneCardDone = false;
     private bool finalPauseDone = false;
     private bool coroutineInProgress = false;
 
     //SpriteRenderer blackLineHorizontal;
     //SpriteRenderer blackLineVertical;
     //SpriteRenderer horizontalLineMask;
-    //SpriteRenderer verticalLineMask;
+    Card cutsceneCard;
     SpriteRenderer whiteMask;
 
     //public FadeSprite fadeSprite { get; private set; }
@@ -108,47 +109,48 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         coroutineInProgress = false;
         yield return null;
     }
-
-    IEnumerator DoVerticalWipe()
+    */
+    IEnumerator DoDropCutsceneCard()
     {
-        float verticalWipeTime = 0f;
-        float verticalWipeDistance = 8f; //needs to be adjusted to length of the line
+        print("In DoDropCutsceneCard");
+        float dropCutsceneCardTime = 0f;
+        float dropCutsceneCardDistance = 10f; //needs to be adjusted to length of the line
         
-        Vector3 startingPos = verticalLineMask.transform.localPosition;
+        Vector3 startingPos = cutsceneCard.transform.localPosition;
         float currentPosY = startingPos.y;
 
-        Vector3 cameraStartingPos = Camera.main.transform.localPosition;
-        float cameraCurrentPosY = cameraStartingPos.y;
+        //Vector3 cameraStartingPos = Camera.main.transform.localPosition;
+        //float cameraCurrentPosY = cameraStartingPos.y;
 
-        while (Mathf.Abs(startingPos.y - currentPosY) < verticalWipeDistance)
+        while (Mathf.Abs(startingPos.y - currentPosY) < dropCutsceneCardDistance)
         {
-            verticalWipeTime += Time.deltaTime;
-            //Debug.Log("startingPos.y = " + startingPos.y);
-            currentPosY = startingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+            dropCutsceneCardTime += Time.deltaTime;
+            Debug.Log("startingPos.y = " + startingPos.y);
+            currentPosY = startingPos.y - (dropCutsceneCardDistance * dropCutsceneCardTime) / secondsToDropCutsceneCardIn;
             //Debug.Log("currentPosY = " + currentPosY);
-            cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+            //cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
 
-            Vector3 newPos = verticalLineMask.transform.localPosition;
-            Vector3 newCamPos = Camera.main.transform.localPosition;
+            Vector3 newPos = cutsceneCard.transform.localPosition;
+            //Vector3 newCamPos = Camera.main.transform.localPosition;
 
             newPos.y = currentPosY;
-            newCamPos.y = cameraCurrentPosY;
+            //newCamPos.y = cameraCurrentPosY;
 
-            verticalLineMask.transform.localPosition = newPos;
-            Camera.main.transform.localPosition = newCamPos;
+            cutsceneCard.transform.localPosition = newPos;
+            //Camera.main.transform.localPosition = newCamPos;
             yield return null;
         }
-        verticalWipeDone = true;
+        dropCutsceneCardDone = true;
         coroutineInProgress = false;
         yield return null;
     }
-    */
+    
     void Start()
     {
      //   blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
      //   blackLineVertical = GameObject.Find("BlackLineVertical").GetComponent<SpriteRenderer>();
      //   horizontalLineMask = GameObject.Find("HorizontalLineMask").GetComponent<SpriteRenderer>();
-     //   verticalLineMask = GameObject.Find("VerticalLineMask").GetComponent<SpriteRenderer>();
+        cutsceneCard = GameObject.Find("CutsceneCard").GetComponent<Card>();
         whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
      //   portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
      //   gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
@@ -193,8 +195,15 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         if (deathStarted)
         {
             endingTime += Time.deltaTime;
-            //Fade to black happens before this
-            if (endingTime >= secondsToFade && !finalPauseDone && !coroutineInProgress)
+
+            if (endingTime >= secondsToFade && !dropCutsceneCardDone && !coroutineInProgress)
+            {
+                endingTime = 0f;
+                coroutineInProgress = true;
+                //kickoff horizontalWipe
+                StartCoroutine(DoDropCutsceneCard());
+            }
+            else if (endingTime >= secondsToDropCutsceneCardIn && !finalPauseDone && !coroutineInProgress)
             {
                 //kickoff finalPause
                 endingTime = 0f;
