@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: BigBadWolf
   m_EditorClassIdentifier: 
-  cardName: BigBadWolf
+  cardName: The Wolf Who Cried RAWR
   health: 8
   damage: 3
   timeToCast: 0

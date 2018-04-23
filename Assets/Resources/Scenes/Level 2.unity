@@ -707,6 +707,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
+        type: 2}
+      propertyPath: drawTable.Array.data[0].cardPrototype
+      value: 
+      objectReference: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190,
+        type: 2}
+    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
+        type: 2}
+      propertyPath: drawTable.Array.data[1].weight
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72ef5b9fc17f7474e8b3dc5139e48106, type: 2}
   m_IsPrefabParent: 0

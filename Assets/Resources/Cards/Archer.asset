@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
-  cardName: Archer
-  health: 1
+  cardName: Calvin the lame archer
+  health: 2
   damage: 3
   timeToCast: -1
   cardsToDraw: 0

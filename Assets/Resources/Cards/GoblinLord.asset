@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: GoblinLord
   m_EditorClassIdentifier: 
-  cardName: TheNotSoGreatGoblinLordOfTheCrummySwampsWhoFellToTheHeroOfTheLand
+  cardName: The Not So Great Goblin Lord Of The Swamp
   health: 12
   damage: 3
   timeToCast: -1
