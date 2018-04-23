@@ -70,7 +70,7 @@ public class Card : MonoBehaviour
                 arrived = UpdateMoveTo(currSlot.transform.position);
 
                 if (arrived) OnMovedToHand();
-                UpdateSizeTo(new Vector2(1.34f, 1.34f));
+                UpdateSizeTo(new Vector2(1f, 1f));
                 break;
 
             case State.Playing:
