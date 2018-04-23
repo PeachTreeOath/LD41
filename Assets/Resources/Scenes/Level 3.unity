@@ -976,6 +976,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114842950052197536, guid: 0a3f7828e0b510945adf4508aa2b71d5,
+        type: 2}
+      propertyPath: start
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a3f7828e0b510945adf4508aa2b71d5, type: 2}
   m_IsPrefabParent: 0
@@ -1407,6 +1412,126 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_text
+      value: Congratulations!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_text
+      value: You are the Keyboard Champion!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_text
+      value: I am awesome!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114989463310534436, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560547089959874, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307379521904560, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012039854671826, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: typableText
+      value: I am awesome!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012039854671826, guid: 2c701c25806bdbb4c9488d42b64ab3d5,
+        type: 2}
+      propertyPath: nextScene
+      value: TitleScreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c701c25806bdbb4c9488d42b64ab3d5, type: 2}

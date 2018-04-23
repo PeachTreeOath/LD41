@@ -198,7 +198,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                     gameOverCard.nextScene = "Level 2";
                     break;
                 case "Level 3":
-                    levelCompleteCard.nextScene = "Victory";
+                    levelCompleteCard.nextScene = "TitleScreen";
                     gameOverCard.nextScene = "Level 3";
                     break;
                 default:
