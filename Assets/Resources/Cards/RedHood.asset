@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: RedHood
   m_EditorClassIdentifier: 
-  cardName: LittleRedRidingHoodGoingThroughTheWoodsToGrandmasHouseSheGoes
+  cardName: Little Red Riding Hood from the Deep Woods
   health: 12
   damage: 6
   timeToCast: -1

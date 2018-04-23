@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  cardName: Soldier
-  health: 3
+  cardName: Private Ryan the Soldier
+  health: 4
   damage: 2
   timeToCast: -1
   cardsToDraw: 0

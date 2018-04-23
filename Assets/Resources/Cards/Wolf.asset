@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  cardName: Wolf
+  cardName: Not That Hungry Wolf
   health: 2
   damage: 2
   timeToCast: -1

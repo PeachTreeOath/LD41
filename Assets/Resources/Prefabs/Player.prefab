@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6730241f8e09ad1449ab3bb27c979ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max: 20
-  start: 20
+  max: 50
+  start: 50
   healthText: {fileID: 114245613842008786}
   owner: 0
 --- !u!114 &114217199767295610
