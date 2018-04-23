@@ -56,13 +56,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawTable:
   - cardPrototype: {fileID: 11400000, guid: b2e76a561a74eb041b7111e03a2479f9, type: 2}
-    cardsAvailable: -1
+    cardsAvailable: 2
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: 2f18b7550a06cd244ad6be82f49695d8, type: 2}
-    cardsAvailable: -1
+    cardsAvailable: 2
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: 30f90cd797a35b24491a3de71eadaebe, type: 2}
-    cardsAvailable: -1
+    cardsAvailable: 2
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063, type: 2}
     cardsAvailable: -1
