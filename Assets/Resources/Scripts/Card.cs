@@ -310,6 +310,11 @@ public class Card : MonoBehaviour
             card.SetCardModel(cardModel);
             card.SetSlot(currSlot);
             card.cardType = cardType; //TODO should probably be in CardPrototype
+            SpellInLane spell = laneObject.GetComponent<SpellInLane>();
+            if(spell != null)
+            {
+                spell.SetCardModel(cardModel);
+            }
 
             currSlot.Occupy(laneObject);
 
