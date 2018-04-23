@@ -138,5 +138,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9406bc6fd85cbb644a356fcd28ec2860, type: 2}
   - {fileID: 11400000, guid: 4c10ac2bd7cfa2345a15964c2596e6b7, type: 2}
   - {fileID: 11400000, guid: 4a448299d807dd348a8951e5c2f55ef4, type: 2}
+  - {fileID: 11400000, guid: 6caf5e71e8c4b5e429108bb0a219a667, type: 2}
   spawningPool:
   - MageSpawn

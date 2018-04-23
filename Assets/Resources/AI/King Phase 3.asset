@@ -16,7 +16,7 @@ MonoBehaviour:
   - type: 2
     timestamp: 0
     value: 15
-    eventName: 'Spawn Pool: +FireBallSpawn'
+    eventName: 'Spawn Pool: +LightningBoltSpawn'
   - type: 0
     timestamp: 0
     value: 15

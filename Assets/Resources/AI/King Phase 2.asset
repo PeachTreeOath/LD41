@@ -13,10 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: KingPhase2
   keyframes:
-  - type: 0
-    timestamp: 0
-    value: 14
-    eventName: 'Spawn Pool: +FireBallSpawn'
   - type: 2
     timestamp: 2
     value: 2
