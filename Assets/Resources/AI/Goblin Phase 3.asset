@@ -13,7 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GoblinPhase3
   keyframes:
+  - type: 2
+    timestamp: 0
+    value: 1
+    eventName: 'Spawn: GoblinEvent'
+  - type: 2
+    timestamp: 0
+    value: -1
+    eventName: 'Spawn Pool: =GoblinEvent'
   - type: 0
     timestamp: 0
-    value: 10
-    eventName: 'Spawn Pool: =GoblinEvent'
+    value: 15
+    eventName: 
