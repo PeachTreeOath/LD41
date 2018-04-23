@@ -56,10 +56,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawns:
   - {fileID: 11400000, guid: fbbe9182a3be583408fd6af0170a4e9c, type: 2}
-  - {fileID: 11400000, guid: eb03900c80c6c7e42a0e6ca62421c5c9, type: 2}
   - {fileID: 11400000, guid: 49be3145820d97f4ea4473d59cd1bcce, type: 2}
   spawningPool:
-  - WeakGoblin
+  - WolfSpawn
 --- !u!114 &114224385532903918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,9 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - {fileID: 11400000, guid: f3c88d407ad3f8643be0b0d400fde3f8, type: 2}
-  - {fileID: 11400000, guid: e0814205ef42bb04b80cfc21fd0da813, type: 2}
-  - {fileID: 11400000, guid: 9b9dbdd368abab244a240e6fa4a5d137, type: 2}
+  - {fileID: 11400000, guid: 9a14fa81b707707469e28de7b851f1c0, type: 2}
+  - {fileID: 11400000, guid: 0294c572a0e2b3e4da54635e122bbf14, type: 2}
+  - {fileID: 11400000, guid: e30a13660e1260c4498455d203c944f1, type: 2}
   animEventEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -675,11 +675,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4591534995514718, guid: 72ef5b9fc17f7474e8b3dc5139e48106, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3.43
@@ -711,88 +706,6 @@ Prefab:
     - target: {fileID: 4591534995514718, guid: 72ef5b9fc17f7474e8b3dc5139e48106, type: 2}
       propertyPath: m_RootOrder
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[3].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 1feeca15c29688e4da36ddb154147fbb,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[3].cardsAvailable
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[3].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[4].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 30f90cd797a35b24491a3de71eadaebe,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[4].cardsAvailable
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[4].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[5].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[5].cardsAvailable
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[5].weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[0].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[1].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 5beb335487bb1274ca3686d7dde8b0eb,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[2].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[6].cardPrototype
-      value: 
-      objectReference: {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53,
-        type: 2}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[6].cardsAvailable
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114224385532903918, guid: 72ef5b9fc17f7474e8b3dc5139e48106,
-        type: 2}
-      propertyPath: drawTable.Array.data[6].weight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72ef5b9fc17f7474e8b3dc5139e48106, type: 2}
