@@ -56,13 +56,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggers:
   - tripped: 0
-    healthTrigger: 21
+    healthTrigger: 51
     animToPlay: GoblinPhase1
   - tripped: 0
-    healthTrigger: 13
+    healthTrigger: 31
     animToPlay: GoblinPhase2
   - tripped: 0
-    healthTrigger: 6
+    healthTrigger: 16
     animToPlay: GoblinPhase3
 --- !u!114 &114336563058657520
 MonoBehaviour:
