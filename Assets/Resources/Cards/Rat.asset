@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
-  m_Name: Wolf
+  m_Name: Rat
   m_EditorClassIdentifier: 
-  cardName: Wolf
-  health: 2
-  damage: 2
+  cardName: Rat
+  health: 1
+  damage: 1
   timeToCast: -1
   cardsToDraw: 0
   casterHpToHeal: 0
-  sprite: {fileID: 21300000, guid: d728cddd525499c47a64b23a258409fa, type: 3}
-  inLanePrefab: {fileID: 1645607770211736, guid: f508ed3ffd3477b46a3e213c260cba36,
+  sprite: {fileID: 21300000, guid: 19d3268f8ab1829409e2067a2e8ebce7, type: 3}
+  inLanePrefab: {fileID: 1585482992620692, guid: 281e8785e54439843a1f2837940f8195,
     type: 2}
