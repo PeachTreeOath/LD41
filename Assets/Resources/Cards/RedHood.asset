@@ -9,14 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897d4a45f481e7145a904ce8fb7f88d8, type: 3}
-  m_Name: Rat
+  m_Name: RedHood
   m_EditorClassIdentifier: 
-  cardName: Rat
-  health: 1
-  damage: 1
+  cardName: LittleRedRidingHoodGoingThroughTheWoodsToGrandmasHouseSheGoes
+  health: 12
+  damage: 6
   timeToCast: -1
   cardsToDraw: 0
   casterHpToHeal: 0
-  sprite: {fileID: 21300000, guid: 19d3268f8ab1829409e2067a2e8ebce7, type: 3}
-  inLanePrefab: {fileID: 1510538581540498, guid: 281e8785e54439843a1f2837940f8195,
-    type: 2}
+  sprite: {fileID: 21300000, guid: 7d21b2dc31b530648952c63c8536623f, type: 3}
+  inLanePrefab: {fileID: 0}
