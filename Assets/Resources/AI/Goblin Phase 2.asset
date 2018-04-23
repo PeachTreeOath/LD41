@@ -13,19 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GoblinPhase2
   keyframes:
+  - type: 2
+    timestamp: 0
+    value: 0
+    eventName: 'Spawn: =Wolf'
   - type: 0
     timestamp: 0
-    value: 15
-    eventName: 
-  - type: 0
-    timestamp: 15
-    value: 15
-    eventName: 
-  - type: 0
-    timestamp: 15
-    value: 15
-    eventName: 'Spawn: +StrongGoblin'
-  - type: 0
-    timestamp: 30
     value: 7
     eventName: 
