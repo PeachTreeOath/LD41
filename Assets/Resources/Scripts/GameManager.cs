@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager> {
     public void Lose()
     {
         if(awaitingReset) {
-            Debug.LogError("Game is already transitioning, cannot draw right now");
+            Debug.LogError("Game is already transitioning, cannot lose right now");
             return;
         }
 

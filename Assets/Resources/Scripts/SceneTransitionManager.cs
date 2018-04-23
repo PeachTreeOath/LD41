@@ -23,7 +23,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     //SpriteRenderer blackLineHorizontal;
     //SpriteRenderer blackLineVertical;
     //SpriteRenderer horizontalLineMask;
-    Card cutsceneCard;
+    CutsceneCard gameOverCard;
+    CutsceneCard levelCompleteCard;
+    CutsceneCard titleScreenCard;
     SpriteRenderer whiteMask;
 
     //public FadeSprite fadeSprite { get; private set; }
@@ -65,6 +67,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
   
     public void PlayDeathSequence()
     {
+        print("in PlayDeathSequence");
         //AudioManager.instance.PlayMusicOnce("LoseTheme", AudioManager.instance.GetMusicVolume());
         endingTime = 0f;
         deathStarted = true;
@@ -110,7 +113,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         yield return null;
     }
     */
-    IEnumerator DoDropCutsceneCard()
+    IEnumerator DoDropCutsceneCard(CutsceneCard cutsceneCard)
     {
         print("In DoDropCutsceneCard");
         float dropCutsceneCardTime = 0f;
@@ -150,7 +153,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
      //   blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
      //   blackLineVertical = GameObject.Find("BlackLineVertical").GetComponent<SpriteRenderer>();
      //   horizontalLineMask = GameObject.Find("HorizontalLineMask").GetComponent<SpriteRenderer>();
-        cutsceneCard = GameObject.Find("CutsceneCard").GetComponent<Card>();
+        gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
+        titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
+        levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
         whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
      //   portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
      //   gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
@@ -194,6 +199,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         */
         if (deathStarted)
         {
+            print("death sequence started");
             endingTime += Time.deltaTime;
 
             if (endingTime >= secondsToFade && !dropCutsceneCardDone && !coroutineInProgress)
@@ -201,7 +207,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                 endingTime = 0f;
                 coroutineInProgress = true;
                 //kickoff horizontalWipe
-                StartCoroutine(DoDropCutsceneCard());
+                StartCoroutine(DoDropCutsceneCard(gameOverCard));
+                InputManager.instance.inGameOverSequence = true;
             }
             else if (endingTime >= secondsToDropCutsceneCardIn && !finalPauseDone && !coroutineInProgress)
             {
@@ -211,10 +218,15 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             }
             else if (endingTime >= secondsToPauseOnDeath && !coroutineInProgress)
             {
-                SceneManager.LoadScene("Game");
+                //SceneManager.LoadScene("Game");
             }
         }
         
+    }
+
+    public void loadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
 }
