@@ -23,11 +23,24 @@ public class Card : MonoBehaviour
     public float speed = 30f;
     public float scaleDuration = 0.5f;
 
+    public Color bannerStartColor;
+    public Color bannerActiveColor;
+
     public string inputText;
 
     private void Start()
     {
         cardView = GetComponent<CardView>();
+
+        RectTransform banner = cardView.nameText.transform.parent as RectTransform;
+        banner.GetComponent<Image>().color = bannerStartColor;
+
+        float textWidth = LayoutUtility.GetPreferredWidth(cardView.nameText.rectTransform);
+        Rect bannerRect = banner.rect;
+        if(textWidth < bannerRect.width)
+        {
+            banner.sizeDelta = new Vector2(textWidth, bannerRect.height);
+        }
     }
 
     void Update()
@@ -408,8 +421,6 @@ public class Card : MonoBehaviour
         string shortCardName = cardModel.name;
         TextMeshProUGUI cardTextField = cardView.nameText;
 
-        Debug.Log("Input");
-
         if (cardName.Equals(inputText, StringComparison.CurrentCultureIgnoreCase))
         {
             MatchedWord();
@@ -425,6 +436,8 @@ public class Card : MonoBehaviour
             float textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
             float bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
 
+            cardTextField.transform.parent.GetComponent<Image>().color = bannerActiveColor;
+
             int frontNumToRemove = 0;
             int backNumToRemove = 0;
 
@@ -438,7 +451,7 @@ public class Card : MonoBehaviour
                 //Recalculate size
                 highlightedLetters = shortCardName.Substring(0, inputText.Length - frontNumToRemove);
                 restOfWord = shortCardName.Substring(inputText.Length - frontNumToRemove);
-                cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "..." + "</color>";
+                cardTextField.text = "<color=#3498DB>" + highlightedLetters + "</color><color=white>" + restOfWord + "..." + "</color>";
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
                 bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             }
@@ -453,7 +466,7 @@ public class Card : MonoBehaviour
                 //Recalculate size
                 highlightedLetters = shortCardName.Substring(0, inputText.Length - frontNumToRemove);
                 restOfWord = shortCardName.Substring(inputText.Length - frontNumToRemove);
-                cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "..." + "</color>";
+                cardTextField.text = "<color=#3498DB>" + highlightedLetters + "</color><color=white>" + restOfWord + "..." + "</color>";
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
                 bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             }
@@ -464,10 +477,12 @@ public class Card : MonoBehaviour
                 //Get rid of the ...
                 highlightedLetters = shortCardName.Substring(0, inputText.Length - frontNumToRemove);
                 restOfWord = shortCardName.Substring(inputText.Length - frontNumToRemove);
-                cardTextField.text = "<color=blue>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
+                cardTextField.text = "<color=#3498DB>" + highlightedLetters + "</color><color=white>" + restOfWord + "</color>";
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
                 bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             }
+
+
 
         }
         else if (inputText.Length > 0)
@@ -480,7 +495,6 @@ public class Card : MonoBehaviour
             float textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
             float bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             while(textWidth > bannerWidth){
-                Debug.Log("Remove " + shortCardName[shortCardName.Length - 1]);
                 shortCardName = shortCardName.Substring(0, shortCardName.Length - 1);
                 cardTextField.text = shortCardName + "...";
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);

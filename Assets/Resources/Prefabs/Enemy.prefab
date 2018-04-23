@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - {fileID: 11400000, guid: c747f1fd1afb5574e8c5aa455e09d263, type: 2}
+  - {fileID: 11400000, guid: f3c88d407ad3f8643be0b0d400fde3f8, type: 2}
+  - {fileID: 11400000, guid: e0814205ef42bb04b80cfc21fd0da813, type: 2}
+  - {fileID: 11400000, guid: 9b9dbdd368abab244a240e6fa4a5d137, type: 2}
   animEventEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -288,6 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawns:
   - {fileID: 11400000, guid: 659e21edf85e607409c465531ede25d6, type: 2}
+  - {fileID: 11400000, guid: fbbe9182a3be583408fd6af0170a4e9c, type: 2}
+  - {fileID: 11400000, guid: 3f2587252ebf8c64799c1a0a09f9b7f1, type: 2}
   spawningPool:
   - WeakGoblin
 --- !u!114 &114458176784121900
@@ -340,8 +344,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggers:
   - tripped: 0
-    healthTrigger: 100
+    healthTrigger: 51
     animToPlay: GoblinPhase1
+  - tripped: 0
+    healthTrigger: 30
+    animToPlay: GoblinPhase2
+  - tripped: 0
+    healthTrigger: 15
+    animToPlay: GoblinPhase3
 --- !u!114 &114826320812410766
 MonoBehaviour:
   m_ObjectHideFlags: 1
