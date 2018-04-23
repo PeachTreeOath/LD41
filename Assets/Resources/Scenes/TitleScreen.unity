@@ -294,16 +294,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -314,89 +304,15 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 212543698433220690, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
+    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
         type: 2}
-      propertyPath: m_SortingLayerID
-      value: 427432871
-      objectReference: {fileID: 0}
-    - target: {fileID: 212543698433220690, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 212543698433220690, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_SortingOrder
+      propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4554900313502132, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.35
-      objectReference: {fileID: 0}
     - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
         type: 2}
-      propertyPath: m_fontSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_fontSizeBase
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_fontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_fontSizeBase
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_textInfo.lineCount
+      propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.x
-      value: -100.20485
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201363440063046, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.z
-      value: -100.204865
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.y
-      value: -47.924007
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.w
-      value: -142.90083
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.z
-      value: -96.71948
-      objectReference: {fileID: 0}
-    - target: {fileID: 114740234664395974, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd,
-        type: 2}
-      propertyPath: m_margin.x
-      value: -100.20488
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e11bb5c65e70d7f45ab1334d8dd7a8cd, type: 2}
