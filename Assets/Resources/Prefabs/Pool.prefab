@@ -116,9 +116,8 @@ GameObject:
   - component: {fileID: 4833119259401966}
   - component: {fileID: 114861283000390352}
   - component: {fileID: 114301244624733580}
-  - component: {fileID: 114871702881896510}
-  - component: {fileID: 114978408250479830}
   - component: {fileID: 114381779443816838}
+  - component: {fileID: 114699645863766004}
   m_Layer: 0
   m_Name: Pool
   m_TagString: Untagged
@@ -322,7 +321,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114861283000390352}
         m_MethodName: DrawToPool
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -344,6 +343,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114699645863766004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783364321495182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f28991a5e1a78745a9b623fc8260529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawTable:
+  - cardPrototype: {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
+    cardsAvailable: -1
+    weight: 1
+  - cardPrototype: {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
+    cardsAvailable: -1
+    weight: 1
 --- !u!114 &114861283000390352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,19 +382,6 @@ MonoBehaviour:
   cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
     type: 2}
   origin: {fileID: 1633475462210628}
---- !u!114 &114871702881896510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783364321495182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9176f674c70e1e044891ea4afc3ad54b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: []
-  discard: []
 --- !u!114 &114888359688765150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,25 +415,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60487a2520d1fe143820c45e0807d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114978408250479830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783364321495182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e082f3b7c93394f8f5ac42cb2fe4b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardsToStart:
-  - {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
-  - {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
-  - {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
-  - {fileID: 11400000, guid: 793e7407e61c55b428dda750cbed1f44, type: 2}
-  - {fileID: 11400000, guid: c835378dbd3d0ec43beabb6c4b0b9c24, type: 2}
-  - {fileID: 11400000, guid: 5ad832dd8fdb99d45acaf50307228f53, type: 2}
-  - {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1, type: 2}
-  - {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
-  - {fileID: 11400000, guid: 0b8afa67a8571a84493b9721a4c64cc0, type: 2}
-  - {fileID: 11400000, guid: a98e3297e8fa6cb42a9ac7000d6a00b6, type: 2}

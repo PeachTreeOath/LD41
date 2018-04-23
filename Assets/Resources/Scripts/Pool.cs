@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Slots))]
-[RequireComponent(typeof(DeckModel))]
+[RequireComponent(typeof(LootTable))]
 public class Pool : Singleton<Pool> {
+    private LootTable lootTable;
     private Slots poolSlots;
-    private DeckModel poolDeck;
-	private bool shouldShuffle = true;
-	private bool isShuffled = false;
 
     public ZoneEvent poolZoneEvent;
     public Card cardPrefab;
@@ -20,54 +18,19 @@ public class Pool : Singleton<Pool> {
         }
 
         poolSlots = GetComponent<Slots>();
-        poolDeck = GetComponent<DeckModel>();
+        lootTable = GetComponent<LootTable>();
 
         poolSlots.claimEvent.AddListener(OnClaimSlot);
         poolSlots.releaseEvent.AddListener(OnReleaseSlot);
-    }
-
-    void Update() {
-        if (!Input.GetKey(KeyCode.LeftShift)) return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            BuyFromSlot(0);
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            BuyFromSlot(1);
-        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            BuyFromSlot(2);
-        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            BuyFromSlot(3);
-        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            BuyFromSlot(4);
-        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
-            BuyFromSlot(5);
-        }
-    }
-
-    //TODO remove when typing works
-    void BuyFromSlot(int index) {
-        var slot = poolSlots.slots[index];
-        if(!slot.open) {
-            var card = slot.objectInSlot.GetComponent<Card>();
-            card.SetOwner(Owner.Player);
-            card.Discard();
-        }
     }
 
     public ObjectSlot ClaimASlot(Card card) {
         return poolSlots.ClaimASlot(card.gameObject);
     }
 
-    //TODO set up some component to schedule these
-    public void DrawToPool(bool reshuffle=false) {
-        //Shuffle when the first card is pulled
-		if(reshuffle || (shouldShuffle && !isShuffled)) {
-            poolDeck.Shuffle();
-			isShuffled = true;
-		}
-
+    public void DrawToPool() {
         if(poolSlots.anyOpenSlots) {
-            var cardModel = poolDeck.Draw();
+            var cardModel = lootTable.PullCard();
             if(cardModel != null) {
                 var card = GameObject.Instantiate(cardPrefab);
                 card.SetCardModel(cardModel);
