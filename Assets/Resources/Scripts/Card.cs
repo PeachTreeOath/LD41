@@ -33,7 +33,9 @@ public class Card : MonoBehaviour
         cardView = GetComponent<CardView>();
 
         RectTransform banner = cardView.nameText.transform.parent as RectTransform;
-        banner.GetComponent<Image>().color = bannerStartColor;
+        Image img = banner.GetComponent<Image>();
+        if(img != null)
+            banner.GetComponent<Image>().color = bannerStartColor;
 
         float textWidth = LayoutUtility.GetPreferredWidth(cardView.nameText.rectTransform);
         Rect bannerRect = banner.rect;
