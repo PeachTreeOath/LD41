@@ -36,8 +36,8 @@ public class CutsceneCard : MonoBehaviour {
             }
             else if ((c == '\n') || (c == '\r')) // enter/return
             {
-                //enter clears what they typed
-                inputText = "";
+                //enter counts as space
+                inputText += " ";
             }
             else
             {

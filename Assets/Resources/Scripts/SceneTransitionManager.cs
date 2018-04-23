@@ -20,26 +20,12 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     private bool finalPauseDone = false;
     private bool coroutineInProgress = false;
 
-    //SpriteRenderer blackLineHorizontal;
-    //SpriteRenderer blackLineVertical;
-    //SpriteRenderer horizontalLineMask;
+
     CutsceneCard gameOverCard;
     CutsceneCard levelCompleteCard;
     CutsceneCard titleScreenCard;
     SpriteRenderer whiteMask;
 
-    //public FadeSprite fadeSprite { get; private set; }
-
-    //SpriteRenderer gameOverText;
-
-    //PortraitSwapper portraitSwapper;
-
-    //public void SkipTutorial(int levelToStartNext) {
-    //LogManager.instance.Log("So we have an expert here - Skipping Tutorial...");
-    //PermanentStatManager.instance.generation = levelToStartNext; //I think this is unused
-    //PermanentStatManager.instance.currentLevel = levelToStartNext;
-    //playEndingEffects();
-    //}
 
     public void PlayLevelTransitionSequence()
     {
@@ -59,21 +45,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     }
 
 
-    private void playEndingEffects()
-    {
-        //AudioManager.instance.PlayMusicOnce("VictoryTheme", AudioManager.instance.GetMusicVolume());
-        endingTime = 0f;
-        endingStarted = true;
 
-        
-
-        //kicks off these coroutines
-        //FadeUI.instance.FadeMe();
-        FadeSprite.instance.FadeMe();
-
-        //PlayerController.instance.inputEnabled = false;
-        
-    }
   
     public void PlayDeathSequence()
     {
@@ -91,38 +63,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         //FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
         GlobalTimer.instance.PauseTimer(true);
-        //PlayerController.instance.inputEnabled = false;
-        //PlayerController.instance.onDeathScreen = true;
-        //portraitSwapper.transitionToSkeleton();
-    }
-    /*
-    IEnumerator DoHorizontalWipe()
-    {
-        blackLineHorizontal.enabled = true;
-        blackLineVertical.enabled = true;
-        horizontalLineMask.enabled = true;
-        verticalLineMask.enabled = true;
-        float horizontalWipeTime = 0f;
 
-        Vector3 startingScale = horizontalLineMask.transform.localScale;
-        float currentScaleX = startingScale.x;
-        Debug.Log("startingScaleX = " + currentScaleX);
-        while (currentScaleX > 0f)
-        {
-            horizontalWipeTime += Time.deltaTime;
-            //Debug.Log("startingScale.x = " + startingScale.x);
-            currentScaleX = Mathf.Max(startingScale.x - (startingScale.x * horizontalWipeTime) / secondsToRevealHorizontalLine, 0);
-           // Debug.Log("currentScaleX = " + currentScaleX);
-            Vector3 newScale = horizontalLineMask.transform.localScale;
-            newScale.x = currentScaleX;
-            horizontalLineMask.transform.localScale = newScale;
-            yield return null;
-        }
-        horizontalWipeDone = true;
-        coroutineInProgress = false;
-        yield return null;
     }
-    */
+
     IEnumerator DoDropCutsceneCard(CutsceneCard cutsceneCard)
     {
         //print("In DoDropCutsceneCard");
@@ -132,16 +75,12 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         Vector3 startingPos = cutsceneCard.transform.localPosition;
         float currentPosY = startingPos.y;
 
-        //Vector3 cameraStartingPos = Camera.main.transform.localPosition;
-        //float cameraCurrentPosY = cameraStartingPos.y;
 
         while (Mathf.Abs(startingPos.y - currentPosY) < dropCutsceneCardDistance)
         {
             dropCutsceneCardTime += Time.deltaTime;
             Debug.Log("startingPos.y = " + startingPos.y);
             currentPosY = startingPos.y - (dropCutsceneCardDistance * dropCutsceneCardTime) / secondsToDropCutsceneCardIn;
-            //Debug.Log("currentPosY = " + currentPosY);
-            //cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
 
             Vector3 newPos = cutsceneCard.transform.localPosition;
             //Vector3 newCamPos = Camera.main.transform.localPosition;
@@ -160,15 +99,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     
     void Start()
     {
-     //   blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
-     //   blackLineVertical = GameObject.Find("BlackLineVertical").GetComponent<SpriteRenderer>();
-     //   horizontalLineMask = GameObject.Find("HorizontalLineMask").GetComponent<SpriteRenderer>();
-        //gameOverCard = GameObject.Find("GameOverCard").GetComponent<CutsceneCard>();
-        //titleScreenCard = GameObject.Find("TitleScreenCard").GetComponent<CutsceneCard>();
-        //levelCompleteCard = GameObject.Find("LevelCompleteCard").GetComponent<CutsceneCard>();
-        //whiteMask = GameObject.Find("White Mask").GetComponent<SpriteRenderer>();
-     //   portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
-     //   gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
+
     }
 
     protected override void Awake()
@@ -213,40 +144,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
     void Update()
     {
-        /*
-        if (endingStarted)
-        {
-            endingTime += Time.deltaTime;
-            if (endingTime >= secondsToFade && !horizontalWipeDone && !coroutineInProgress)
-            {
-                endingTime = 0f;
-                coroutineInProgress = true;
-                //kickoff horizontalWipe
-                StartCoroutine(DoHorizontalWipe());
-                
-            }
-            else if (endingTime >= secondsToRevealHorizontalLine && !verticalWipeDone && !coroutineInProgress)
-            {
-                //kickoff verticalWipe
-                endingTime = 0f;
-                coroutineInProgress = true;
-                StartCoroutine(DoVerticalWipe());
-            }
-            else if (endingTime >= secondsToRevealVerticalLine && !finalPauseDone && !coroutineInProgress)
-            {
-                //kickoff finalPause
-                endingTime = 0f;
-                finalPauseDone = true;
-            }
-            else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
-            {
-                if(PermanentStatManager.instance.currentLevel == 13)
-                    SceneManager.LoadScene("EndScreen");
-                else
-                    SceneManager.LoadScene("Game");
-            }
-        }
-        */
+
         if (endingStarted)
         {
             endingTime += Time.deltaTime;
@@ -288,10 +186,6 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                 //kickoff finalPause
                 endingTime = 0f;
                 finalPauseDone = true;
-            }
-            else if (endingTime >= secondsToPauseOnDeath && !coroutineInProgress)
-            {
-                //SceneManager.LoadScene("Game");
             }
         }
         
