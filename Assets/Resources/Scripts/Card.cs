@@ -231,8 +231,11 @@ public class Card : MonoBehaviour
 
     private void OnMovedToDiscard()
     {
+        ClearText();
+
         if (owner == Owner.Player)
         {
+
             Deck.instance.Discard(this);
             ChangeState(State.InDiscard);
         }
@@ -395,6 +398,28 @@ public class Card : MonoBehaviour
             SetOwner(actor);
             Discard();
         }
+    }
+
+    public void ClearText()
+    {
+        string cardName = cardModel.name;
+        string shortCardName = cardModel.name;
+        TextMeshProUGUI cardTextField = cardView.nameText;
+        cardTextField.text = cardName;
+
+        float textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
+        float bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
+        while(textWidth > bannerWidth){
+            shortCardName = shortCardName.Substring(0, shortCardName.Length - 1);
+            cardTextField.text = shortCardName + "...";
+            textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
+            bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
+        }
+
+        RectTransform banner = cardView.nameText.transform.parent as RectTransform;
+        Image img = banner.GetComponent<Image>();
+        if(img != null)
+            banner.GetComponent<Image>().color = bannerStartColor;
     }
 
     public void InputText(string inputString)
