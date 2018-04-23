@@ -105,6 +105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 114545852043383462, guid: 36ae9133da2ee7e4e985252c327eb860,
     type: 2}
+  damageTextPrefab: {fileID: 114606324237873492, guid: db56f11b41973f04d8128a83b526303f,
+    type: 2}
   playerSlots: {fileID: 0}
   enemySlots: {fileID: 0}
   playerDamageArray: 0000000000000000000000000000000000000000
@@ -131,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7423c91401c20d4d958f949696ed396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tickTime: 0
   currentTime: 0
 --- !u!114 &114932757600124472
 MonoBehaviour:

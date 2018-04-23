@@ -7,6 +7,7 @@ using UnityEngine;
 public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 {
     public Card cardPrefab;
+    public DamageText damageTextPrefab;
     public Slots playerSlots;
     public Slots enemySlots;
 
@@ -20,6 +21,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
     public Health playerHp;
     public Health enemyHp;
+
 
     public int startingLane = 2;
 
@@ -259,6 +261,12 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             CardInLane defender = card.GetComponent<CardInLane>();
             if (defender.cardType == Card.CardType.Monster)
             {
+                //TODO move to fn
+                var damageText = GameObject.Instantiate<DamageText>(damageTextPrefab);
+                damageText.owner = defender.owner;
+                damageText.SetNumber(damage);
+                damageText.transform.position = defender.transform.position;
+
                 int defenderHp = defender.TakeDamage(damage);
                 if (defenderHp <= 0)
                 {
