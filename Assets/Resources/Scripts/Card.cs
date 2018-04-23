@@ -313,7 +313,7 @@ public class Card : MonoBehaviour
             SpellInLane spell = laneObject.GetComponent<SpellInLane>();
             if(spell != null)
             {
-                spell.SetCardModel(cardModel);
+                spell.SetOwner(owner);
                 spell.SetCardModel(cardModel);
                 spell.SetSlot(currSlot);
             }
