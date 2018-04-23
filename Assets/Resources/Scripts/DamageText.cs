@@ -23,7 +23,7 @@ public class DamageText : MonoBehaviour {
         time += Time.deltaTime;
         if(time >= duration) {
             Destroy(this.gameObject);
-        } else {
+        } else { 
             cardText.alpha = 1f - time / duration;
         }
 
