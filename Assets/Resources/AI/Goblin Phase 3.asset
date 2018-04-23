@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813a00946f536348b7b76e533444112, type: 3}
   m_Name: Goblin Phase 3
   m_EditorClassIdentifier: 
-  id: 
+  id: GoblinPhase3
   keyframes:
   - type: 2
     timestamp: -1
