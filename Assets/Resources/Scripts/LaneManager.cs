@@ -194,7 +194,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             var enemySlot = enemySlots.slots[i];
 
             GameObject playerCard = playerSlot.occupied ? playerSlot.objectInSlot : null;
-            GameObject enemyCard = playerSlot.occupied ? enemySlot.objectInSlot : null;
+            GameObject enemyCard = enemySlot.occupied ? enemySlot.objectInSlot : null;
 
             if (playerCard == null && enemyCard == null)
             {
