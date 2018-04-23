@@ -11,5 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813a00946f536348b7b76e533444112, type: 3}
   m_Name: Redhood Phase 3
   m_EditorClassIdentifier: 
-  id: 
-  keyframes: []
+  id: RedhoodPhase3
+  keyframes:
+  - type: 2
+    timestamp: 0
+    value: 0
+    eventName: 'Spawn: BigBadWolf'

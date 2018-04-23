@@ -11,5 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813a00946f536348b7b76e533444112, type: 3}
   m_Name: Redhood Phase 2
   m_EditorClassIdentifier: 
-  id: 
-  keyframes: []
+  id: RedhoodPhase2
+  keyframes:
+  - type: 2
+    timestamp: 0
+    value: 0
+    eventName: 'Spawn Pool: +FireBallSpawn'
+  - type: 0
+    timestamp: 0
+    value: 12
+    eventName: 

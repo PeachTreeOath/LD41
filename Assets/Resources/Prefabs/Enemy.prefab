@@ -381,10 +381,10 @@ MonoBehaviour:
     healthTrigger: 21
     animToPlay: GoblinPhase1
   - tripped: 0
-    healthTrigger: 10
+    healthTrigger: 13
     animToPlay: GoblinPhase2
   - tripped: 0
-    healthTrigger: 5
+    healthTrigger: 6
     animToPlay: GoblinPhase3
 --- !u!114 &114826320812410766
 MonoBehaviour:
