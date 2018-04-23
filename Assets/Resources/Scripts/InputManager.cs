@@ -24,7 +24,7 @@ public class InputManager : Singleton<InputManager>
         Scene scene = SceneManager.GetActiveScene();
         sceneName = scene.name;
 
-        if (scene.name.Equals("Game"))
+        if (!scene.name.Equals("TitleScreen"))
         {
             Hand.instance.handZoneEvent.AddListener(CardHasEnterredOrExittedHand);
             Pool.instance.poolZoneEvent.AddListener(CardHasEnterredOrExittedHand);
