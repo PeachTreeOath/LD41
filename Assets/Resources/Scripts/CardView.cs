@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class CardView : MonoBehaviour
 {
-    private Color redColor;
-    private Color blueColor;
-    private Color grayColor;
+    public Color redColor;
+    public Color blueColor;
+    public Color grayColor;
 
     public TextMeshProUGUI nameText;
     public GameObject botAttackObj;
@@ -27,13 +27,6 @@ public class CardView : MonoBehaviour
 
     public Image border;
     public Image portrait;
-
-    private void Start()
-    {
-        ColorUtility.TryParseHtmlString("EB5B57FF", out redColor);
-        ColorUtility.TryParseHtmlString("5AC9F2FF", out blueColor);
-        ColorUtility.TryParseHtmlString("363636FF", out grayColor);
-    }
 
     public void CreateCardImage(CardModel card)
     {
@@ -54,7 +47,27 @@ public class CardView : MonoBehaviour
             {
                 topTriangleText.text = card.damage + "";
                 bottomTriangleText.text = "";
+                topTriangle.GetComponent<Image>().color = redColor;
                 bottomTriangle.GetComponent<Image>().color = grayColor;
+                bottomTriangleIcon.enabled = true;
+                bottomTriangleIcon.GetComponent<RectTransform>().localScale *= .9f;
+                bottomTriangleIcon.sprite = ResourceLoader.instance.attackIcon;
+            }
+            else
+            {
+                topTriangleText.text = "";
+                bottomTriangle.GetComponent<Image>().color = grayColor;
+
+                int num = card.cardsToDraw + card.casterHpToHeal;
+                bottomTriangleText.text = num + "";
+                topTriangleIcon.enabled = true;
+                topTriangleIcon.GetComponent<RectTransform>().localScale *= .5f;
+                bottomTriangle.GetComponent<Image>().color = blueColor;
+                topTriangle.GetComponent<Image>().color = grayColor;
+                if (card.cardsToDraw > 0)
+                    topTriangleIcon.sprite = ResourceLoader.instance.drawIcon;
+                else if(card.casterHpToHeal > 0)
+                    topTriangleIcon.sprite = ResourceLoader.instance.healIcon;
             }
         }
         else // monster
@@ -63,6 +76,5 @@ public class CardView : MonoBehaviour
             hpText.text = card.health + "";
         }
         portrait.sprite = card.sprite;
-
     }
 }

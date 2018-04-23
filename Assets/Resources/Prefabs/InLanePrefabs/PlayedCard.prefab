@@ -1008,6 +1008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5325d6d0ccb135b4e842ada0bd9d38b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redColor: {r: 0.9215687, g: 0.35686275, b: 0.34117648, a: 1}
+  blueColor: {r: 0.3529412, g: 0.78823537, b: 0.9490197, a: 1}
+  grayColor: {r: 0.21176471, g: 0.21176471, b: 0.21176471, a: 1}
   botAttackObj: {fileID: 0}
   botHpObj: {fileID: 0}
   botAttackText: {fileID: 0}
@@ -1022,6 +1025,8 @@ MonoBehaviour:
   bottomTriangleText: {fileID: 0}
   topTriangleIcon: {fileID: 0}
   bottomTriangleIcon: {fileID: 0}
+  castTimeObj: {fileID: 0}
+  castTimeText: {fileID: 0}
   portrait: {fileID: 0}
 --- !u!114 &114660495828685360
 MonoBehaviour:

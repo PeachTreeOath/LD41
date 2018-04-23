@@ -254,20 +254,27 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     {
         if (damage == 0) return;
 
+        var damageText = GameObject.Instantiate<DamageText>(damageTextPrefab);
+        damageText.SetNumber(damage);
+
         GameObject card = attackedSlots.slots[index].objectInSlot;
         if (card == null) // No defender, hit face
         {
+            //WARN copypasta from line 288!
+            damageText.owner = targetHealth.owner;
+
+            var tag = (damageText.owner == Owner.Player ? "Player" : "Enemy") + index;
+            damageText.transform.position = GameObject.Find(tag).transform.position;
+
             targetHealth.DealDamage(damage);
         }
         else // Make defender take damage
         {
+
             CardInLane defender = card.GetComponent<CardInLane>();
             if (defender.cardType == Card.CardType.Monster)
             {
-                //TODO move to fn
-                var damageText = GameObject.Instantiate<DamageText>(damageTextPrefab);
                 damageText.owner = defender.owner;
-                damageText.SetNumber(damage);
                 damageText.transform.position = defender.transform.position;
 
                 int defenderHp = defender.TakeDamage(damage);
@@ -278,6 +285,11 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
             }
             else
             {
+                damageText.owner = targetHealth.owner;
+
+                var tag = (damageText.owner == Owner.Player ? "Player" : "Enemy") + index;
+                damageText.transform.position = GameObject.Find(tag).transform.position;
+
                 // Attack bypasses spells, take face dmg
                 targetHealth.DealDamage(damage);
             }

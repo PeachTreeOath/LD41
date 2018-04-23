@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class CardInLaneView : MonoBehaviour {
 
+    public Color redColor;
+    public Color blueColor;
+    public Color grayColor;
+
     // Monster stuff
     public GameObject botAttackObj;
     public GameObject botHpObj;
