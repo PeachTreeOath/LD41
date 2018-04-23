@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max: 50
-  start: 16
+  start: 50
   healthText: {fileID: 114409418464388012}
   owner: 1
 --- !u!114 &114901929305337362
