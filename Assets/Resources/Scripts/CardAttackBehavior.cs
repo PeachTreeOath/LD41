@@ -22,7 +22,7 @@ public class CardAttackBehavior : MonoBehaviour, IGlobalAttackCooldownObject
         if (isAttacking)
         {
             attackTime += Time.deltaTime;
-            if(attackTime > attackDuration)
+            if (attackTime > attackDuration)
             {
                 StopAnimation();
             }
@@ -44,6 +44,7 @@ public class CardAttackBehavior : MonoBehaviour, IGlobalAttackCooldownObject
 
     void OnDestroy()
     {
-        GlobalAttackCooldownTimer.instance.DeregisterCard(this);
+        if (GlobalAttackCooldownTimer.instance != null)
+            GlobalAttackCooldownTimer.instance.DeregisterCard(this);
     }
 }
