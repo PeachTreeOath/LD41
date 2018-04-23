@@ -11,6 +11,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     public Slots playerSlots;
     public Slots enemySlots;
 
+    public float laneHightlightYOffset = 0f;
+
     public int[] playerDamageArray = new int[5]; // All the dmg the player row is about to take
     public int[] enemyDamageArray = new int[5]; // All the dmg the enemy row is about to take
 
@@ -121,7 +123,8 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
     public void SetLane(int lane)
     {
         currentLane = lane;
-        laneHighlight.transform.position = playerSlotGameObjects[currentLane].transform.position;
+        laneHighlight.transform.position = new Vector2(playerSlotGameObjects[currentLane].transform.position.x,
+                                                       playerSlotGameObjects[currentLane].transform.position.y + laneHightlightYOffset);
     }
 
     public int GetLane()
@@ -189,7 +192,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         {
             var playerSlot = playerSlots.slots[i];
             var enemySlot = enemySlots.slots[i];
-           
+
             GameObject playerCard = playerSlot.occupied ? playerSlot.objectInSlot : null;
             GameObject enemyCard = playerSlot.occupied ? enemySlot.objectInSlot : null;
 
