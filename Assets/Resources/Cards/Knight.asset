@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   cardName: The Grand Ultimate Shrubbery Knight Who Says NI
-  health: 21
+  health: 35
   damage: 5
   timeToCast: -1
   cardsToDraw: 0
