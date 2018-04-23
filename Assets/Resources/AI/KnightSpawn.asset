@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25670a9069dc80b4399003feb69e724c, type: 3}
-  m_Name: PikeSpawn
+  m_Name: KnightSpawn
   m_EditorClassIdentifier: 
-  id: PikeSpawn
+  id: SpawnKnight
   components:
-  - prototype: {fileID: 11400000, guid: 92c426839ec7a254bbaafa7b2499ca28, type: 2}
+  - prototype: {fileID: 11400000, guid: 4e225a38101c3e0458d5a8b5eddea975, type: 2}
     slotSelectionStrategy: 0
     multiplicity: 1
     successRate: 1
