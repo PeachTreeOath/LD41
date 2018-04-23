@@ -14,6 +14,14 @@ MonoBehaviour:
   id: GoblinEvent
   components:
   - prototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+    slotSelectionStrategy: 0
+    multiplicity: 1
+    successRate: 1
   - prototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+    slotSelectionStrategy: 0
+    multiplicity: 1
+    successRate: 1
   - prototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
-  - prototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+    slotSelectionStrategy: 0
+    multiplicity: 1
+    successRate: 1
