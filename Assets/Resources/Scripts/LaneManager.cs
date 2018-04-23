@@ -185,8 +185,11 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
 
         for (int i = 0; i < 5; i++)
         {
-            GameObject playerCard = playerSlots.slots[i].objectInSlot;
-            GameObject enemyCard = enemySlots.slots[i].objectInSlot;
+            var playerSlot = playerSlots.slots[i];
+            var enemySlot = enemySlots.slots[i];
+           
+            GameObject playerCard = playerSlot.occupied ? playerSlot.objectInSlot : null;
+            GameObject enemyCard = playerSlot.occupied ? enemySlot.objectInSlot : null;
 
             if (playerCard == null && enemyCard == null)
             {
@@ -200,7 +203,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                     SpellInLane spell = playerCard.GetComponent<SpellInLane>();
                     spell.CountdownSpell(i, true);
                     if (spell.timeToCast == 0)
-                        OnRemove(spell);
+                        Remove(spell);
                 }
                 else
                 {
@@ -215,7 +218,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                     SpellInLane spell = enemyCard.GetComponent<SpellInLane>();
                     spell.CountdownSpell(i, false);
                     if (spell.timeToCast == 0)
-                        OnRemove(spell);
+                        Remove(spell);
                 }
                 else
                 {
@@ -259,7 +262,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
                 int defenderHp = defender.TakeDamage(damage);
                 if (defenderHp <= 0)
                 {
-                    OnRemove(defender);
+                    Remove(defender);
                 }
             }
             else
@@ -270,7 +273,7 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         }
     }
 
-    private void OnRemove(CardInLane cardInLane)
+    public void Remove(CardInLane cardInLane)
     {
         var card = GameObject.Instantiate<Card>(cardPrefab);
         card.SetOwner(cardInLane.owner);
