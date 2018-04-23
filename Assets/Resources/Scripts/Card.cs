@@ -76,7 +76,7 @@ public class Card : MonoBehaviour
             case State.Playing:
                 arrived = UpdateMoveTo(currSlot.transform.position);
                 if (arrived) OnPlayed();
-                UpdateSizeTo(new Vector2(1.0f, 1.0f));
+                UpdateSizeTo(new Vector2(.72f, .72f));
                 break;
         }
     }
