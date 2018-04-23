@@ -76,7 +76,7 @@ MonoBehaviour:
   - cardPrototype: {fileID: 11400000, guid: 1630e95445f93aa43a0b8534313dbdaf, type: 2}
     cardsAvailable: -1
     weight: 1
-  - cardPrototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
     cardsAvailable: -1
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: a1b1ca987b66e3544ba9d405f61e4063, type: 2}
@@ -89,9 +89,6 @@ MonoBehaviour:
     cardsAvailable: -1
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: 17f850d337819d3469b6b3b6f7348ee1, type: 2}
-    cardsAvailable: -1
-    weight: 1
-  - cardPrototype: {fileID: 11400000, guid: 1eaace4305aef20419dabb0cfd291695, type: 2}
     cardsAvailable: -1
     weight: 1
 --- !u!114 &114355001161152342

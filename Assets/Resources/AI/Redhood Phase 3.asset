@@ -19,5 +19,5 @@ MonoBehaviour:
     eventName: 'Spawn: RedHoodEvent'
   - type: 0
     timestamp: 0
-    value: 14
+    value: 16
     eventName: 
