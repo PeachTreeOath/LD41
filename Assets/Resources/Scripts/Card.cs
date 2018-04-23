@@ -502,6 +502,11 @@ public class Card : MonoBehaviour
                 textWidth = LayoutUtility.GetPreferredWidth(cardTextField.rectTransform);
                 bannerWidth = ((cardTextField.transform.parent) as RectTransform).rect.width;
             }
+
+            RectTransform banner = cardView.nameText.transform.parent as RectTransform;
+            Image img = banner.GetComponent<Image>();
+            if(img != null)
+                banner.GetComponent<Image>().color = bannerStartColor;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 [RequireComponent(typeof(DeckModel))]
 public class Deck : Singleton<Deck> {
@@ -9,12 +10,20 @@ public class Deck : Singleton<Deck> {
     public Card cardPrefab;
     public GameObject discard;
 
+    public TextMeshProUGUI deckText;
+    public TextMeshProUGUI discardText;
+
     public void Start() {
         model = GetComponent<DeckModel>();
 
         discardSlots = GetComponent<Slots>();
         discardSlots.occupyEvent.AddListener(OnOccupyDiscardSlot);
         discardSlots.releaseEvent.AddListener(OnReleaseDiscardSlot);
+
+        deckText.text = model.library.Count.ToString();
+        discardText.text = model.discard.Count.ToString();
+
+        HideDeck();
     }
 
     public void ConfigureCardObjectAtDeck(Card card) {
@@ -33,6 +42,8 @@ public class Deck : Singleton<Deck> {
             Card card = GameObject.Instantiate<Card>(cardPrefab);
             OnCardCreated(cardModel, card);
 
+            UpdateCounts();
+
             return true;
         } else {
             OnNoCardsLeft();
@@ -44,6 +55,7 @@ public class Deck : Singleton<Deck> {
         model.Discard(card.cardModel);
         Clear();
         discardSlots.ClaimASlot(card.gameObject);
+        UpdateCounts();
     }
 
     public void Clear() {
@@ -57,6 +69,14 @@ public class Deck : Singleton<Deck> {
         card.SetOwner(Owner.Player);
         card.SetInDeck();
         card.MoveToHand();
+        if(model.library.Count > 0)
+        {
+            ShowDeck();
+        }
+        else
+        {
+            HideDeck();
+        }
     }
 
     void OnHandFull() {
@@ -65,6 +85,19 @@ public class Deck : Singleton<Deck> {
 
     void OnNoCardsLeft() {
 
+    }
+
+    void ShowDeck() {
+        transform.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    void HideDeck() {
+        transform.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    void UpdateCounts() {
+        deckText.text = model.library.Count.ToString();
+        discardText.text = model.discard.Count.ToString();
     }
 
     private void OnOccupyDiscardSlot(ObjectSlot slot, GameObject go) {
