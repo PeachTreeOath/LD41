@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 1246586263889496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.72, y: 0.72, z: 1}
   m_Children:
   - {fileID: 224152851061267322}
   m_Father: {fileID: 0}
@@ -437,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84376d93706b0447916ca997a9902dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCast: 0
   cardType: 1
 --- !u!114 &114895756434534384
 MonoBehaviour:
