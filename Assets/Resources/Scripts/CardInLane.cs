@@ -44,14 +44,14 @@ public class CardInLane : MonoBehaviour
         card = newCard;
         currHp = newCard.health;
         timeToCast = newCard.timeToCast;
-        cardView.CreateCardImage(card, owner); //TODO update the view with data from the card image?
+        cardView.CreateCardImage(card, owner, currHp); //TODO update the view with data from the card image?
     }
 
     // Returns health after damage taken
     public int TakeDamage(int damage)
     {
         currHp -= damage;
-        cardView.CreateCardImage(card, owner);
+        cardView.CreateCardImage(card, owner, currHp);
         return currHp;
     }
 
