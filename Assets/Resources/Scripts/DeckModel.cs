@@ -11,11 +11,15 @@ public class DeckModel : MonoBehaviour {
     }
 
     public void Shuffle(bool addDiscard=true) {
-
         if(addDiscard) {
             library.AddRange(discard);
             if(discard.Count > 0)
             {
+                //This will technically make the cards move to the deck at the same time a
+                //Card comes into the hand when the deck is empty, but it moves so fast it looks fine
+                Card card = transform.Find("Slot").GetComponent<ObjectSlot>().objectInSlot.GetComponent<Card>();
+                transform.Find("Slot").GetComponent<ObjectSlot>().Release();
+                card.MoveToDeck();
                 transform.GetComponent<Deck>().Clear();
             }
             discard.Clear();

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CardView))]
 public class Card : MonoBehaviour
 {
-    public enum State { None, InDeck, InPool, InHand, InLane, InDiscard, MovingToPool, MovingToHand, MovingToDiscard, Playing }
+    public enum State { None, InDeck, InPool, InHand, InLane, InDiscard, MovingToPool, MovingToHand, MovingToDiscard, MovingToDeck, Playing }
     public enum CardType { Monster, Spell }
 
     public State prevState = State.None;
@@ -48,6 +48,8 @@ public class Card : MonoBehaviour
     void Update()
     {
         bool arrived = false;
+        Vector2 target;
+
         switch (state)
         {
             case State.MovingToPool:
@@ -56,8 +58,7 @@ public class Card : MonoBehaviour
                 break;
 
             case State.MovingToDiscard:
-                Vector2 target;
-                if(owner == Owner.Player) {
+                                if(owner == Owner.Player) {
                     target = Deck.instance.discard.transform.position;
                 } else {
                     target = Enemy.instance.discard.transform.position;
@@ -66,6 +67,17 @@ public class Card : MonoBehaviour
                 arrived = UpdateMoveTo(target);
                 if (arrived) OnMovedToDiscard();
                 UpdateSizeTo(new Vector2(0.5f, 0.5f));
+                break;
+
+            case State.MovingToDeck:
+                if(owner == Owner.Player) {
+                    target = Deck.instance.transform.position;
+                } else {
+                    target = Enemy.instance.transform.position;
+                }
+
+                arrived = UpdateMoveTo(target);
+                if (arrived) OnMovedToDeck();
                 break;
 
             case State.MovingToHand:
@@ -142,6 +154,17 @@ public class Card : MonoBehaviour
         }
     }
 
+    public void MoveToDiscard()
+    {
+
+        ChangeState(State.MovingToDiscard);
+    }
+
+    public void MoveToDeck()
+    {
+        ChangeState(State.MovingToDeck);
+    }
+
     public void MoveToHand()
     {
         if (state == State.InHand)
@@ -214,8 +237,7 @@ public class Card : MonoBehaviour
         }
 
         //TODO start scaling down to discard size?
-
-        ChangeState(State.MovingToDiscard);
+        MoveToDiscard();
     }
 
     private void OnMovingToPool()
@@ -227,6 +249,11 @@ public class Card : MonoBehaviour
     {
         currSlot.Occupy(this.gameObject);
         ChangeState(State.InPool);
+    }
+
+    private void OnMovedToDeck()
+    {
+        Destroy(this.gameObject);
     }
 
     private void OnMovedToDiscard()

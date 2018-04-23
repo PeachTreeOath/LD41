@@ -105,7 +105,7 @@ public class Deck : Singleton<Deck> {
     }
 
     private void OnReleaseDiscardSlot(ObjectSlot slot, GameObject go) {
-        Destroy(go);
+
     }
 
 }
