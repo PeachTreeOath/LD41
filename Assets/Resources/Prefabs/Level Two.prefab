@@ -57,6 +57,7 @@ MonoBehaviour:
   spawns:
   - {fileID: 11400000, guid: fbbe9182a3be583408fd6af0170a4e9c, type: 2}
   - {fileID: 11400000, guid: 49be3145820d97f4ea4473d59cd1bcce, type: 2}
+  - {fileID: 11400000, guid: 9406bc6fd85cbb644a356fcd28ec2860, type: 2}
   spawningPool:
   - WolfSpawn
 --- !u!114 &114224385532903918
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawTable:
-  - cardPrototype: {fileID: 11400000, guid: 216cf6ae8f4d10b45bf980cf64d70190, type: 2}
+  - cardPrototype: {fileID: 11400000, guid: 1630e95445f93aa43a0b8534313dbdaf, type: 2}
     cardsAvailable: -1
     weight: 1
   - cardPrototype: {fileID: 11400000, guid: 5beb335487bb1274ca3686d7dde8b0eb, type: 2}
