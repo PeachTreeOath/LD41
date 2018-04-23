@@ -257,7 +257,9 @@ public class LaneManager : Singleton<LaneManager>, IGlobalAttackCooldownObject
         var damageText = GameObject.Instantiate<DamageText>(damageTextPrefab);
         damageText.SetNumber(damage);
 
-        GameObject card = attackedSlots.slots[index].objectInSlot;
+        var slot = attackedSlots.slots[index];
+        GameObject card = slot.occupied ? slot.objectInSlot : null;
+
         if (card == null) // No defender, hit face
         {
             //WARN copypasta from line 288!

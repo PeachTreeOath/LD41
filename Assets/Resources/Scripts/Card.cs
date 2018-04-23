@@ -26,16 +26,11 @@ public class Card : MonoBehaviour
     public Color bannerStartColor;
     public Color bannerActiveColor;
 
-    AudioSource audioSource;
-    public AudioClip playCardSound;
-    public AudioClip drawCardSound;
-
     public string inputText;
 
     private void Start()
     {
         cardView = GetComponent<CardView>();
-        audioSource = GetComponent<AudioSource>();
 
         RectTransform banner = cardView.nameText.transform.parent as RectTransform;
         Image img = banner.GetComponent<Image>();
@@ -220,7 +215,7 @@ public class Card : MonoBehaviour
 
         if (nextSlot != null)
         {
-            audioSource.PlayOneShot(playCardSound);
+            AudioManager.instance.PlayCardSound();
             OnPlaying();
 
             currSlot = nextSlot;
@@ -268,7 +263,7 @@ public class Card : MonoBehaviour
 
         if (owner == Owner.Player)
         {
-            audioSource.PlayOneShot(drawCardSound);
+            AudioManager.instance.DrawCardSound();
             Deck.instance.Discard(this);
             ChangeState(State.InDiscard);
         }
@@ -285,7 +280,7 @@ public class Card : MonoBehaviour
 
         currSlot.Occupy(this.gameObject);
 
-        audioSource.PlayOneShot(drawCardSound);
+        AudioManager.instance.DrawCardSound();
         ChangeState(State.InHand);
     }
 
@@ -297,7 +292,7 @@ public class Card : MonoBehaviour
             currSlot = null;
         }
 
-        audioSource.PlayOneShot(playCardSound);
+        AudioManager.instance.PlayCardSound();
         //TODO any inital set or tear down from being in the hand (deregister from input manager)
     }
 
